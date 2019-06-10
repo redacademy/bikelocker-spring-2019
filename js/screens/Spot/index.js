@@ -1,3 +1,5 @@
 import Spot from "./Spot";
+import SpotContainer from "./SpotContainer";
 
-export default Spot;
+export { Spot };
+export default SpotContainer;

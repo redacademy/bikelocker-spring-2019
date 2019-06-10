@@ -1,3 +1,5 @@
 import Onboarding from "./Onboarding";
+import OnboardingContainer from "./OnboardingContainer";
 
-export default Onboarding;
+export { Onboarding };
+export default OnboardingContainer;
