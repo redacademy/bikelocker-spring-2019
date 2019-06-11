@@ -8,13 +8,13 @@ import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ProfileScreen from "../screens/Profile";
-import MapScreen from "../screens/Map";
+import FindLockerScreen from "../screens/FindLocker";
 import { sharedNavigationOptions } from "./config";
 import theme from "../config/styles";
 
-const MapStack = createStackNavigator(
+const FindLockerStack = createStackNavigator(
   {
-    Map: MapScreen
+    FindLocker: FindLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -60,7 +60,7 @@ const ProfileStack = createStackNavigator(
 export default createBottomTabNavigator(
   {
     Contact: ContactStack,
-    Map: MapStack,
+    FindLocker: FindLockerStack,
     Profile: ProfileStack,
     About: AboutStack
   },
@@ -76,7 +76,7 @@ export default createBottomTabNavigator(
           iconName = `ios-information-circle`;
         } else if (routeName === "Profile") {
           iconName = `ios-heart`;
-        } else if (routeName === "Map") {
+        } else if (routeName === "FindLocker") {
           iconName = `ios-map`;
         }
 
