@@ -14,9 +14,9 @@ type User @model {
   addressOne: String 
   addressTwo: String 
   province: String
-  Country: String 
-  PostalCode: String
-  ProfilePhoto: File
+  country: String 
+  postalCode: String
+  profilePhoto: File
   reviews: [Review!] @relation(name: "UserReview")
 }
 
