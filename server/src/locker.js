@@ -1,4 +1,4 @@
-const csvtojson = require("csvtojson");
+const csv = require("csvtojson");
 const csvFilePath = "./BikeRackData.csv";
 
 csv()
