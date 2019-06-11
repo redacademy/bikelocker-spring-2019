@@ -1,15 +1,18 @@
 const csvtojson = require("csvtojson");
+const csvFilePath = "./BikeRackData.csv";
 
+csv()
+  .fromFile(csvFilePath)
+  .then(jsonObj => {
+    console.log(jsonObj);
+  });
 
+// export default async event => {
+//   await new Promise(r => setTimeout(r, 50));
 
-export default async event => {
-  // you can use ES7 with async/await and even TypeScript in your functions :)
-
-  await new Promise(r => setTimeout(r, 50));
-
-  return {
-    data: {
-      message: `Hello ${event.data.name || "World"}`
-    }
-  };
-};
+//   return {
+//     data: {
+//       message: `Hello ${event.data.name || "World"}`
+//     }
+//   };
+// };
