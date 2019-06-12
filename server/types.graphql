@@ -36,6 +36,7 @@ type File @model{
 
 type Review @model {
    id: ID! @isUnique
+   createdAt: DateTime!
    review: String!
    rating: Int
    reviewer: User! @relation(name: "UserReview")
