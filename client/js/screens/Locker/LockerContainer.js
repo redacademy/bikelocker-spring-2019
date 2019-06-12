@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Locker from "./Locker";
 import Loader from "../../components/Loader";
-// import { Query } from "react-apollo";
-// import gql from "graphql-tag";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
 export default class LockerContainer extends Component {
   constructor(props) {
@@ -25,30 +25,30 @@ export default class LockerContainer extends Component {
   }
 }
 
-// const GET_ONE_LOCKER_DATA = gql`
-//   query locker($id: ID!) {
-//     locker(id: $id) {
-//       id
-//       address
-//       latitude
-//       longitude
-//       reviews {
-//         id
-//         createdAt
-//         review
-//         rating
-//         reviewer {
-//           id
-//           lastName
-//           firstName
-//           email
-//         }
-//         photos {
-//           size
-//           id
-//           url
-//         }
-//       }
-//     }
-//   }
-// `;
+const GET_ONE_LOCKER_DATA = gql`
+  query locker($id: ID!) {
+    locker(id: $id) {
+      id
+      address
+      latitude
+      longitude
+      reviews {
+        id
+        createdAt
+        review
+        rating
+        reviewer {
+          id
+          lastName
+          firstName
+          email
+        }
+        photos {
+          size
+          id
+          url
+        }
+      }
+    }
+  }
+`;
