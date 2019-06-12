@@ -16,13 +16,6 @@
 # In the types.graphql you define your data schema
 types: ./types.graphql
 
-functions:
-  hello:
-    handler:
-      code: src/hello.js
-    type: resolver
-    schema: src/hello.graphql
-
 function:
   getLockers:
     handler:

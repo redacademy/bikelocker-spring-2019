@@ -1,18 +1,12 @@
-const csv = require("csvtojson");
 const csvFilePath = "./BikeRackData.csv";
+const csvToJSON = require("csvtojson");
 
-csv()
-  .fromFile(csvFilePath)
-  .then(jsonObj => {
-    console.log(jsonObj);
-  });
+const csvToJSONObject = async () => {
+  try {
+    return await csvToJSON().fromFile(csvFilePath);
+  } catch (error) {
+    return error;
+  }
+};
 
-// export default async event => {
-//   await new Promise(r => setTimeout(r, 50));
-
-//   return {
-//     data: {
-//       message: `Hello ${event.data.name || "World"}`
-//     }
-//   };
-// };
+module.exports = csvToJSONObject;

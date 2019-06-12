@@ -7,51 +7,46 @@ type User @model {
   lastName: String
   email: String!
   password: String!
-  age: Int 
-  bikeType: String 
-  bikeBrand: String 
-  bikeColor: String 
-  addressOne: String 
-  addressTwo: String 
+  age: Int
+  bikeType: String
+  bikeBrand: String
+  bikeColor: String
+  addressOne: String
+  addressTwo: String
   province: String
-  Country: String 
+  Country: String
   PostalCode: String
   ProfilePhoto: File
   reviews: [Review!] @relation(name: "UserReview")
 }
 
+type Review @model {
+  id: ID! @isUnique
+  review: String!
+  rating: Int
+  reviewer: User! @relation(name: "UserReview")
+  photos: [File!]
+  locker: Locker! @relation(name: "lockerReviews")
 
- type Review @model {
-   id: ID! @isUnique
-   review: String!
-   rating: Int
-   reviewer: User! @relation(name: "UserReview")
-   photos: [File!]
-   locker: Locker! @relation(name: "lockerReviews")
+  # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+  author: User! @relation(name: "UserPosts")
+}
 
-   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-   author: User! @relation(name: "UserPosts")
- }
-
- type Locker @model {
-   id: ID! @isUnique
-   latitude: Float! 
-   longitude: Float! 
-   reviews: [Review!] @relation (name: "lockerReviews") 
-   address: String! 
- }
-
+type Locker @model {
+  id: ID! @isUnique
+  latitude: Float!
+  longitude: Float!
+  reviews: [Review!] @relation(name: "lockerReviews")
+  address: String!
+}
 
 # added by email-password template: (please uncomment)
 type User @model {
   # Required system field:
   id: ID! @isUnique # read-only (managed by Graphcool)
- 
   # Optional system fields (remove if not needed):
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
   email: String! @isUnique
   password: String!
- }
- 
-
+}
