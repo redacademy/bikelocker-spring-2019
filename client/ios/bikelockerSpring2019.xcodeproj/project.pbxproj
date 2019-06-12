@@ -51,6 +51,7 @@
 		747304A26D5F472B92B83B07 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F32540EFBD54513BF1A837D /* MaterialIcons.ttf */; };
 		7D36AD8CA4ED450ABE2AB4AA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CF9813757DB49E48EF662D4 /* FontAwesome.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		843FD77E22B17F6A00F277F5 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843FD77722B17F2B00F277F5 /* libReactNativeNavigation.a */; };
 		8D83C3017F1D4CB1B1D47A8D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F41C4F109C684B158B47B798 /* Entypo.ttf */; };
 		9109F426519A4DDCA2E45BEE /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8D1CECDB3B4C4DB180291B /* FontAwesome5_Solid.ttf */; };
 		A7B81F4E6BEF44CABA1E79D2 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E411C9D4EEE4E6EAF9F843D /* Feather.ttf */; };
@@ -301,6 +302,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		843FD77622B17F2B00F277F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843FD74C22B17F2A00F277F5 /* ReactNativeNavigation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8AFADBD1BEE6F3F00A4592D;
+			remoteInfo = ReactNativeNavigation;
+		};
+		843FD77822B17F2B00F277F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843FD74C22B17F2A00F277F5 /* ReactNativeNavigation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B49FEBB1E95090800DEB3EA;
+			remoteInfo = ReactNativeNavigationTests;
+		};
 		84C80B4C22B06AA60009E674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -409,6 +424,7 @@
 		801BE563ED7CB301D9364F9F /* Pods-bikelockerSpring2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bikelockerSpring2019.release.xcconfig"; path = "Target Support Files/Pods-bikelockerSpring2019/Pods-bikelockerSpring2019.release.xcconfig"; sourceTree = "<group>"; };
 		8091F2258A8C4F2D9F759284 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		843FD74C22B17F2A00F277F5 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		8F32540EFBD54513BF1A837D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A1AE3400490F4A81B3CF4EC2 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -434,6 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843FD77E22B17F6A00F277F5 /* libReactNativeNavigation.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -646,7 +663,6 @@
 				45784C1CEF359382CDBF439A /* Pods-bikelockerSpring2019.debug.xcconfig */,
 				801BE563ED7CB301D9364F9F /* Pods-bikelockerSpring2019.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -662,6 +678,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				843FD74C22B17F2A00F277F5 /* ReactNativeNavigation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -713,6 +730,15 @@
 				00E356EE1AD99517003FC87E /* bikelockerSpring2019Tests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* bikelockerSpring2019-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* bikelockerSpring2019-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		843FD74D22B17F2A00F277F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				843FD77722B17F2B00F277F5 /* libReactNativeNavigation.a */,
+				843FD77922B17F2B00F277F5 /* ReactNativeNavigationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -916,6 +942,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 843FD74D22B17F2A00F277F5 /* Products */;
+					ProjectRef = 843FD74C22B17F2A00F277F5 /* ReactNativeNavigation.xcodeproj */;
 				},
 				{
 					ProductGroup = 84C80B5822B06AA80009E674 /* Products */;
@@ -1159,6 +1189,20 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		843FD77722B17F2B00F277F5 /* libReactNativeNavigation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeNavigation.a;
+			remoteRef = 843FD77622B17F2B00F277F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		843FD77922B17F2B00F277F5 /* ReactNativeNavigationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactNativeNavigationTests.xctest;
+			remoteRef = 843FD77822B17F2B00F277F5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		84C80B4D22B06AA60009E674 /* libjsi.a */ = {
