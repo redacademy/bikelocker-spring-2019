@@ -10,11 +10,10 @@ import HowToUseAppScreen from "../screens/HowToUseApp";
 import ProfileScreen from "../screens/Profile";
 import FindLockerScreen from "../screens/FindLocker";
 import { sharedNavigationOptions } from "./config";
-import theme from "../config/styles";
 
 const FindLockerStack = createStackNavigator(
   {
-    FindLocker: FindLockerScreen
+    Find: FindLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -88,8 +87,7 @@ export default createBottomTabNavigator(
       activeTintColor: "white",
       inactiveTintColor: "#999",
       labelStyle: {
-        fontSize: 10,
-        fontFamily: theme.fontRegular
+        fontSize: 10
       },
       style: {
         backgroundColor: "black"
