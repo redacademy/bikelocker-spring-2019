@@ -1,5 +1,13 @@
+import React, { Component } from "react";
 import Contact from "./Contact";
-import ContactContainer from "./ContactContainer";
 
-export { Contact };
-export default ContactContainer;
+export default class ContactContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return <Contact />;
+  }
+}
