@@ -1,15 +1,8 @@
 import React from "react";
-<<<<<<< HEAD
 import Icon from "react-native-vector-icons/Ionicons";
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from "react-navigation";
-=======
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
->>>>>>> add all pages to drawer menu
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
@@ -72,11 +65,7 @@ const HowToUseAppStack = createStackNavigator(
   }
 );
 
-<<<<<<< HEAD
-export default createBottomTabNavigator(
-=======
 const ResourcesStack = createStackNavigator(
->>>>>>> add all pages to drawer menu
   {
     Resources: ResourcesScreen
   },
