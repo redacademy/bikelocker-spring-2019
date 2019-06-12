@@ -2,7 +2,7 @@
 # based on which the GraphQL API is generated
 
 type User @model {
-  id: ID! @isUnique
+  id: ID! @isUnique # read-only (managed by Graphcool)
   firstName: String
   lastName: String
   email: String! @isUnique
@@ -18,6 +18,8 @@ type User @model {
   postalCode: String
   profilePhoto: File @relation(name: "UserFile")
   reviews: [Review!]! @relation(name: "UserReview")
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
 }
 
 
