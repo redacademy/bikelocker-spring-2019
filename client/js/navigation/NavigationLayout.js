@@ -15,6 +15,7 @@ import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
 import { sharedNavigationOptions } from "./config";
+import theme from "../config/globalStyles";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -109,9 +110,7 @@ export default createDrawerNavigator(
     defaultNavigationOptions: ({ navigation }) => ({}),
     drawerWidth: 250,
     contentOptions: {
-      // activeTintColor: theme.colors.purple,
-      // inactiveTintColor: theme.colors.mediumGrey,
-      // activeBackgroundColor: theme.colors.lightGrey,
+      activeTintColor: theme.mediumGreen,
       labelStyle: {
         fontSize: 16
       },
