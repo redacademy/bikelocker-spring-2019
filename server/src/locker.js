@@ -2,7 +2,7 @@ const csvFilePath = "./BikeRackData.csv";
 const csvToJSON = require("csvtojson");
 
 // have csv json, use new library, get 1 adress from csv,
-//use new lib to conver to lat long, once u get, put in object of array, export that new funtion
+//use new lib to conver to lat long, once u get, put in array of object, export that new funtion
 
 // const NodeGeocoder = require("node-geocoder");
 
@@ -15,9 +15,11 @@ const csvToJSONObject = async () => {
   }
 };
 
-console.log(csvToJSONObject);
+let res = csvToJSONObject();
 
-
+res.then(e => {
+  console.log(e);
+});
 
 let options = {
   provider: "google",
