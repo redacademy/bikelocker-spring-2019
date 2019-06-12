@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Locker from "./Locker";
+import Loader from "../../components/Loader";
 // import { Query } from "react-apollo";
 // import gql from "graphql-tag";
 
