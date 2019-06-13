@@ -1,6 +1,10 @@
 import React from "react";
-import Icon from "react-native-vector-icons/Ionicons";
-import { createStackNavigator, createDrawerNavigator } from "react-navigation";
+import { Image, View } from "react-native";
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  DrawerItems
+} from "react-navigation";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
@@ -76,6 +80,25 @@ const ResourcesStack = createStackNavigator(
   }
 );
 
+const DrawerContent = props => (
+  <View>
+    <View
+      style={{
+        backgroundColor: theme.mediumGreen,
+        height: 80,
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      <Image
+        source={require("../assets/images/bikelockerlogo.png")}
+        style={{ width: 40, height: 40, marginTop: 10 }}
+      />
+    </View>
+    <DrawerItems {...props} />
+  </View>
+);
+
 export default createDrawerNavigator(
   {
     Find: FindLockerStack,
@@ -95,6 +118,7 @@ export default createDrawerNavigator(
       })
     }
   },
+  { contentComponent: DrawerContent, overlayColor: "white" },
   {
     defaultNavigationOptions: ({ navigation }) => ({}),
     drawerWidth: 250,
