@@ -8,11 +8,7 @@ class FindSpotContainer extends Component {
     title: "Find Spot"
   };
   render() {
-    return (
-      <View style={styles.map}>
-        <FindSpot />
-      </View>
-    );
+    return <FindSpot />;
   }
 }
 
