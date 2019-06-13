@@ -28,7 +28,7 @@ export const sharedNavigationOptions = navigation => ({
   )
 });
 
-GradientHeader.propTypes = {
+AppHeader.propTypes = {
   props: PropTypes.object,
   navigation: PropTypes.object.isRequired
 };
