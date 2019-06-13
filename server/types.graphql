@@ -13,6 +13,7 @@ type User @model {
   bikeColor: String
   addressOne: String
   addressTwo: String
+  city: String
   province: String
   country: String
   postalCode: String
