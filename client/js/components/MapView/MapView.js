@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import GooglePlacesInput from "../GoogleMapSearch";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -27,7 +28,6 @@ class MapViewComponent extends Component {
   }
 
   changeRegion = position => {
-    console.log(position);
     this.setState({
       latitude: position.nativeEvent.coordinate.latitude,
       longitude: position.nativeEvent.coordinate.longitude
@@ -39,7 +39,7 @@ class MapViewComponent extends Component {
     return latitude !== undefined && longitude !== undefined ? (
       <MapView
         provider={PROVIDER_GOOGLE}
-        style={{ flex: 1 }}
+        style={{ width: "100%", height: "100%", zIndex: 0 }}
         region={{
           latitude: this.state.latitude,
           longitude: this.state.longitude,
