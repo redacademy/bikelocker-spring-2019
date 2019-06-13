@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 const AddLocker = ({ params }) => (
-  <View>
+  <TouchableHighlight>
     <Text>AddLocker</Text>
-  </View>
+  </TouchableHighlight>
 );
 
 export default AddLocker;
