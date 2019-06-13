@@ -121,7 +121,7 @@ export default createDrawerNavigator(
   { contentComponent: DrawerContent, overlayColor: "white" },
   {
     defaultNavigationOptions: ({ navigation }) => ({}),
-    drawerWidth: 250,
+    drawerWidth: "80%",
     contentOptions: {
       activeTintColor: theme.mediumGreen,
       labelStyle: {
