@@ -19,6 +19,7 @@ export default class LockerContainer extends Component {
     >
       {({ loading, data }) => {
         if (loading || !data) return <Loader />;
+        console.log(data);
         return <Locker street={data.address} />;
       }}
     </Query>;
