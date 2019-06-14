@@ -57,5 +57,5 @@ buck-out/
 Pods
 
 #env
-.env
 
+server/.env
