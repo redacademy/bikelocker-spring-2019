@@ -1,15 +1,16 @@
 const csvFilePath = "./BikeRackData.csv";
 const csvToJSON = require("csvtojson");
 const NodeGeocoder = require("node-geocoder");
+require("dotenv").config();
 
-let options = {
+const options = {
   provider: "google",
   httpAdapter: "https",
   apiKey: process.env.API_KEY,
   formatter: null
 };
 
-let geocoder = NodeGeocoder(options);
+const geocoder = NodeGeocoder(options);
 
 const csvToJSONObject = async () => {
   try {

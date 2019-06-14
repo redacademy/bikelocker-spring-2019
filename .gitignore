@@ -56,3 +56,6 @@ buck-out/
 *.jsbundle
 Pods
 
+#env
+.env
+
