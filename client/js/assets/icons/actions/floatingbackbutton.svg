@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icons/actions/floatingbackbutton</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M43.9873792,21.8006605 C43.9873792,9.76739702 34.1405134,0.0125579841 21.9937286,0.0125579841 C9.8469438,0.0125579841 -3.34177221e-05,9.76739702 -3.34177221e-05,21.8006605 C-3.34177221e-05,33.8339239 9.8469438,43.588763 21.9937286,43.588763 C34.1405134,43.588763 43.9873792,33.8339239 43.9873792,21.8006605" id="path-1"></path>
+        <filter x="-15.9%" y="-11.5%" width="131.8%" height="132.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="icons/actions/floatingbackbutton" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Background">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill-opacity="0.2" fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+        <g id="icons/appheader/back" transform="translate(2.000000, 7.000000)" fill="#FFFFFF">
+            <path d="M13.9562446,15 L27.4531223,3.65808596 C28.4489592,2.82124819 28.4489592,1.46446609 27.4531223,0.627628326 C26.4572853,-0.209209442 24.8427147,-0.209209442 23.8468777,0.627628326 L8.54687771,13.4847712 C7.55104076,14.321609 7.55104076,15.678391 8.54687771,16.5152288 L23.8468777,29.3723717 C24.8427147,30.2092094 26.4572853,30.2092094 27.4531223,29.3723717 C28.4489592,28.5355339 28.4489592,27.1787518 27.4531223,26.341914 L13.9562446,15 Z" id="Back-nav-chevron"></path>
+        </g>
+    </g>
+</svg>

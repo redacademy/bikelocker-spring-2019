@@ -8,77 +8,16 @@ import {
   Platform
 } from "react-native";
 import styles from "./styles";
-import PhotoCarousel from "../../components/PhotoCarousel";
-import getDirections from "react-native-google-maps-directions";
+// import PhotoCarousel from "../../components/PhotoCarousel";
+// import getDirections from "react-native-google-maps-directions";
 // import { OpenMapDirections } from "react-native-navigation-directions";
-import { Gravatar, GravatarApi } from "react-native-gravatar";
+// import { Gravatar, GravatarApi } from "react-native-gravatar";
 
 class Locker extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
-  // _callShowDirections = () => {
-  //   const startPoint = {
-  //     latitude: 49.2633479,
-  //     longitude: -123.1403165
-  //   };
-
-  //   const endPoint = {
-  //     latitude: 49.2627139,
-  //     longitude: -123.1548911
-  //   };
-
-  //   const transportPlan = "w";
-
-  //   OpenMapDirections(startPoint, endPoint, transportPlan).then(res => {
-  //     console.log(res);
-  //   });
-  // };
-
-  // handleGetDirections = () => {
-  //   const data = {
-  //     source: {
-  //       latitude: 49.2633479,
-  //       longitude: -123.1403165
-  //     },
-  //     destination: {
-  //       latitude: 49.2627139,
-  //       longitude: -123.1548911
-  //     },
-  //     params: [
-  //       {
-  //         key: "travelmode",
-  //         value: "bicycling" // may be "walking", "bicycling" or "transit" as well
-  //       },
-  //       {
-  //         key: "dir_action",
-  //         value: "navigate" // this instantly initializes navigation using the given travel mode
-  //       }
-  //     ]
-  //     // waypoints: [
-  //     //   {
-  //     //     latitude: -33.8600025,
-  //     //     longitude: 18.697452
-  //     //   },
-  //     //   {
-  //     //     latitude: -33.8600026,
-  //     //     longitude: 18.697453
-  //     //   },
-  //     //   {
-  //     //     latitude: -33.8600036,
-  //     //     longitude: 18.697493
-  //     //   },
-  //     //   {
-  //     //     latitude: -33.8600046,
-  //     //     longitude: 18.69743
-  //     //   }
-  //     // ]
-  //   };
-
-  //   getDirections(data);
-  // };
 
   render() {
     const scheme = Platform.select({
@@ -107,7 +46,7 @@ class Locker extends Component {
         <TouchableOpacity>
           <Image source={require("../../assets/icons/chevrons/down.svg")} />
         </TouchableOpacity>
-        <PhotoCarousel />
+        {/* <PhotoCarousel /> */}
 
         <View style={styles.infoContainer}>
           <Text> 1100 Pender Street</Text>
@@ -135,14 +74,14 @@ class Locker extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.reviewer}>
-            <Gravatar
+            {/* <Gravatar
               options={{
                 email: "nancy.q.chu@gmail.com",
                 parameters: { size: "200", d: "mm" },
                 secure: true
               }}
               style={styles.roundedProfileImage}
-            />
+            /> */}
             <View style={styles.review}>
               <Text>Username</Text>
               <Text>Time</Text>

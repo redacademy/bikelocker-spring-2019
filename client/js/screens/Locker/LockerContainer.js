@@ -11,18 +11,18 @@ export default class LockerContainer extends Component {
   }
 
   render() {
-    return;
-    //id variable will be passed in as prop later
-    <Query
-      query={GET_ONE_LOCKER_DATA}
-      variables={{ id: "cjwti3c164ynu0112ym882o5l" }}
-    >
-      {({ loading, data }) => {
-        if (loading || !data) return <Loader />;
-        console.log(data);
-        return <Locker street={data.address} />;
-      }}
-    </Query>;
+    return (
+      <Query
+        query={GET_ONE_LOCKER_DATA}
+        variables={{ id: "cjwti3c164ynu0112ym882o5l" }}
+      >
+        {({ loading, data }) => {
+          if (loading || !data) return <Loader />;
+          console.log(data);
+          return <Locker />;
+        }}
+      </Query>
+    );
   }
 }
 
