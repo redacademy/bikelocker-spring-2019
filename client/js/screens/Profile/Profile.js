@@ -1,10 +1,27 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
 
-const Profile = ({ params }) => (
-  <View>
-    <Text>This is the Profile Screen</Text>
-  </View>
+const Profile = ({ user }) => (
+  <ScrollView>
+    <View>
+      <Text>My Profile</Text>
+      <TouchableOpacity>
+        <Text>Edit</Text>
+      </TouchableOpacity>
+    </View>
+    <View>
+      <Image
+        style={{ width: 200, height: 200, borderRadius: 100 }}
+        source={user.profilePhoto}
+      />
+    </View>
+    <View>
+      <Text>Name</Text>
+      <Text>City</Text>
+      <Text>My bike is a...</Text>
+      <Text>Make and model of the bike</Text>
+    </View>
+  </ScrollView>
 );
 
 export default Profile;

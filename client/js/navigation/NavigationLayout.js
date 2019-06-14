@@ -5,6 +5,7 @@ import {
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
+import { DrawerActions } from "react-navigation-drawer";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
@@ -12,7 +13,9 @@ import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
 import { sharedNavigationOptions } from "./config";
+import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -85,15 +88,26 @@ const DrawerContent = props => (
     <View
       style={{
         backgroundColor: theme.mediumGreen,
-        height: 80,
+        height: 90,
+        display: "flex",
+        flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "space-between"
       }}
     >
+      <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
+        <IconIonicons
+          name="ios-arrow-back"
+          size={40}
+          color="#fff"
+          style={{ marginLeft: 15, marginTop: 12 }}
+        />
+      </TouchableOpacity>
       <Image
-        source={require("../assets/images/bikelockerlogo.png")}
+        source={require("../assets/images/bikelockerlogo-white.png")}
         style={{ width: 40, height: 40, marginTop: 10 }}
       />
+      <View style={{ width: 40, marginRight: 10 }} />
     </View>
     <DrawerItems {...props} />
   </View>
@@ -101,7 +115,12 @@ const DrawerContent = props => (
 
 export default createDrawerNavigator(
   {
-    Find: FindLockerStack,
+    FindLocker: {
+      screen: FindLockerStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Find a spot"
+      })
+    },
     Profile: ProfileStack,
     About: AboutStack,
     Contact: ContactStack,
@@ -118,7 +137,10 @@ export default createDrawerNavigator(
       })
     }
   },
-  { contentComponent: DrawerContent, overlayColor: "white" },
+  {
+    contentComponent: props => <DrawerContent {...props} />,
+    overlayColor: "black"
+  },
   {
     defaultNavigationOptions: ({ navigation }) => ({}),
     drawerWidth: "80%",
