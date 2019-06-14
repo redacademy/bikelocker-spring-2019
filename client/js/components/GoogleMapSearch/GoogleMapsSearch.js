@@ -25,13 +25,13 @@ const GooglePlacesInput = props => {
     >
       <GooglePlacesAutocomplete
         placeholder="Where are you going?"
-        minLength={2} // minimum length of text to search
-        autoFocus={false}
-        returnKeyType={"search"} // Can be left out for default return key https://facebook.github.io/react-native/docs/textinput.html#returnkeytype
-        keyboardAppearance={"light"} // Can be left out for default keyboardAppearance https://facebook.github.io/react-native/docs/textinput.html#keyboardappearance
-        listViewDisplayed="auto" // true/false/undefined
+        minLength={2}
+        autoFocus={true}
+        returnKeyType={"search"}
+        keyboardAppearance={"light"}
+        listViewDisplayed="auto"
         fetchDetails={true}
-        renderDescription={row => row.description} // custom description render
+        renderDescription={row => row.description}
         onPress={(data, details = null) => {
           console.log(details);
         }}
@@ -42,10 +42,16 @@ const GooglePlacesInput = props => {
         }}
         styles={{
           textInputContainer: {
-            width: "100%"
+            backgroundColor: "rgba(0,0,0,0)",
+            borderTopWidth: 0,
+            borderBottomWidth: 0
           },
-          description: {
-            fontWeight: "bold"
+          textInput: {
+            marginLeft: 0,
+            marginRight: 0,
+            height: 38,
+            color: "#5d5d5d",
+            fontSize: 16
           },
           predefinedPlacesDescription: {
             color: "#1faadb"
