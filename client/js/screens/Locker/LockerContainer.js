@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Profile from "./Profile";
+import Locker from "./Locker";
 
-export default class ProfileContainer extends Component {
+export default class LockerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
-    return <Profile />;
+    return <Locker />;
   }
 }

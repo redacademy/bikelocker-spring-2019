@@ -1,3 +1,5 @@
 import Contact from "./Contact";
+import ContactContainer from "./ContactContainer";
 
-export default Contact;
+export { Contact };
+export default ContactContainer;

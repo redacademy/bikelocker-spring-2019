@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "My Graphcool Service",
   "dependencies": {
-    "csvtojson": "^2.0.8",
     "@types/bcryptjs": "^2.4.1",
     "@types/validator": "^6.3.0",
     "bcryptjs": "^2.4.3",
+    "csvtojson": "^2.0.8",
+    "dotenv": "^8.0.0",
     "graphcool-lib": "^0.1.0",
     "graphql-request": "^1.4.0",
+    "node-geocoder": "^3.23.0",
     "validator": "^9.0.0"
   }
 }
