@@ -5,7 +5,7 @@ const NodeGeocoder = require("node-geocoder");
 let options = {
   provider: "google",
   httpAdapter: "https",
-  apiKey: "AIzaSyAzi7L69BENzi4MiAH4751HBwOPWtAJS0Q",
+  apiKey: process.env.API_KEY,
   formatter: null
 };
 
@@ -35,6 +35,7 @@ const csvToJSONObject = async () => {
           const parkingSpot = await geocoder.geocode(
             address + ", Vancouver, BC, Canada"
           );
+          console.log(parkingSpot);
           return parkingSpot;
         } catch (error) {
           return error;
@@ -45,5 +46,7 @@ const csvToJSONObject = async () => {
     return error;
   }
 };
+
+csvToJSONObject();
 
 module.exports = csvToJSONObject;
