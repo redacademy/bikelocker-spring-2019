@@ -1,35 +1,36 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
+import styles from "./styles";
 
 const Profile = ({ user }) => {
   console.log("user", user);
   return (
-    <ScrollView>
+    <View style={styles.container}>
       <View>
-        <Text>My Profile</Text>
+        <Text style={styles.title}>My Profile</Text>
         <TouchableOpacity>
-          <Text>Edit</Text>
+          <Text style={styles.link}>Edit</Text>
         </TouchableOpacity>
       </View>
       <View>
         <Image
-          style={{ width: 200, height: 200, borderRadius: 100 }}
+          style={styles.profilePic}
           source={require("../../assets/images/profile_pic.jpg")}
         />
       </View>
       <View>
-        <Text>
+        <Text style={styles.userName}>
           {user.firstName} {user.lastName}
         </Text>
-        <Text>
+        <Text style={styles.userLocation}>
           {user.city}, {user.province}, {user.country}
         </Text>
-        <Text>My bike is a...</Text>
-        <Text>
+        <Text style={styles.subheading}>My bike is a...</Text>
+        <Text style={styles.caption}>
           {user.bikeColor} {user.bikeBrand} {user.bikeType}
         </Text>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
