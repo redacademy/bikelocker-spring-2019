@@ -1,48 +1,99 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import GooglePlacesInput from "../GoogleMapSearch";
 
 class MapViewComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude: undefined,
-      longitude: undefined,
+      latitude: 49.2827,
+      longitude: 123.1207,
       error: null
     };
   }
+
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        error: null
+      });
+    });
+  }
+
+  getCurrentLocation = () => {
+    this.watchID = navigator.geolocation.watchPosition(
       position => {
-        console.log(position);
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           error: null
         });
       },
-      error => this.setState({ error: error.message }),
-      { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 }
+      error => console.log(error),
+      {}
     );
-  }
+  };
+
+  componentDidUpdate = () => {
+    navigator.geolocation.clearWatch(this.watchID);
+    navigator.geolocation.stopObserving();
+  };
 
   changeRegion = position => {
-    this.setState({
-      latitude: position.nativeEvent.coordinate.latitude,
-      longitude: position.nativeEvent.coordinate.longitude
-    });
+    const { isRegionChanged } = this.state;
+    if (!isRegionChanged) {
+      console.log("Second", position.nativeEvent);
+      this.setState({
+        latitude: position.nativeEvent.coordinate.latitude,
+        longitude: position.nativeEvent.coordinate.longitude,
+        isRegionChanged: false
+      });
+    } else {
+    }
+  };
+
+  onRegionChanges = region => {
+    if (this.state.isStart === 0) {
+      this.setState({ isStart: 1 });
+    } else {
+      _mapView.animateToRegion(
+        {
+          latitude: region.latitude,
+          longitude: region.longitude
+        },
+        1000
+      );
+      this.setState({
+        isRegionChanged: true,
+        latitude: region.latitude,
+        longitude: region.longitude
+      });
+      console.log("Changed", region);
+    }
   };
 
   render() {
     const { latitude, longitude } = this.state;
-    return latitude !== undefined && longitude !== undefined ? (
+
+    return (
       <MapView
         provider={PROVIDER_GOOGLE}
-        style={{ width: "100%", height: "100%", zIndex: 0 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          zIndex: 0
+        }}
         region={{
-          latitude: this.state.latitude,
-          longitude: this.state.longitude,
+          latitude: latitude,
+          longitude: longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421
+        }}
+        initialRegion={{
+          latitude: 49.2827,
+          longitude: 123.1207,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421
         }}
@@ -50,18 +101,18 @@ class MapViewComponent extends Component {
         showsBuildings={true}
         showsCompass={true}
         showsUserLocation={true}
-        followsUserLocation={true}
-        onUserLocationChange={this.changeRegion}
       >
-        {/* <Marker
-          coordinate={{ latitude: 49.263419, longitude: -123.138192 }}
-          title={"Red Academy"}
-          // image={mapPin}
-          tracksViewChanges={true}
-        /> */}
+        <TouchableOpacity
+          style={{
+            backgroundColor: "black",
+            width: 20,
+            height: 20,
+            top: 100,
+            left: 30
+          }}
+          onPress={() => this.getCurrentLocation()}
+        />
       </MapView>
-    ) : (
-      <Text>Please wait</Text>
     );
   }
 }

@@ -26,7 +26,7 @@ const GooglePlacesInput = props => {
       <GooglePlacesAutocomplete
         placeholder="Where are you going?"
         minLength={2}
-        autoFocus={true}
+        autoFocus={false}
         returnKeyType={"search"}
         keyboardAppearance={"light"}
         listViewDisplayed="auto"
