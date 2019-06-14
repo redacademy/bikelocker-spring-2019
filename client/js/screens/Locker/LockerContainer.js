@@ -18,8 +18,7 @@ export default class LockerContainer extends Component {
       >
         {({ loading, data }) => {
           if (loading || !data) return <Loader />;
-          console.log(data);
-          return <Locker />;
+          return <Locker lockerinfo={data.Locker} />;
         }}
       </Query>
     );
@@ -27,8 +26,8 @@ export default class LockerContainer extends Component {
 }
 
 const GET_ONE_LOCKER_DATA = gql`
-  query locker($id: ID!) {
-    locker(id: $id) {
+  query Locker($id: ID!) {
+    Locker(id: $id) {
       id
       address
       latitude

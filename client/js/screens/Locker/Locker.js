@@ -5,13 +5,14 @@ import {
   TouchableOpacity,
   Image,
   Linking,
-  Platform
+  Platform,
+  ScrollView
 } from "react-native";
 import styles from "./styles";
-// import PhotoCarousel from "../../components/PhotoCarousel";
+import PhotoCarousel from "../../components/PhotoCarousel";
 // import getDirections from "react-native-google-maps-directions";
 // import { OpenMapDirections } from "react-native-navigation-directions";
-// import { Gravatar, GravatarApi } from "react-native-gravatar";
+import { Gravatar, GravatarApi } from "react-native-gravatar";
 
 class Locker extends Component {
   constructor(props) {
@@ -20,10 +21,12 @@ class Locker extends Component {
   }
 
   render() {
-    const scheme = Platform.select({
-      ios: "maps:0,0?q=",
-      android: "geo:0,0?q="
-    });
+    const { lockerinfo } = this.props;
+
+    // const scheme = Platform.select({
+    //   ios: "maps:0,0?q=",
+    //   android: "geo:0,0?q="
+    // });
     const srcLatitude = 49.2633479;
     const srcLongitude = -123.140316;
     const destLatitude = 49.2627139;
@@ -42,14 +45,14 @@ class Locker extends Component {
     });
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TouchableOpacity>
           <Image source={require("../../assets/icons/chevrons/down.svg")} />
         </TouchableOpacity>
-        {/* <PhotoCarousel /> */}
+        <PhotoCarousel />
 
         <View style={styles.infoContainer}>
-          <Text> 1100 Pender Street</Text>
+          <Text>{lockerinfo.address}</Text>
           <View style={styles.twoBtns}>
             <TouchableOpacity style={styles.button1}>
               <Image
@@ -60,10 +63,6 @@ class Locker extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button2}
-              // onPress={this.handleGetDirections}
-              // onPress={() => {
-              //   this._callShowDirections();
-              // }}
               onPress={() => Linking.openURL(url)}
             >
               <Image
@@ -73,23 +72,31 @@ class Locker extends Component {
               <Text style={styles.btnFont2}>Directions</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.reviewer}>
-            {/* <Gravatar
-              options={{
-                email: "nancy.q.chu@gmail.com",
-                parameters: { size: "200", d: "mm" },
-                secure: true
-              }}
-              style={styles.roundedProfileImage}
-            /> */}
-            <View style={styles.review}>
-              <Text>Username</Text>
-              <Text>Time</Text>
-              <Text>Review</Text>
-            </View>
-          </View>
+
+          {lockerinfo.reviews.map((entry, index) => {
+            return (
+              <View key={index} style={styles.reviewer}>
+                <Gravatar
+                  options={{
+                    email: entry.reviewer.email,
+                    parameters: { size: "200", d: "mm" },
+                    secure: true
+                  }}
+                  style={styles.roundedProfileImage}
+                />
+                <View style={styles.review}>
+                  {/* implement handling if they didn't fill first and lastname */}
+                  <Text>
+                    {entry.reviewer.firstName} {entry.reviewer.lastName}
+                  </Text>
+                  <Text>{entry.createdAt}</Text>
+                  <Text>{entry.review}</Text>
+                </View>
+              </View>
+            );
+          })}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

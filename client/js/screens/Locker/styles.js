@@ -6,9 +6,9 @@ const height = width * 0.8;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
     // alignItems: "center"
-    justifyContent: "flex-start"
+    // justifyContent: "flex-start"
   },
   infoContainer: {
     flex: 1,
