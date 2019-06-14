@@ -2,9 +2,6 @@ const csvFilePath = "./BikeRackData.csv";
 const csvToJSON = require("csvtojson");
 const NodeGeocoder = require("node-geocoder");
 
-// have csv json, use new library, get 1 adress from csv,
-//use new lib to conver to lat long, once u get, put in array of object, export that new funtion
-
 let options = {
   provider: "google",
   httpAdapter: "https",
@@ -38,9 +35,9 @@ const csvToJSONObject = async () => {
           const parkingSpot = await geocoder.geocode(
             address + ", Vancouver, BC, Canada"
           );
-          console.log("RESPONSE", parkingSpot);
-        } catch (e) {
-          console.log(e.message);
+          return parkingSpot;
+        } catch (error) {
+          return error;
         }
       }
     });
