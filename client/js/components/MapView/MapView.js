@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TouchableOpacity } from "react-native";
-import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import styles from "./styles";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -36,55 +37,23 @@ class MapViewComponent extends Component {
     );
   };
 
-  componentDidUpdate = () => {
+  componentDidUpdate(prevProps) {
     navigator.geolocation.clearWatch(this.watchID);
     navigator.geolocation.stopObserving();
-  };
-
-  changeRegion = position => {
-    const { isRegionChanged } = this.state;
-    if (!isRegionChanged) {
-      console.log("Second", position.nativeEvent);
+    if (this.props.searchedLocation !== prevProps.searchedLocation) {
       this.setState({
-        latitude: position.nativeEvent.coordinate.latitude,
-        longitude: position.nativeEvent.coordinate.longitude,
-        isRegionChanged: false
+        latitude: this.props.searchedLocation.lat,
+        longitude: this.props.searchedLocation.lng
       });
-    } else {
     }
-  };
-
-  onRegionChanges = region => {
-    if (this.state.isStart === 0) {
-      this.setState({ isStart: 1 });
-    } else {
-      _mapView.animateToRegion(
-        {
-          latitude: region.latitude,
-          longitude: region.longitude
-        },
-        1000
-      );
-      this.setState({
-        isRegionChanged: true,
-        latitude: region.latitude,
-        longitude: region.longitude
-      });
-      console.log("Changed", region);
-    }
-  };
+  }
 
   render() {
     const { latitude, longitude } = this.state;
-
     return (
       <MapView
         provider={PROVIDER_GOOGLE}
-        style={{
-          width: "100%",
-          height: "100%",
-          zIndex: 0
-        }}
+        style={styles.mapView}
         region={{
           latitude: latitude,
           longitude: longitude,
@@ -103,13 +72,7 @@ class MapViewComponent extends Component {
         showsUserLocation={true}
       >
         <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            width: 20,
-            height: 20,
-            top: 100,
-            left: 30
-          }}
+          style={styles.locator}
           onPress={() => this.getCurrentLocation()}
         />
       </MapView>

@@ -1,32 +1,26 @@
 import React, { Component } from "react";
 import MapViewComponent from "../../components/MapView";
-import { Text, Platform, View } from "react-native";
+import { View } from "react-native";
 import GoogleMapsSearch from "../../components/GoogleMapSearch";
+// import { SearchContext } from "../../components/GoogleMapSearch";
+import GooglePlaceContext from "../../context/GooglePlaceContext";
 import styles from "./styles";
 
 class FindSpot extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      latitude: undefined,
-      longitude: undefined
-    };
   }
 
-  // locationData(details) {
-  //   this.setState({
-  //     latitude: details.geometry.location.lat,
-  //     longitude: details.geometry.location.lng
-  //   });
-  // }
-
   render() {
-    console.log(this.state.latitude);
     return (
-      <View style={styles.map}>
-        <GoogleMapsSearch />
-        <MapViewComponent />
-      </View>
+      <GooglePlaceContext.Consumer>
+        {({ location, updateLocation }) => (
+          <View style={styles.map}>
+            <GoogleMapsSearch updateContextLocation={updateLocation} />
+            <MapViewComponent searchedLocation={location} />
+          </View>
+        )}
+      </GooglePlaceContext.Consumer>
     );
   }
 }
