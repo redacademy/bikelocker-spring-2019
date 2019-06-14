@@ -9,10 +9,14 @@ export default class ProfileContainer extends Component {
 
   render() {
     const user = {
-      profilePhoto:
-        "https://media.licdn.com/dms/image/C4D03AQG0CbPDCBhKnQ/profile-displayphoto-shrink_200_200/0?e=1565827200&v=beta&t=Kt7MkNKHuqW-xyr6LBXxOrYArdO1DkZVtXNRVpwrzWQs",
       firstName: "Andre",
-      lastName: "Moura"
+      lastName: "Moura",
+      city: "Vancouver",
+      province: "BC",
+      country: "Canada",
+      bikeColor: "Red",
+      bikeBrand: "Caloi",
+      bikeType: "Mountain Bike"
     };
 
     return <Profile user={user} />;

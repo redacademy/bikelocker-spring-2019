@@ -14,16 +14,20 @@ const Profile = ({ user }) => {
       <View>
         <Image
           style={{ width: 200, height: 200, borderRadius: 100 }}
-          source={{ uri: user.profilePhoto }}
+          source={require("../../assets/images/profile_pic.jpg")}
         />
       </View>
       <View>
         <Text>
           {user.firstName} {user.lastName}
         </Text>
-        <Text>City</Text>
+        <Text>
+          {user.city}, {user.province}, {user.country}
+        </Text>
         <Text>My bike is a...</Text>
-        <Text>Make and model of the bike</Text>
+        <Text>
+          {user.bikeColor} {user.bikeBrand} {user.bikeType}
+        </Text>
       </View>
     </ScrollView>
   );
