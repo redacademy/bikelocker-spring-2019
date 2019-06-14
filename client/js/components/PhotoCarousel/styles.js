@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width,
-    height
+    height,
+    paddingRight: 3
   }
 });
 

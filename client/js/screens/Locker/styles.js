@@ -7,13 +7,9 @@ const height = width * 0.8;
 const styles = StyleSheet.create({
   container: {
     flex: 1
-    // alignItems: "center"
-    // justifyContent: "flex-start"
   },
   infoContainer: {
     flex: 1,
-    // alignItems: "center"
-    // justifyContent: "flex-start",
     margin: 15
   },
   icon: {
@@ -23,12 +19,12 @@ const styles = StyleSheet.create({
   button1: {
     flexDirection: "row",
     height: 40,
-    width: "40%",
+    width: "43%",
     borderRadius: 20,
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#009887",
+    backgroundColor: globalStyles.mediumGreen,
     padding: 3
   },
   button2: {
@@ -37,7 +33,7 @@ const styles = StyleSheet.create({
     width: "50%",
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: "#009887",
+    borderColor: globalStyles.mediumGreen,
     borderRadius: 20,
     alignSelf: "center",
     justifyContent: "space-around",
@@ -46,17 +42,19 @@ const styles = StyleSheet.create({
     padding: 3
   },
   btnFont1: {
-    color: "white"
+    color: "white",
+    fontFamily: globalStyles.titleFont
   },
   btnFont2: {
-    color: "#009887"
+    color: globalStyles.mediumGreen,
+    fontFamily: globalStyles.titleFont
   },
   twoBtns: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 15
   },
   roundedProfileImage: {
     width: 50,
@@ -66,7 +64,27 @@ const styles = StyleSheet.create({
   },
   reviewer: {
     flexDirection: "row",
-    paddingTop: 10
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  //Text
+  address: {
+    fontFamily: globalStyles.titleFont,
+    fontSize: 20
+  },
+  acctName: {
+    fontFamily: globalStyles.titleFont,
+    fontSize: 15
+  },
+  time: {
+    fontFamily: globalStyles.subheadingFont,
+    fontSize: 10,
+    marginBottom: 4
+  },
+  review: {
+    // fontFamily: globalStyles.bodyFont,
+    fontFamily: globalStyles.subheadingFont,
+    fontSize: 15
   }
 });
 

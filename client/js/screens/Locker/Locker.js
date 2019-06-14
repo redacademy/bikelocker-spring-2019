@@ -23,23 +23,15 @@ class Locker extends Component {
   render() {
     const { lockerinfo } = this.props;
 
-    // const scheme = Platform.select({
-    //   ios: "maps:0,0?q=",
-    //   android: "geo:0,0?q="
-    // });
     const srcLatitude = 49.2633479;
     const srcLongitude = -123.140316;
-    const destLatitude = 49.2627139;
-    const destLongitude = -123.1548911;
+    const destLatitude = lockerinfo.latitude;
+    const destLongitude = lockerinfo.longitude;
     const srcLatLng = `${srcLatitude},${srcLongitude}`;
     const destLatLng = `${destLatitude},${destLongitude}`;
     const label = "Custom Label";
-    // const url = Platform.select({
-    //   ios: `${scheme}${label}@${latLng}`,
-    //   android: `${scheme}${latLng}(${label})`
-    // });
+
     const url = Platform.select({
-      // ios: "http://maps.apple.com/?saddr=San+Jose&daddr=San+Francisco&dirflg=r",
       ios: `http://maps.apple.com/?saddr=${srcLatLng}&daddr=${destLatLng}&dirflg=d`,
       android: `google.navigation:q=${destLatLng}&mode=b`
     });
@@ -52,7 +44,7 @@ class Locker extends Component {
         <PhotoCarousel />
 
         <View style={styles.infoContainer}>
-          <Text>{lockerinfo.address}</Text>
+          <Text style={styles.address}>{lockerinfo.address}</Text>
           <View style={styles.twoBtns}>
             <TouchableOpacity style={styles.button1}>
               <Image
@@ -86,11 +78,11 @@ class Locker extends Component {
                 />
                 <View style={styles.review}>
                   {/* implement handling if they didn't fill first and lastname */}
-                  <Text>
+                  <Text style={styles.acctName}>
                     {entry.reviewer.firstName} {entry.reviewer.lastName}
                   </Text>
-                  <Text>{entry.createdAt}</Text>
-                  <Text>{entry.review}</Text>
+                  <Text style={styles.time}>{entry.createdAt}</Text>
+                  <Text style={styles.review}>{entry.review}</Text>
                 </View>
               </View>
             );

@@ -25,7 +25,7 @@ class Carousel extends Component {
   }
 }
 
-export default class App extends Component {
+export default class PhotoCarousel extends Component {
   render() {
     const images = [
       {
