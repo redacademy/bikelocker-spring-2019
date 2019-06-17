@@ -1,29 +1,47 @@
 import React from "react";
-import { View, Button, TouchableOpacity } from "react-native";
-import styles from "./styles";
+import { Text, AsyncStorage, View, Button } from "react-native";
 
 class AuthWelcome extends React.Component {
   static navigationOptions = {
-    title: "Welcome"
+    title: "SignIn"
   };
 
   render() {
     return (
-      <View style={styles.btnRow}>
-        {/* <Button
-          style={styles.button}
-          title="Sign in"
-          onPress={() => this.props.navigation.navigate("Authentication")}
-        >
-          Sign In
-        </Button> */}
-
-        <Button style={styles.button} title="Register">
-          Register
-        </Button>
+      <View>
+        <Button title="Sign in!" onPress={this._signInAsync} />
       </View>
     );
   }
+
+  _signInAsync = async () => {
+    await AsyncStorage.setItem("userToken", "abc");
+    this.props.navigation.navigate("FindLocker");
+  };
+}
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: "Welcome to the app!"
+  };
+
+  render() {
+    return (
+      <View>
+        <Button title="Show me more of the app" onPress={this._showMoreApp} />
+        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
+      </View>
+    );
+  }
+
+  _showMoreApp = () => {
+    this.props.navigation.navigate("Other");
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate("Auth");
+  };
 }
 
 export default AuthWelcome;
