@@ -42,16 +42,17 @@ export const sharedNavigationOptions = navigation => ({
       />
     </TouchableOpacity>
   ),
-  headerRight: (
-    <TouchableOpacity>
-      <IconFontAwesome
-        name="location-arrow"
-        size={35}
-        color="#fff"
-        style={{ marginRight: 15, marginBottom: 5 }}
-      />
-    </TouchableOpacity>
-  )
+  headerRight:
+    navigation.state.routeName === "FindLocker" ? (
+      <TouchableOpacity>
+        <IconFontAwesome
+          name="location-arrow"
+          size={35}
+          color="#fff"
+          style={{ marginRight: 15, marginBottom: 5 }}
+        />
+      </TouchableOpacity>
+    ) : null
 });
 
 AppHeader.propTypes = {

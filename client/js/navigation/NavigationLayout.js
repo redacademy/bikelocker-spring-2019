@@ -19,7 +19,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const FindLockerStack = createStackNavigator(
   {
-    Find: FindLockerScreen
+    FindLocker: FindLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
