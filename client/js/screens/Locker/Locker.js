@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import styles from "./styles";
 import PhotoCarousel from "../../components/PhotoCarousel";
-// import getDirections from "react-native-google-maps-directions";
-// import { OpenMapDirections } from "react-native-navigation-directions";
 import { Gravatar, GravatarApi } from "react-native-gravatar";
 
 class Locker extends Component {
@@ -39,7 +37,7 @@ class Locker extends Component {
     return (
       <ScrollView style={styles.container}>
         <TouchableOpacity>
-          <Image source={require("../../assets/icons/chevrons/down.svg")} />
+          <Image source={require("../../assets/icons/chevrons/down.png")} />
         </TouchableOpacity>
         <PhotoCarousel />
 
