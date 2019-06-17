@@ -3,7 +3,6 @@ import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
 import styles from "./styles";
 
 const Profile = ({ user }) => {
-  console.log("user", user);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
