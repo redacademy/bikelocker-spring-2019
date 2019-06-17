@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Authentication from "./Authentication";
-
-export default class AuthenticationContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+class AuthenticationContainer extends Component {
+  static navigationOptions = {
+    title: "SignIn"
+  };
 
   render() {
     return <Authentication />;
   }
 }
+
+export default AuthenticationContainer;

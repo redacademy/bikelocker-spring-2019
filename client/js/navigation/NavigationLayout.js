@@ -10,18 +10,13 @@ import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
-import AuthenticationScreen from "../screens/Authentication";
-import AuthLoadingScreen from "../screens/AuthLoading";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
+
 import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-const AuthStack = createStackNavigator({
-  SignIn: AuthenticationScreen
-});
 
 const FindLockerStack = createStackNavigator(
   {
@@ -144,6 +139,10 @@ export default createDrawerNavigator(
       })
     }
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 003cbd7... move switchNavigator to RootStackNavigator and implement AuthLoading to check for user token
   {
     contentComponent: props => <DrawerContent {...props} />,
     overlayColor: "black"
@@ -156,6 +155,7 @@ export default createDrawerNavigator(
       labelStyle: {
         fontSize: 16
       },
+<<<<<<< HEAD
       Resources: {
         screen: ResourcesStack,
         navigationOptions: ({ navigation }) => ({
@@ -181,3 +181,14 @@ export default createDrawerNavigator(
     }
   }
 )
+=======
+      itemsContainerStyle: {
+        margin: 0
+      },
+      iconContainerStyle: {
+        margin: 0
+      }
+    }
+  }
+);
+>>>>>>> 003cbd7... move switchNavigator to RootStackNavigator and implement AuthLoading to check for user token
