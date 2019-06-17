@@ -1,13 +1,27 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
-
-export default class AuthLoadingContainer extends Component {
+import {
+  Text,
+  View,
+  StatusBar,
+  ActivityIndicator,
+  AsyncStorage
+} from "react-native";
+import AuthLoading from "./AuthLoading";
+class AuthLoadingContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this._bootstrapAsync();
   }
 
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem("userToken");
+
+    this.props.navigation.navigate(userToken ? "FindLocker" : "SignIn");
+  };
+
   render() {
-    return <Text>This is the AuthLoading container</Text>;
+    return <AuthLoading />;
   }
 }
+
+export default AuthLoadingContainer;
