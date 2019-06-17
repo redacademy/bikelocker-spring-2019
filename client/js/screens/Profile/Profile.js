@@ -6,7 +6,7 @@ const Profile = ({ user }) => {
   console.log("user", user);
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.header}>
         <Text style={styles.title}>My Profile</Text>
         <TouchableOpacity>
           <Text style={styles.link}>Edit</Text>
@@ -18,7 +18,7 @@ const Profile = ({ user }) => {
           source={require("../../assets/images/profile_pic.jpg")}
         />
       </View>
-      <View>
+      <View style={styles.info}>
         <Text style={styles.userName}>
           {user.firstName} {user.lastName}
         </Text>
