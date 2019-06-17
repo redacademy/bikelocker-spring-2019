@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, AsyncStorage, View, Button } from "react-native";
 
-class Authentication extends React.Component {
+class AuthWelcome extends React.Component {
   static navigationOptions = {
     title: "SignIn"
   };
@@ -44,4 +44,4 @@ class HomeScreen extends React.Component {
   };
 }
 
-export default Authentication;
+export default AuthWelcome;

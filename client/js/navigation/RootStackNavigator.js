@@ -7,11 +7,11 @@ import {
 import NavigationLayout from "./NavigationLayout";
 import LockerModal from "../screens/Locker";
 
-import AuthenticationScreen from "../screens/Authentication";
+import AuthWelcomeScreen from "../screens/AuthWelcome";
 import AuthLoadingScreen from "../screens/AuthLoading";
 
 const AuthStack = createStackNavigator({
-  SignIn: AuthenticationScreen
+  SignIn: AuthWelcomeScreen
 });
 
 export default createAppContainer(
