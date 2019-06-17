@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import {
   Text,
   View,
@@ -26,17 +25,3 @@ class AuthLoadingContainer extends Component {
 }
 
 export default AuthLoadingContainer;
-=======
-import { Text } from "react-native";
-
-export default class AuthLoadingContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return <Text>This is the AuthLoading container</Text>;
-  }
-}
->>>>>>> 6deeb47... add authentication to Navigation layout and create AuthLoading and Authentication screen folders

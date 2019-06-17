@@ -20,7 +20,10 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const AuthStack = createStackNavigator({ SignIn: AuthenticationScreen });
+const AuthStack = createStackNavigator({
+  SignIn: AuthenticationScreen
+});
+
 const FindLockerStack = createStackNavigator(
   {
     FindLocker: FindLockerScreen
@@ -180,9 +183,6 @@ export default createDrawerNavigator(
       }
     },
     {
-      initialRouteName: "AuthLoading"
-    },
-    {
       defaultNavigationOptions: ({ navigation }) => ({}),
       drawerWidth: 250,
       contentOptions: {
@@ -198,5 +198,5 @@ export default createDrawerNavigator(
         }
       }
     }
-  )
-);
+  }
+)
