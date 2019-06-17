@@ -25,7 +25,6 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		154D237190E94E3D9E0DB3F7 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF82FAFEF05C45CAA49F3701 /* AntDesign.ttf */; };
-		161FABFBDAE742A887173EDD /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC01EF1AE7E42268B22BB17 /* libAirMaps.a */; };
 		1AD06A801DAD49A78CE06AC0 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 758243BB9CD046D5BCE3CB8A /* FontAwesome5_Regular.ttf */; };
 		26633416BC734BCC94B86F01 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8091F2258A8C4F2D9F759284 /* SimpleLineIcons.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -43,6 +42,7 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2EAB9EBDA4004499BB6B8327 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B22ABE251D24A46BF9782B1 /* libRNVectorIcons.a */; };
 		47801103C61D4FA1AB98CB9B /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D9EF804E0F3473E834E0BDE /* Octicons.ttf */; };
+		4950CE6EBEB54472AFC4665C /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DEA6D1E296466D96001168 /* libRNImagePicker.a */; };
 		4B296A0829AF4E90969E4D86 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7494778D86046C1B505BD37 /* Ionicons.ttf */; };
 		50499EABA7904932B48D12DD /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CDE9D4D61746B3A6E4BDCC /* libRNVectorIcons-tvOS.a */; };
 		50CE86F5DCF14ADC8E4D6178 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1AE3400490F4A81B3CF4EC2 /* Foundation.ttf */; };
@@ -50,7 +50,9 @@
 		6CF6D307F1A1488092401BF2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4C7D4749A447669810B719 /* EvilIcons.ttf */; };
 		747304A26D5F472B92B83B07 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F32540EFBD54513BF1A837D /* MaterialIcons.ttf */; };
 		7D36AD8CA4ED450ABE2AB4AA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CF9813757DB49E48EF662D4 /* FontAwesome.ttf */; };
+		8108F4184E3F96CCF6EC040A /* libPods-bikelockerSpring2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B9C25BB26EAC7E97BD0018 /* libPods-bikelockerSpring2019.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		843FD77E22B17F6A00F277F5 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		8D83C3017F1D4CB1B1D47A8D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F41C4F109C684B158B47B798 /* Entypo.ttf */; };
 		9109F426519A4DDCA2E45BEE /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8D1CECDB3B4C4DB180291B /* FontAwesome5_Solid.ttf */; };
 		A7B81F4E6BEF44CABA1E79D2 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E411C9D4EEE4E6EAF9F843D /* Feather.ttf */; };
@@ -59,7 +61,6 @@
 		DE2AED83926F4EDA8BFE6DA5 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E0A9BCCD6640B89EB2F817 /* libRNGestureHandler.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		4950CE6EBEB54472AFC4665C /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DEA6D1E296466D96001168 /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +384,7 @@
 		00E356EE1AD99517003FC87E /* bikelockerSpring2019Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikelockerSpring2019Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* bikelockerSpring2019Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bikelockerSpring2019Tests.m; sourceTree = "<group>"; };
+		03EA0D8228644759B2D693B4 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		0E411C9D4EEE4E6EAF9F843D /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		0E4C7D4749A447669810B719 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		2D02E4901E0B4A5D006451C7 /* bikelockerSpring2019-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bikelockerSpring2019-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9EF804E0F3473E834E0BDE /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		36EE3169D902C27F0544BC66 /* Pods-bikelockerSpring2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bikelockerSpring2019.release.xcconfig"; path = "Target Support Files/Pods-bikelockerSpring2019/Pods-bikelockerSpring2019.release.xcconfig"; sourceTree = "<group>"; };
 		37CDE9D4D61746B3A6E4BDCC /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		3FC01EF1AE7E42268B22BB17 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		43E636DA7FCB4138AE2ADE26 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
@@ -419,14 +422,15 @@
 		A1AE3400490F4A81B3CF4EC2 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B9EECEEB659046BCA8947295 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		BC08FB7F957E143659D2361E /* Pods-bikelockerSpring2019.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bikelockerSpring2019.debug.xcconfig"; path = "Target Support Files/Pods-bikelockerSpring2019/Pods-bikelockerSpring2019.debug.xcconfig"; sourceTree = "<group>"; };
 		BF82FAFEF05C45CAA49F3701 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C0E0A9BCCD6640B89EB2F817 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		C8DEA6D1E296466D96001168 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = archive.ar; name = libRNImagePicker.a; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		E7494778D86046C1B505BD37 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		E7B9C25BB26EAC7E97BD0018 /* libPods-bikelockerSpring2019.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bikelockerSpring2019.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F41C4F109C684B158B47B798 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		03EA0D8228644759B2D693B4 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		C8DEA6D1E296466D96001168 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +446,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843FD77E22B17F6A00F277F5 /* BuildFile in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -456,9 +461,9 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				DE2AED83926F4EDA8BFE6DA5 /* libRNGestureHandler.a in Frameworks */,
-				161FABFBDAE742A887173EDD /* libAirMaps.a in Frameworks */,
 				2EAB9EBDA4004499BB6B8327 /* libRNVectorIcons.a in Frameworks */,
 				4950CE6EBEB54472AFC4665C /* libRNImagePicker.a in Frameworks */,
+				8108F4184E3F96CCF6EC040A /* libPods-bikelockerSpring2019.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +640,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				E7B9C25BB26EAC7E97BD0018 /* libPods-bikelockerSpring2019.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -673,7 +679,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				43E636DA7FCB4138AE2ADE26 /* RNGestureHandler.xcodeproj */,
-				8BBAF92876C345FDA435C4C4 /* AirMaps.xcodeproj */,
 				B9EECEEB659046BCA8947295 /* RNVectorIcons.xcodeproj */,
 				03EA0D8228644759B2D693B4 /* RNImagePicker.xcodeproj */,
 			);
@@ -699,6 +704,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0D11CA9D94704B289E2580C1 /* Resources */,
 				843FD6FB22B179A000F277F5 /* Recovered References */,
+				C7BDFF7ECED816DB0F6FC6F5 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -763,6 +769,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C7BDFF7ECED816DB0F6FC6F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC08FB7F957E143659D2361E /* Pods-bikelockerSpring2019.debug.xcconfig */,
+				36EE3169D902C27F0544BC66 /* Pods-bikelockerSpring2019.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -788,10 +804,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "bikelockerSpring2019" */;
 			buildPhases = (
+				F54FF3B4BF1AC8B3F90C4AB5 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				7643A24F4CFB6FBD428BA081 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1321,6 +1339,46 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		7643A24F4CFB6FBD428BA081 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bikelockerSpring2019/Pods-bikelockerSpring2019-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bikelockerSpring2019/Pods-bikelockerSpring2019-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F54FF3B4BF1AC8B3F90C4AB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bikelockerSpring2019-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1449,6 +1507,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC08FB7F957E143659D2361E /* Pods-bikelockerSpring2019.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1475,6 +1534,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36EE3169D902C27F0544BC66 /* Pods-bikelockerSpring2019.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1738,6 +1798,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
