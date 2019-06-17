@@ -6,10 +6,10 @@ Project description
 
 ### Installation
 
-Install yarn like:
+Install dependencies like:
 
 ```bash
-yarn install
+yarn
 ```
 
 You will also need to install Podfiles for Google MapView
