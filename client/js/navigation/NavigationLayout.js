@@ -10,8 +10,6 @@ import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
-import AuthenticationScreen from "../screens/Authentication";
-import AuthLoadingScreen from "../screens/AuthLoading";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
 import { clearStorage } from "../config/models.js";
@@ -19,10 +17,6 @@ import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-const AuthStack = createStackNavigator({
-  SignIn: AuthenticationScreen
-});
 
 const FindLockerStack = createStackNavigator(
   {
