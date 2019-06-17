@@ -5,11 +5,6 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 export default class LockerContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <Query

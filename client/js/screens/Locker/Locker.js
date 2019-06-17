@@ -6,18 +6,23 @@ import {
   Image,
   Linking,
   Platform,
+  Modal,
   ScrollView
 } from "react-native";
 import styles from "./styles";
 import PhotoCarousel from "../../components/PhotoCarousel";
-import { Gravatar, GravatarApi } from "react-native-gravatar";
+import { Gravatar } from "react-native-gravatar";
 
 class Locker extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modalVisible: true
+    };
   }
-
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
   render() {
     const { lockerinfo } = this.props;
 
@@ -35,58 +40,68 @@ class Locker extends Component {
     });
 
     return (
-      <ScrollView style={styles.container}>
-        <TouchableOpacity>
-          <Image source={require("../../assets/icons/chevrons/down.png")} />
-        </TouchableOpacity>
-        <PhotoCarousel />
+      <Modal visible={this.state.modalVisible}>
+        <ScrollView style={styles.container}>
+          <TouchableOpacity
+            style={styles.topbar}
+            onPress={() => {
+              this.setModalVisible(!this.state.modalVisible);
+            }}
+          >
+            <Image
+              style={styles.arrow}
+              source={require("../../assets/icons/chevrons/down.png")}
+            />
+          </TouchableOpacity>
+          <PhotoCarousel />
 
-        <View style={styles.infoContainer}>
-          <Text style={styles.address}>{lockerinfo.address}</Text>
-          <View style={styles.twoBtns}>
-            <TouchableOpacity style={styles.button1}>
-              <Image
-                style={styles.icon}
-                source={require("../../assets/icons/review.png")}
-              />
-              <Text style={styles.btnFont1}>Review</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button2}
-              onPress={() => Linking.openURL(url)}
-            >
-              <Image
-                style={styles.icon}
-                source={require("../../assets/icons/directions.png")}
-              />
-              <Text style={styles.btnFont2}>Directions</Text>
-            </TouchableOpacity>
-          </View>
-
-          {lockerinfo.reviews.map((entry, index) => {
-            return (
-              <View key={index} style={styles.reviewer}>
-                <Gravatar
-                  options={{
-                    email: entry.reviewer.email,
-                    parameters: { size: "200", d: "mm" },
-                    secure: true
-                  }}
-                  style={styles.roundedProfileImage}
+          <View style={styles.infoContainer}>
+            <Text style={styles.address}>{lockerinfo.address}</Text>
+            <View style={styles.twoBtns}>
+              <TouchableOpacity style={styles.button1}>
+                <Image
+                  style={styles.icon}
+                  source={require("../../assets/icons/review.png")}
                 />
-                <View style={styles.review}>
-                  {/* implement handling if they didn't fill first and lastname */}
-                  <Text style={styles.acctName}>
-                    {entry.reviewer.firstName} {entry.reviewer.lastName}
-                  </Text>
-                  <Text style={styles.time}>{entry.createdAt}</Text>
-                  <Text style={styles.review}>{entry.review}</Text>
+                <Text style={styles.btnFont1}>Review</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button2}
+                onPress={() => Linking.openURL(url)}
+              >
+                <Image
+                  style={styles.icon}
+                  source={require("../../assets/icons/directions.png")}
+                />
+                <Text style={styles.btnFont2}>Directions</Text>
+              </TouchableOpacity>
+            </View>
+
+            {lockerinfo.reviews.map((entry, index) => {
+              return (
+                <View key={index} style={styles.reviewer}>
+                  <Gravatar
+                    options={{
+                      email: entry.reviewer.email,
+                      parameters: { size: "200", d: "mm" },
+                      secure: true
+                    }}
+                    style={styles.roundedProfileImage}
+                  />
+                  <View style={styles.review}>
+                    {/* implement handling if they didn't fill first and lastname */}
+                    <Text style={styles.acctName}>
+                      {entry.reviewer.firstName} {entry.reviewer.lastName}
+                    </Text>
+                    <Text style={styles.time}>{entry.createdAt}</Text>
+                    <Text style={styles.review}>{entry.review}</Text>
+                  </View>
                 </View>
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
+              );
+            })}
+          </View>
+        </ScrollView>
+      </Modal>
     );
   }
 }

@@ -12,9 +12,19 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15
   },
+  topbar: {
+    flexDirection: "row",
+    justifyContent: "center",
+    padding: 6
+  },
+  arrow: {
+    maxWidth: width / 12,
+    maxHeight: width / 12,
+    resizeMode: "contain"
+  },
   icon: {
-    width: 25,
-    height: 25
+    maxWidth: width / 12,
+    maxHeight: width / 12
   },
   button1: {
     flexDirection: "row",
@@ -57,17 +67,17 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   roundedProfileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 15
+    maxWidth: width / 7,
+    maxHeight: width / 7,
+    borderRadius: width / 14,
+    marginRight: 10,
+    resizeMode: "contain"
   },
   reviewer: {
     flexDirection: "row",
     paddingTop: 10,
     paddingBottom: 10
   },
-  //Text
   address: {
     fontFamily: globalStyles.titleFont,
     fontSize: 20
@@ -82,7 +92,6 @@ const styles = StyleSheet.create({
     marginBottom: 4
   },
   review: {
-    // fontFamily: globalStyles.bodyFont,
     fontFamily: globalStyles.subheadingFont,
     fontSize: 15
   }
