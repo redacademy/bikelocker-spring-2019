@@ -25,9 +25,7 @@ const styles = {
   profilePic: {
     margin: 35,
     height: 150,
-    width: 150,
-    resizeMode: "contain",
-    borderRadius: 75
+    width: 150
   },
   info: {
     width: "100%",

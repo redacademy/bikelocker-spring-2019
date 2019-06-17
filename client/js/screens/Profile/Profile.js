@@ -12,12 +12,12 @@ const Profile = ({ user }) => {
           <Text style={styles.link}>Edit</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <Image
-          style={styles.profilePic}
-          source={require("../../assets/images/profile_pic.jpg")}
-        />
-      </View>
+      <Image
+        borderRadius={75}
+        resizeMode="contain"
+        style={styles.profilePic}
+        source={require("../../assets/images/profile_pic.jpg")}
+      />
       <View style={styles.info}>
         <Text style={styles.userName}>
           {user.firstName} {user.lastName}
