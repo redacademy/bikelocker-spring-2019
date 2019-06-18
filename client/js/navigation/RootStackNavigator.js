@@ -9,9 +9,11 @@ import LockerModal from "../screens/Locker";
 
 import AuthWelcomeScreen from "../screens/AuthWelcome";
 import AuthLoadingScreen from "../screens/AuthLoading";
+// import AuthenticationScreen from "../screens/Authentication";
 
 const AuthStack = createStackNavigator({
-  SignIn: AuthWelcomeScreen
+  Welcome: AuthWelcomeScreen
+  // Authentication: AuthenticationScreen
 });
 
 export default createAppContainer(
@@ -21,6 +23,9 @@ export default createAppContainer(
       Auth: AuthStack,
       Layout: NavigationLayout,
       Locker: LockerModal
+    },
+    {
+      initialRouteName: "AuthLoading"
     },
     { mode: "modal", headerMode: "none" }
   )
