@@ -147,7 +147,7 @@ export default createDrawerNavigator(
             title="Logout"
             onPress={async () => {
               await AsyncStorage.clear();
-              this.props.navigation.navigate("Auth");
+              props.navigation.navigate("AuthLoading");
             }}
           />
         </SafeAreaView>
