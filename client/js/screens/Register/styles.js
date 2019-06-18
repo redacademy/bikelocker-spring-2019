@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: width * 0.6,
-    height: height * 0.6,
+
     marginTop: height * 0.1,
     marginBottom: height * 0.1,
     resizeMode: "contain"
@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
   btnRow: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+  form: {
+    alignItems: "center",
+    width: width * 0.75
   },
   button1: {
     flexDirection: "row",
@@ -27,21 +31,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#009887",
-    padding: 3,
-    margin: 10
-  },
-  button2: {
-    flexDirection: "row",
-    height: 40,
-    width: "35%",
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: "white",
-    borderRadius: 20,
-    alignSelf: "center",
-    justifyContent: "space-around",
-    alignItems: "center",
+    backgroundColor: globalStyles.mediumGreen,
     padding: 3,
     margin: 10
   },
@@ -49,8 +39,22 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: globalStyles.titleFont
   },
-  hello: {
-    color: "#009887"
+  labelText: {
+    padding: 10,
+    color: globalStyles.mediumGreen,
+    alignSelf: "flex-start"
+  },
+  formInput: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: globalStyles.lightGrey,
+    // width: width * 0.8,
+    width: "100%",
+    height: height * 0.06,
+    alignSelf: "center",
+    borderRadius: 15,
+    justifyContent: "center",
+    paddingLeft: 10
   }
 });
 
