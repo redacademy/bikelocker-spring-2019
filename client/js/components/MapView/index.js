@@ -1,3 +1,3 @@
-import MapView from "./MapView";
+import MapViewComponent from "./MapView";
 
-export { MapView };
+export default MapViewComponent;
