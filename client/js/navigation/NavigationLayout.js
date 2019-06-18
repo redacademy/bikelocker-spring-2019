@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, View, SafeAreaView, Button, AsyncStorage } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -114,7 +114,6 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
-
 export default createDrawerNavigator(
   {
     FindLocker: {
@@ -139,12 +138,22 @@ export default createDrawerNavigator(
       })
     }
   },
-<<<<<<< HEAD
-=======
-
->>>>>>> 003cbd7... move switchNavigator to RootStackNavigator and implement AuthLoading to check for user token
   {
     contentComponent: props => <DrawerContent {...props} />,
+    contentComponent: props => (
+      <View style={{ flex: 1 }}>
+        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+          <DrawerItems {...props} />
+          <Button
+            title="Logout"
+            onPress={async () => {
+              await AsyncStorage.clear();
+              this.props.navigation.navigate("Auth");
+            }}
+          />
+        </SafeAreaView>
+      </View>
+    ),
     overlayColor: "black"
   },
   {
@@ -155,28 +164,12 @@ export default createDrawerNavigator(
       labelStyle: {
         fontSize: 16
       },
-      Resources: {
-        screen: ResourcesStack,
-        navigationOptions: ({ navigation }) => ({
-          title: "Helpful Resources"
-        })
-      }
-    },
-    {
-      defaultNavigationOptions: ({ navigation }) => ({}),
-      drawerWidth: 250,
-      contentOptions: {
-        activeTintColor: theme.mediumGreen,
-        labelStyle: {
-          fontSize: 16
-        },
-        itemsContainerStyle: {
-          margin: 0
-        },
-        iconContainerStyle: {
-          margin: 0
-        }
+      itemsContainerStyle: {
+        margin: 0
+      },
+      iconContainerStyle: {
+        margin: 0
       }
     }
   }
-)
+);
