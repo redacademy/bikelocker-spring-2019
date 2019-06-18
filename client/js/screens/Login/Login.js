@@ -19,6 +19,14 @@ class Login extends Component {
   goToRegister = () => {
     this.props.navigation.navigate("Register");
   };
+  handleInput = () => {
+    console.log("something submitted");
+  };
+
+  _signInAsync = async () => {
+    await AsyncStorage.setItem("userToken", "abc");
+    this.props.navigation.navigate("FindLocker");
+  };
 
   render() {
     return (
