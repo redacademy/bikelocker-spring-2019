@@ -1,7 +1,6 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
 
 const Profile = ({ user, navigation }) => {
   return (
@@ -36,4 +35,4 @@ const Profile = ({ user, navigation }) => {
   );
 };
 
-export default withNavigation(Profile);
+export default Profile;
