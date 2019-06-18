@@ -1,13 +1,16 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
 import styles from "./styles";
+import { withNavigation } from "react-navigation";
 
-const Profile = ({ user }) => {
+const Profile = ({ user, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>My Profile</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("EditProfile", { user: user })}
+        >
           <Text style={styles.link}>Edit</Text>
         </TouchableOpacity>
       </View>
@@ -33,4 +36,4 @@ const Profile = ({ user }) => {
   );
 };
 
-export default Profile;
+export default withNavigation(Profile);
