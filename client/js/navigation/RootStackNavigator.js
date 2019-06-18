@@ -12,7 +12,14 @@ import AuthLoadingScreen from "../screens/AuthLoading";
 // import AuthenticationScreen from "../screens/Authentication";
 
 const AuthStack = createStackNavigator({
-  Welcome: AuthWelcomeScreen
+  Welcome: {
+    screen: AuthWelcomeScreen,
+    navigationOptions: {
+      title: "Welcome",
+      header: null
+    }
+  }
+
   // Authentication: AuthenticationScreen
 });
 

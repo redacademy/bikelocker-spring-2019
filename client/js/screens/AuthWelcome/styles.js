@@ -17,12 +17,13 @@ const styles = StyleSheet.create({
   logo: {
     width: width * 0.3,
     height: height * 0.3,
-    marginBottom: height * 0.4,
+    marginTop: height * 0.1,
+    marginBottom: height * 0.45,
     resizeMode: "contain"
   },
   btnRow: {
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   button1: {
     flexDirection: "row",
@@ -47,7 +48,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-    padding: 3
+    padding: 3,
+    margin: 10
   },
   btnFont: {
     color: "white",
