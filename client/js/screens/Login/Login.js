@@ -14,8 +14,13 @@ class Login extends Component {
   static navigationOptions = {
     title: "Login"
   };
+
   handleInput = () => {
     console.log("something submitted");
+  };
+
+  goToRegister = () => {
+    this.props.navigation.navigate("Register");
   };
 
   _signInAsync = async () => {
