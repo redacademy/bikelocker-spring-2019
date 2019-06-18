@@ -19,9 +19,11 @@ const styles = StyleSheet.create({
     lineHeight: 25
   },
   image: {
+    marginTop: 60,
     padding: 20,
-    height: 200,
-    width: 200,
+    height: 150,
+    width: 150,
+    overflow: "visible",
     alignSelf: "center"
   }
 });
