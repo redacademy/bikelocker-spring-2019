@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ActivityIndicator } from "react-native";
 
 const Loader = () => {
   return (
     <View>
-      <Text>This is the loader screen</Text>
+      <ActivityIndicator />
     </View>
   );
 };

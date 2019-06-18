@@ -19,7 +19,6 @@ const GooglePlacesInput = ({ updateContextLocation }) => {
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
           updateContextLocation(details.geometry.location);
-          console.log(details);
         }}
         getDefaultValue={() => ""}
         query={{
