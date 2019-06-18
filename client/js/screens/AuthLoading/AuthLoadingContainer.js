@@ -16,7 +16,7 @@ class AuthLoadingContainer extends Component {
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem("userToken");
 
-    this.props.navigation.navigate(userToken ? "FindLocker" : "SignIn");
+    this.props.navigation.navigate(userToken ? "FindLocker" : "Welcome");
   };
 
   render() {
