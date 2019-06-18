@@ -154,7 +154,6 @@ export default createDrawerNavigator(
       labelStyle: {
         fontSize: 16
       },
-<<<<<<< HEAD
       Resources: {
         screen: ResourcesStack,
         navigationOptions: ({ navigation }) => ({
@@ -180,14 +179,3 @@ export default createDrawerNavigator(
     }
   }
 )
-=======
-      itemsContainerStyle: {
-        margin: 0
-      },
-      iconContainerStyle: {
-        margin: 0
-      }
-    }
-  }
-);
->>>>>>> 003cbd7... move switchNavigator to RootStackNavigator and implement AuthLoading to check for user token
