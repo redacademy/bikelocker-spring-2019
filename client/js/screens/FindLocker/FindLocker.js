@@ -4,7 +4,6 @@ import { View, Text, Button } from "react-native";
 import GoogleMapsSearch from "../../components/GoogleMapSearch";
 import GooglePlaceContext from "../../context/GooglePlaceContext";
 import styles from "./styles";
-import Locker from "../Locker";
 
 const FindLocker = () => {
   return (
