@@ -5,7 +5,7 @@ import styles from "./styles";
 import globalStyles from "../../config/globalStyles";
 import { API_KEY } from "react-native-dotenv";
 
-const GooglePlacesInput = ({ updateContextLocation }) => {
+class GooglePlacesInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
