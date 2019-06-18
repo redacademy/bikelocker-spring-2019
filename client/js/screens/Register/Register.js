@@ -1,77 +1,63 @@
 import React, { Component } from "react";
-import {
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  View,
-  TextInput,
-  Text,
-  Image
-} from "react-native";
+import { ActivityIndicator, StatusBar, View } from "react-native";
 import { Form, Field } from "react-final-form";
-import styles from "./styles";
 
 class Register extends Component {
-  handleSubmit = () => {
-    console.log("something submitted");
-  };
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
-        />
-
-        <Form
-          onSubmit={this.handleSubmit}
+      <View>
+        <Text>Sign In form</Text>
+        {/* <Form
+          onSubmit={onSubmit}
+          validate={validate}
           render={({ handleSubmit, pristine, invalid }) => (
-            <View style={styles.form}>
-              <Text style={styles.labelText}>First Name</Text>
+            <form onSubmit={handleSubmit}>
+              <h2>Simple Default Input</h2>
+              <div>
+                <label>First Name</label>
+                <Field
+                  name="firstName"
+                  component="input"
+                  placeholder="First Name"
+                />
+              </div>
+
+              <h2>An Arbitrary Reusable Input Component</h2>
+              <div>
+                <label>Interests</label>
+                <Field name="interests" component={InterestPicker} />
+              </div>
+
+              <h2>Render Function</h2>
               <Field
-                name="First Name"
+                name="bio"
                 render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput onSubmit={handleSubmit} editable={true} />
-                  </View>
+                  <div>
+                    <label>Bio</label>
+                    <textarea {...input} />
+                    {meta.touched && meta.error && <span>{meta.error}</span>}
+                  </div>
                 )}
               />
-              <Text style={styles.labelText}>Email Address</Text>
-              <Field
-                name="Email Address"
-                render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      maxLength={40}
-                    />
-                  </View>
+
+              <h2>Render Function as Children</h2>
+              <Field name="phone">
+                {({ input, meta }) => (
+                  <div>
+                    <label>Phone</label>
+                    <input type="text" {...input} placeholder="Phone" />
+                    {meta.touched && meta.error && <span>{meta.error}</span>}
+                  </div>
                 )}
-              />
-              <Text style={styles.labelText}>Password</Text>
-              <Field
-                name="Password"
-                render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      secureTextEntry={true}
-                    />
-                  </View>
-                )}
-              />
-              <Text>Already have an account?</Text>
-              <TouchableOpacity
-                style={styles.button1}
-                onPress={this._signInAsync}
-              >
-                <Text style={styles.btnFont}> Register </Text>
-              </TouchableOpacity>
-            </View>
+              </Field>
+
+              <button type="submit" disabled={pristine || invalid}>
+                Submit
+              </button>
+            </form>
           )}
-        />
-      </KeyboardAvoidingView>
+        /> */}
+      </View>
     );
   }
 }

@@ -1,37 +1,40 @@
 import React, { Component } from "react";
 import {
   TouchableOpacity,
-  AsyncStorage,
+  KeyboardAvoidingView,
   View,
+  TextInput,
   Text,
-  Image,
-  TextInput
+  Image
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
-import { _signInAsync } from "../../config/models.js";
 
-class Login extends Component {
-  handleInput = () => {
+class Register extends Component {
+  handleSubmit = () => {
     console.log("something submitted");
   };
-
-  goToRegister = () => {
-    this.props.navigation.navigate("Register");
-  };
-
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <Image
           style={styles.logo}
           source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
         />
 
         <Form
-          onSubmit={(_signInAsync, this.goToRegister, this.handleInput)}
+          onSubmit={this.handleSubmit}
           render={({ handleSubmit, pristine, invalid }) => (
             <View style={styles.form}>
+              <Text style={styles.labelText}>First Name</Text>
+              <Field
+                name="First Name"
+                render={({ input, meta }) => (
+                  <View style={styles.formInput}>
+                    <TextInput onSubmit={handleSubmit} editable={true} />
+                  </View>
+                )}
+              />
               <Text style={styles.labelText}>Email Address</Text>
               <Field
                 name="Email Address"
@@ -58,29 +61,19 @@ class Login extends Component {
                   </View>
                 )}
               />
-
-              <Text>Forgot your password?</Text>
-
-              <Text>
-                Don't have an account yet?
-                <Text onPress={this.handleInput}> Register</Text>
-              </Text>
-
+              <Text>Already have an account?</Text>
               <TouchableOpacity
                 style={styles.button1}
-                onPress={() => {
-                  _signInAsync();
-                  this.props.navigation.navigate("FindLocker");
-                }}
+                onPress={this._signInAsync}
               >
-                <Text style={styles.btnFont}> Login </Text>
+                <Text style={styles.btnFont}> Register </Text>
               </TouchableOpacity>
             </View>
           )}
         />
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 
-export default Login;
+export default Register;
