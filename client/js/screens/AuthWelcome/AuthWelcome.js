@@ -16,6 +16,7 @@ class AuthWelcome extends React.Component {
   };
 
   render() {
+    console.log(this.props, "not container");
     return (
       <View style={styles.container}>
         <ImageBackground

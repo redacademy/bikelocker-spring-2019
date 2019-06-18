@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ActivityIndicator, StatusBar, View } from "react-native";
+import { ActivityIndicator, StatusBar, View, Text } from "react-native";
 import { Form, Field } from "react-final-form";
 
 class Login extends Component {
