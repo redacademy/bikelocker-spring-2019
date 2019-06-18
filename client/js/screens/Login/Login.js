@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { ActivityIndicator, StatusBar, View } from "react-native";
 import { Form, Field } from "react-final-form";
 
-class Authentication extends Component {
+class Login extends Component {
+  static navigationOptions = {
+    title: "Login"
+  };
+
   render() {
     return (
       <View>
@@ -62,4 +66,4 @@ class Authentication extends Component {
   }
 }
 
-export default Authentication;
+export default Login;

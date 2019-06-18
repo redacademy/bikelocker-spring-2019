@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
+// import { withNavigation } from "react-navigation";
 
 class AuthWelcome extends React.Component {
   static navigationOptions = {
@@ -29,13 +29,13 @@ class AuthWelcome extends React.Component {
         <View style={styles.btnRow}>
           <TouchableOpacity
             style={styles.button1}
-            onPress={() => Linking.openURL(url)}
+            onPress={() => this.props.navigation.navigate("Register")}
           >
             <Text style={styles.btnFont}> Register </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button2}
-            onPress={() => Linking.openURL(url)}
+            onPress={() => this.props.navigation.navigate("Login")}
           >
             <Text style={styles.btnFont}> Login </Text>
           </TouchableOpacity>
@@ -45,4 +45,4 @@ class AuthWelcome extends React.Component {
   }
 }
 
-export default withNavigation(AuthWelcome);
+export default AuthWelcome;

@@ -9,18 +9,28 @@ import LockerModal from "../screens/Locker";
 
 import AuthWelcomeScreen from "../screens/AuthWelcome";
 import AuthLoadingScreen from "../screens/AuthLoading";
-// import AuthenticationScreen from "../screens/Authentication";
+import RegisterScreen from "../screens/Register";
+import LoginScreen from "../screens/Login";
 
 const AuthStack = createStackNavigator({
   Welcome: {
     screen: AuthWelcomeScreen,
     navigationOptions: {
-      title: "Welcome",
+      header: null
+    }
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
       header: null
     }
   }
-
-  // Authentication: AuthenticationScreen
 });
 
 export default createAppContainer(
