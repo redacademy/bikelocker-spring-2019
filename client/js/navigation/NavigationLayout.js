@@ -169,28 +169,12 @@ export default createDrawerNavigator(
       labelStyle: {
         fontSize: 16
       },
-      Resources: {
-        screen: ResourcesStack,
-        navigationOptions: ({ navigation }) => ({
-          title: "Helpful Resources"
-        })
-      }
-    },
-    {
-      defaultNavigationOptions: ({ navigation }) => ({}),
-      drawerWidth: 250,
-      contentOptions: {
-        activeTintColor: theme.mediumGreen,
-        labelStyle: {
-          fontSize: 16
-        },
-        itemsContainerStyle: {
-          margin: 0
-        },
-        iconContainerStyle: {
-          margin: 0
-        }
+      itemsContainerStyle: {
+        margin: 0
+      },
+      iconContainerStyle: {
+        margin: 0
       }
     }
   }
-)
+);
