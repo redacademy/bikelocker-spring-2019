@@ -40,4 +40,4 @@ class AuthWelcome extends React.Component {
   }
 }
 
-export default AuthWelcome;
+export default withNavigation(AuthWelcome);
