@@ -1,18 +1,10 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
-import { withNavigation } from "react-navigation";
+import { Text, View, TouchableOpacity } from "react-native";
 
 const About = ({ navigation }) => (
-  <View>
+  <TouchableOpacity onPress={() => navigation.navigate("AddLocker", {})}>
     <Text>This is the About Screen</Text>
-    <Button
-      onPress={() => {
-        navigation.push("Locker");
-      }}
-      title="Locker Info"
-      color="#841584"
-    />
-  </View>
+  </TouchableOpacity>
 );
 
 export default withNavigation(About);

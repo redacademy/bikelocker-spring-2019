@@ -5,7 +5,7 @@ import AddLocker from "./AddLocker";
 export default class AddLockerContainer extends Component {
   render() {
     return (
-      <View style={styles.container} navigation={this.props.navigation}>
+      <View navigation={this.props.navigation}>
         <AddLocker />
       </View>
     );
