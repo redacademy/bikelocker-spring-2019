@@ -2,28 +2,10 @@ import React, { Component } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import styles from "./styles";
+
 import IconFontAwesome from "react-native-vector-icons/FontAwesome";
 
 class MapViewComponent extends Component {
-  // static navigationOptions = {
-  //   headerRight: (
-  //     <Button
-  //       onPress={() => alert("This is a button!")}
-  //       title="Info"
-  //       color="#fff"
-  //     />
-  //   )
-  // };
-  // static navigationOptions = {
-  //   headerRight: (
-  //     <TouchableOpacity
-  //       style={styles.locator}
-  //       onPress={() => this.getCurrentLocation()}
-  //     >
-
-  //   )
-  // };
-
   constructor(props) {
     super(props);
     this.state = {
