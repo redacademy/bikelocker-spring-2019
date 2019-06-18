@@ -14,8 +14,13 @@ class Login extends Component {
   static navigationOptions = {
     title: "Login"
   };
+
   handleInput = () => {
     console.log("something submitted");
+  };
+
+  goToRegister = () => {
+    this.props.navigation.navigate("Register");
   };
 
   _signInAsync = async () => {
@@ -31,15 +36,15 @@ class Login extends Component {
           source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
         />
 
-        <Text style={styles.labelText}>Full Name</Text>
         <Form
-          onSubmit={this._signInAsync}
+          onSubmit={(this._signInAsync, this.goToRegister, this.handleInput)}
           render={({ handleSubmit, pristine, invalid }) => (
-            <View>
+            <View style={styles.form}>
+              <Text style={styles.labelText}>Email Address</Text>
               <Field
-                name="bio"
+                name="Email Address"
                 render={({ input, meta }) => (
-                  <View style={styles.form}>
+                  <View style={styles.formInput}>
                     <TextInput
                       onSubmit={handleSubmit}
                       editable={true}
@@ -48,12 +53,36 @@ class Login extends Component {
                   </View>
                 )}
               />
+              <Text style={styles.labelText}>Password</Text>
+              <Field
+                name="Password"
+                render={({ input, meta }) => (
+                  <View style={styles.formInput}>
+                    <TextInput
+                      onSubmit={handleSubmit}
+                      editable={true}
+                      secureTextEntry={true}
+                    />
+                  </View>
+                )}
+              />
+
+              <Text>Forgot your password?</Text>
+
+              <Text>
+                Don't have an account yet?
+                <Text onPress={this.handleInput}> Register</Text>
+              </Text>
+
+              <TouchableOpacity
+                style={styles.button1}
+                onPress={this._signInAsync}
+              >
+                <Text style={styles.btnFont}> Login </Text>
+              </TouchableOpacity>
             </View>
           )}
         />
-        <TouchableOpacity style={styles.button1} onPress={this._signInAsync}>
-          <Text style={styles.btnFont}> Login </Text>
-        </TouchableOpacity>
       </View>
     );
   }

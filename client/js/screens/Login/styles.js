@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   },
+  form: {
+    alignItems: "center",
+    width: width * 0.75
+  },
   button1: {
     flexDirection: "row",
     height: 40,
@@ -37,16 +41,20 @@ const styles = StyleSheet.create({
   },
   labelText: {
     padding: 10,
-    color: globalStyles.mediumGreen
+    color: globalStyles.mediumGreen,
+    alignSelf: "flex-start"
   },
-  form: {
+  formInput: {
     borderStyle: "solid",
     borderWidth: 2,
     borderColor: globalStyles.lightGrey,
-    width: width * 0.8,
+    // width: width * 0.8,
+    width: "100%",
     height: height * 0.06,
     alignSelf: "center",
-    borderRadius: 15
+    borderRadius: 15,
+    justifyContent: "center",
+    paddingLeft: 10
   }
 });
 
