@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import {
-  Image,
-  Linking,
   ScrollView,
   Text,
-  TouchableHighlight,
   View,
   TouchableOpacity,
-  StyleSheet,
-  Button,
   TextInput
 } from "react-native";
 import LockerRating from "../../components/LockerRating";
@@ -74,13 +69,13 @@ export default class AddLocker extends Component {
                 <Field
                   name="bio"
                   render={({ input, meta }) => (
-                    <View style={styles.form}>
-                      <TextInput
-                        onSubmit={handleSubmit}
-                        editable={true}
-                        maxLength={40}
-                      />
-                    </View>
+                    <TextInput
+                      style={styles.form}
+                      onSubmit={handleSubmit}
+                      editable={true}
+                      maxLength={40}
+                      multiline={true}
+                    />
                   )}
                 />
               </View>
@@ -95,7 +90,7 @@ export default class AddLocker extends Component {
               onPress={this.handleSubmit}
               style={styles.submitSpacing}
             >
-              <Text style={styles.submit}> Submit</Text>
+              <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
           </View>
         </View>

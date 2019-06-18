@@ -46,11 +46,22 @@ const styles = StyleSheet.create({
     padding: 10,
     color: "#009887"
   },
+  form: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: "#999999",
+    width: "100%",
+    height: 120,
+    borderRadius: 10
+  },
+  input: {
+    height: 120
+  },
   buttons: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "center",
-    padding: 20
+    justifyContent: "space-between",
+    marginTop: 20
   },
   back: {
     flex: 1,
@@ -58,51 +69,42 @@ const styles = StyleSheet.create({
     height: 40,
     width: 100,
     textAlign: "center",
-    padding: 3
+    color: "black"
   },
   submit: {
     flex: 1,
-    flexDirection: "row",
-
-    padding: 3
+    flexDirection: "row"
   },
   backSpacing: {
-    padding: 20,
+    padding: 11,
     paddingRight: 20,
     flex: 1,
     alignItems: "center",
-    height: 20,
-    width: 100,
+    height: 45,
+    width: "50%",
     borderStyle: "solid",
     borderWidth: 2,
     borderColor: "#999999",
     borderRadius: 20,
     textAlign: "center",
-    color: "#000"
+    color: "#000",
+    marginRight: 10
   },
   submitSpacing: {
-    padding: 20,
-    marginLeft: 20,
+    padding: 11,
+    paddingRight: 20,
     flex: 1,
     alignItems: "center",
-    height: 20,
-    width: 100,
+    height: 45,
+    width: "50%",
     borderStyle: "solid",
     borderWidth: 2,
     borderColor: "#999999",
     backgroundColor: "#999999",
     borderRadius: 20,
     textAlign: "center",
-    color: "#000"
-  },
-  form: {
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: "#999999",
-    width: "100%",
-    height: 120,
-    alignSelf: "center",
-    borderRadius: 10
+    color: "#000",
+    marginLeft: 10
   }
 });
 
