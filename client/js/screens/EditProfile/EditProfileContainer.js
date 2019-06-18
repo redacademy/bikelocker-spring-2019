@@ -25,10 +25,15 @@ export default class EditProfileContainer extends Component {
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
-          if (loading) return <Loader />; // replace by Loader component
+          if (loading) return <Loader />;
           if (error) return <Text>{`Error! ${error.message}`}</Text>;
-          //   return <View />;
-          return <EditProfile user={data.User} toggleTab={this.toggleTab} />;
+          return (
+            <EditProfile
+              user={data.User}
+              toggleTab={this.toggleTab}
+              switchTab={this.state.switchTab}
+            />
+          );
         }}
       </Query>
     );
