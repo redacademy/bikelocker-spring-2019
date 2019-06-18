@@ -19,8 +19,13 @@ class Login extends Component {
   goToRegister = () => {
     this.props.navigation.navigate("Register");
   };
+
   handleInput = () => {
     console.log("something submitted");
+  };
+
+  goToRegister = () => {
+    this.props.navigation.navigate("Register");
   };
 
   _signInAsync = async () => {
