@@ -14,6 +14,14 @@ class Login extends Component {
   static navigationOptions = {
     title: "Login"
   };
+  handleInput = () => {
+    console.log("something submitted");
+  };
+
+  _signInAsync = async () => {
+    await AsyncStorage.setItem("userToken", "abc");
+    this.props.navigation.navigate("FindLocker");
+  };
 
   handleInput = () => {
     console.log("something submitted");
