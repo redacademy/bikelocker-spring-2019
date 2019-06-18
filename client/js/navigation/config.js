@@ -2,7 +2,6 @@ import React from "react";
 import { Image, View, TouchableOpacity } from "react-native";
 import { Header } from "react-navigation";
 import PropTypes from "prop-types";
-import IconFontAwesome from "react-native-vector-icons/FontAwesome";
 import IconEntypo from "react-native-vector-icons/Entypo";
 import theme from "../config/globalStyles";
 
@@ -17,7 +16,8 @@ export const sharedNavigationOptions = navigation => ({
   header: props => <AppHeader {...props} />,
   headerStyle: {
     backgroundColor: theme.mediumGreen,
-    height: 60
+    height: 60,
+    zIndex: -10
   },
   headerTintColor: "white",
   headerTitleStyle: {
@@ -41,18 +41,7 @@ export const sharedNavigationOptions = navigation => ({
         style={{ width: 40, height: 40, marginBottom: 5 }}
       />
     </TouchableOpacity>
-  ),
-  headerRight:
-    navigation.state.routeName === "FindLocker" ? (
-      <TouchableOpacity>
-        <IconFontAwesome
-          name="location-arrow"
-          size={35}
-          color="#fff"
-          style={{ marginRight: 15, marginBottom: 5 }}
-        />
-      </TouchableOpacity>
-    ) : null
+  )
 });
 
 AppHeader.propTypes = {

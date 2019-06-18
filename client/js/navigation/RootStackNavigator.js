@@ -4,6 +4,7 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from "react-navigation";
+import { Easing, Animated } from "react-native";
 import NavigationLayout from "./NavigationLayout";
 import LockerModal from "../screens/Locker";
 
@@ -39,11 +40,18 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       Auth: AuthStack,
       Layout: NavigationLayout,
-      Locker: LockerModal
+      Locker: { screen: LockerModal, gestureResponseDistance: 50 }
     },
     {
       initialRouteName: "AuthLoading"
     },
-    { mode: "modal", headerMode: "none" }
+    {
+      mode: "modal",
+      headerMode: "none",
+      transparentCard: false,
+      defaultNavigationOptions: {
+        gesturesEnabled: true
+      }
+    }
   )
 );
