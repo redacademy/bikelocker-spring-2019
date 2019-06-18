@@ -1,19 +1,36 @@
 import React from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Image, View } from "react-native";
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createDrawerNavigator,
+  DrawerItems
 } from "react-navigation";
+import { DrawerActions } from "react-navigation-drawer";
+import FindLockerScreen from "../screens/FindLocker";
+import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
-import ProfileScreen from "../screens/Profile";
-import FindLockerScreen from "../screens/FindLocker";
+import ResourcesScreen from "../screens/Resources";
 import { sharedNavigationOptions } from "./config";
+import IconIonicons from "react-native-vector-icons/Ionicons";
+import theme from "../config/globalStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const FindLockerStack = createStackNavigator(
   {
-    Find: FindLockerScreen
+    FindLocker: FindLockerScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
+
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -32,9 +49,20 @@ const AboutStack = createStackNavigator(
     })
   }
 );
+
 const ContactStack = createStackNavigator(
   {
-    Contact: ContactScreen,
+    Contact: ContactScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
+
+const HowToUseAppStack = createStackNavigator(
+  {
     HowToUseApp: HowToUseAppScreen
   },
   {
@@ -44,10 +72,9 @@ const ContactStack = createStackNavigator(
   }
 );
 
-const ProfileStack = createStackNavigator(
+const ResourcesStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
-    HowToUseApp: HowToUseAppScreen
+    Resources: ResourcesScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -56,41 +83,77 @@ const ProfileStack = createStackNavigator(
   }
 );
 
-export default createBottomTabNavigator(
+const DrawerContent = props => (
+  <View>
+    <View
+      style={{
+        backgroundColor: theme.mediumGreen,
+        height: 90,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
+      }}
+    >
+      <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
+        <IconIonicons
+          name="ios-arrow-back"
+          size={40}
+          color="#fff"
+          style={{ marginLeft: 15, marginTop: 12 }}
+        />
+      </TouchableOpacity>
+      <Image
+        source={require("../assets/images/bikelockerlogo-white.png")}
+        style={{ width: 40, height: 40, marginTop: 10 }}
+      />
+      <View style={{ width: 40, marginRight: 10 }} />
+    </View>
+    <DrawerItems {...props} />
+  </View>
+);
+
+export default createDrawerNavigator(
   {
-    Contact: ContactStack,
-    FindLocker: FindLockerStack,
+    FindLocker: {
+      screen: FindLockerStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Find a spot"
+      })
+    },
     Profile: ProfileStack,
-    About: AboutStack
+    About: AboutStack,
+    Contact: ContactStack,
+    HowToUseApp: {
+      screen: HowToUseAppStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "How to Use the App"
+      })
+    },
+    Resources: {
+      screen: ResourcesStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Helpful Resources"
+      })
+    }
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let IconComponent = Icon;
-        let iconName;
-        if (routeName === "Contact") {
-          iconName = `ios-calendar`;
-        } else if (routeName === "About") {
-          iconName = `ios-information-circle`;
-        } else if (routeName === "Profile") {
-          iconName = `ios-heart`;
-        } else if (routeName === "FindLocker") {
-          iconName = `ios-map`;
-        }
-
-        // You can return any component that you like here!
-        return <IconComponent name={iconName} size={25} color={tintColor} />;
-      }
-    }),
-    tabBarOptions: {
-      activeTintColor: "white",
-      inactiveTintColor: "#999",
+    contentComponent: props => <DrawerContent {...props} />,
+    overlayColor: "black"
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({}),
+    drawerWidth: "80%",
+    contentOptions: {
+      activeTintColor: theme.mediumGreen,
       labelStyle: {
-        fontSize: 10
+        fontSize: 16
       },
-      style: {
-        backgroundColor: "black"
+      itemsContainerStyle: {
+        margin: 0
+      },
+      iconContainerStyle: {
+        margin: 0
       }
     }
   }
