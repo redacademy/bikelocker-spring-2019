@@ -14,25 +14,15 @@ const styles = StyleSheet.create({
     height: height
   },
   logo: {
-<<<<<<< HEAD
     width: width * 0.28,
     height: height * 0.28,
     marginTop: height * 0.1,
     marginBottom: height * 0.45,
-=======
-    width: width * 0.3,
-    height: height * 0.3,
-    marginBottom: height * 0.4,
->>>>>>> 9a36466... add Register and Login buttons with styling for AuthWelcome screen
     resizeMode: "contain"
   },
   btnRow: {
     flexDirection: "row",
-<<<<<<< HEAD
     justifyContent: "space-between"
-=======
-    justifyContent: "space-around"
->>>>>>> 9a36466... add Register and Login buttons with styling for AuthWelcome screen
   },
   button1: {
     flexDirection: "row",
@@ -57,12 +47,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-<<<<<<< HEAD
     padding: 3,
     margin: 10
-=======
-    padding: 3
->>>>>>> 9a36466... add Register and Login buttons with styling for AuthWelcome screen
   },
   btnFont: {
     color: "white",
