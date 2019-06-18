@@ -7,7 +7,7 @@ import {
 import NavigationLayout from "./NavigationLayout";
 import LockerModal from "../screens/Locker";
 
-import AuthWelcomeScreen from "../screens/AuthWelcome";
+import AuthWelcomeScreen from "../screens/AuthWelcome/AuthWelcomeContainer";
 import AuthLoadingScreen from "../screens/AuthLoading";
 import RegisterScreen from "../screens/Register";
 import LoginScreen from "../screens/Login";

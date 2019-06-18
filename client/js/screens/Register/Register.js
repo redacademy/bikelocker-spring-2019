@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { ActivityIndicator, StatusBar, View } from "react-native";
+import { ActivityIndicator, StatusBar, View, Text } from "react-native";
 import { Form, Field } from "react-final-form";
 
 class Register extends Component {
+  static navigationOptions = {
+    title: "Login"
+  };
   render() {
     return (
       <View>
-        <Text>Sign In form</Text>
-        {/* <Form
+        <Text>Register form</Text>
+        <Form
           onSubmit={onSubmit}
           validate={validate}
           render={({ handleSubmit, pristine, invalid }) => (
@@ -56,7 +59,7 @@ class Register extends Component {
               </button>
             </form>
           )}
-        /> */}
+        />
       </View>
     );
   }
