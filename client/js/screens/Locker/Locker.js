@@ -89,7 +89,6 @@ class Locker extends Component {
                     style={styles.roundedProfileImage}
                   />
                   <View style={styles.review}>
-                    {/* implement handling if they didn't fill first and lastname */}
                     <Text style={styles.acctName}>
                       {entry.reviewer.firstName} {entry.reviewer.lastName}
                     </Text>

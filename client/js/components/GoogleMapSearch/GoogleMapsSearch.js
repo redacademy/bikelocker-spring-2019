@@ -5,7 +5,7 @@ import styles from "./styles";
 import globalStyles from "../../config/globalStyles";
 import { API_KEY } from "react-native-dotenv";
 
-const GooglePlacesInput = () => {
+const GooglePlacesInput = ({ updateContextLocation }) => {
   return (
     <View style={styles.container}>
       <GooglePlacesAutocomplete
@@ -18,7 +18,7 @@ const GooglePlacesInput = () => {
         fetchDetails={true}
         renderDescription={row => row.description}
         onPress={(data, details = null) => {
-          this.props.updateContextLocation(details.geometry.location);
+          updateContextLocation(details.geometry.location);
           console.log(details);
         }}
         getDefaultValue={() => ""}

@@ -5,6 +5,9 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 export default class LockerContainer extends Component {
+  static navigationOptions = {
+    title: "Locker"
+  };
   render() {
     return (
       <Query
