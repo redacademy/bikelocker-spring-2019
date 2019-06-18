@@ -15,7 +15,7 @@ const Profile = ({ user }) => {
         borderRadius={75}
         resizeMode="contain"
         style={styles.profilePic}
-        source={require("../../assets/images/profile_pic.jpg")}
+        source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
       />
       <View style={styles.info}>
         <Text style={styles.userName}>

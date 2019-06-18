@@ -11,21 +11,10 @@ export default class ProfileContainer extends Component {
   }
 
   render() {
-    // const user = {
-    //   firstName: "Andre",
-    //   lastName: "Moura",
-    //   city: "Vancouver",
-    //   province: "BC",
-    //   country: "Canada",
-    //   bikeColor: "Red",
-    //   bikeBrand: "Caloi",
-    //   bikeType: "Mountain Bike"
-    // };
-
     return (
       <Query
         query={USER_QUERY}
-        variables={{ id: "cjwtisae10ech0103e84u962r" }}
+        variables={{ id: "cjx2bg22z08h90166zqgy3ium" }}
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
@@ -50,6 +39,7 @@ const USER_QUERY = gql`
         size
         url
       }
+      city
       firstName
       lastName
       province
