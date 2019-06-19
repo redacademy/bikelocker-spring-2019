@@ -4,8 +4,7 @@ const styles = {
   container: {
     ...theme.container,
     height: "100%",
-    marginLeft: "7%",
-    marginRight: "7%",
+    marginHorizontal: 20,
     justifyContent: "flex-start"
   },
   header: {
