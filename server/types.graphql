@@ -23,7 +23,6 @@ type User @model {
   updatedAt: DateTime! # read-only (managed by Graphcool)
 }
 
-
 type File @model {
   id: ID! @isUnique
   contentType: String
@@ -51,4 +50,5 @@ type Locker @model {
   longitude: Float!
   reviews: [Review!]! @relation(name: "LockerReviews")
   address: String!
+  avgRating: Int
 }
