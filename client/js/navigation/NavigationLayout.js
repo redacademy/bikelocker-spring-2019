@@ -8,7 +8,6 @@ import {
 import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
-import EditProfileScreen from "../screens/EditProfile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
