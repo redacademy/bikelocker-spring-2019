@@ -6,7 +6,6 @@ class AuthWelcomeContainer extends Component {
   };
 
   render() {
-    console.log(this.props, "container");
     return <AuthWelcome navigation={this.props.navigation} />;
   }
 }
