@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
   },
   h2: {
     fontSize: theme.titeFontSize,
-    color: theme.black
-    // fontFamily: theme.titleFont
+    color: theme.black,
+    fontFamily: theme.titleFont
   },
   p: {
     // fontFamily: theme.bodyFont,
