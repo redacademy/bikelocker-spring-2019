@@ -7,4 +7,4 @@ const About = ({ navigation }) => (
   </TouchableOpacity>
 );
 
-export default withNavigation(About);
+export default About;
