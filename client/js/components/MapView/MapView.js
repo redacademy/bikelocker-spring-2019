@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { TouchableOpacity } from "react-native";
-import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import { TouchableOpacity, Text, View } from "react-native";
+import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import styles from "./styles";
 import Loader from "../Loader";
 import IconFontAwesome from "react-native-vector-icons/FontAwesome";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { withNavigation } from "react-navigation";
+import AddLockerSlider from "../AddLockerSlider";
+import { black } from "ansi-colors";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -14,7 +16,12 @@ class MapViewComponent extends Component {
     this.state = {
       latitude: 49.2827,
       longitude: 123.1207,
-      error: null
+      coordinates: {
+        latitude: null,
+        longitude: null
+      },
+      error: null,
+      x: null
     };
   }
 
@@ -23,6 +30,7 @@ class MapViewComponent extends Component {
       this.setState({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
+
         error: null
       });
     });
@@ -57,58 +65,80 @@ class MapViewComponent extends Component {
     return (
       <Query query={GET_LOCATION}>
         {({ loading, error, data }) => {
-          if (loading) return <Loader />;
+          if (loading || !data) return <Loader />;
           if (data) {
             return (
-              <MapView
-                provider={PROVIDER_GOOGLE}
-                style={styles.mapView}
-                region={{
-                  latitude: latitude,
-                  longitude: longitude,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421
-                }}
-                initialRegion={{
-                  latitude: 49.2827,
-                  longitude: 123.1207,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421
-                }}
-                maxZoomLevel={20}
-                showsBuildings={true}
-                showsCompass={true}
-                showsUserLocation={true}
-              >
-                <TouchableOpacity
-                  style={styles.locator}
-                  onPress={() => this.getCurrentLocation()}
+              <View style={styles.mapContainer}>
+                <MapView
+                  provider={PROVIDER_GOOGLE}
+                  style={styles.mapView}
+                  onLongPress={e => {
+                    this.setState({
+                      coordinates: {
+                        latitude: e.nativeEvent.coordinate.latitude,
+                        longitude: e.nativeEvent.coordinate.longitude
+                      }
+                    });
+                  }}
+                  region={{
+                    latitude: latitude,
+                    longitude: longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421
+                  }}
+                  initialRegion={{
+                    latitude: 49.2827,
+                    longitude: 123.1207,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421
+                  }}
+                  maxZoomLevel={20}
+                  showsBuildings={true}
+                  showsMyLocationButton={true}
+                  showsUserLocation={true}
                 >
-                  <IconFontAwesome
-                    name="location-arrow"
-                    size={30}
-                    color="#FFF"
-                    style={{ textAlign: "center" }}
-                  />
-                </TouchableOpacity>
-                {data.allLockers.map(d => (
-                  <Marker
-                    key={d.id}
-                    coordinate={{
-                      latitude: d.latitude,
-                      longitude: d.longitude
-                    }}
-                    onPress={() =>
-                      this.props.navigation.push("Locker", {
-                        locationID: d.id,
-                        userLat: this.state.latitude,
-                        userLng: this.state.longitude
-                      })
-                    }
-                    title={d.address}
-                  />
-                ))}
-              </MapView>
+                  {this.state.coordinates.latitude !== null ||
+                  this.state.coordinates.longitude !== null ? (
+                    <Marker coordinate={this.state.coordinates} />
+                  ) : null}
+                  {data.allLockers.map(d => (
+                    <Marker
+                      key={d.id}
+                      coordinate={{
+                        latitude: d.latitude,
+                        longitude: d.longitude
+                      }}
+                      onPress={() =>
+                        this.props.navigation.push("Locker", {
+                          locationID: d.id,
+                          userLat: this.state.latitude,
+                          userLng: this.state.longitude
+                        })
+                      }
+                      title={d.address}
+                    />
+                  ))}
+
+                  <View style={styles.floatingButtons}>
+                    <TouchableOpacity
+                      style={styles.locator}
+                      onPress={() => this.getCurrentLocation()}
+                    >
+                      <IconFontAwesome
+                        name="location-arrow"
+                        // size={30}
+                        // color="#FFF"
+                        style={styles.arrow}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.locator}>
+                    <TouchableOpacity>
+                      <Text style={styles.arrow}>+</Text>
+                    </TouchableOpacity>
+                  </View>
+                </MapView>
+              </View>
             );
           }
         }}

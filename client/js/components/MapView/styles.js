@@ -1,24 +1,32 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
 
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
-  mapView: {
-    width: "100%",
-    height: "100%",
-    zIndex: 0
+  mapContainer: {
+    flex: 1
   },
+  mapView: {
+    height,
+    width
+  },
+  addLockerSliderContainer: {},
   locator: {
-    backgroundColor: theme.mediumGreen,
-    fontSize: 35,
-    width: 70,
-    textAlign: "center",
     height: 70,
-    borderRadius: 35,
-    top: "70%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: 70,
     alignSelf: "flex-end",
-    marginRight: 10
+    top: height / 1.45,
+    right: 20,
+    borderRadius: 100,
+    backgroundColor: theme.mediumGreen
+  },
+  arrow: {
+    textAlign: "center",
+    alignSelf: "center",
+    top: 18,
+    fontSize: 30,
+    color: "white"
   }
 });
 
