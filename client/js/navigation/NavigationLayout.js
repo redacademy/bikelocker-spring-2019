@@ -5,7 +5,7 @@ import {
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
-import { DrawerActions } from "react-navigation-drawer";
+import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
@@ -30,7 +30,8 @@ const FindLockerStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
+    EditProfile: EditProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
