@@ -17,9 +17,10 @@ export default async event => {
   try {
     const graphcool = fromEvent(event);
     const api = graphcool.api("simple/v1");
-
+    const lockerId = event.data.id;
+    const avgRating = 5;
     //update
-    const updateLocker = await updateLockerAvgRating(4);
+    const updateLocker = await updateLockerAvgRating(lockerId, avgRating);
 
     return event;
   } catch (e) {
@@ -28,10 +29,11 @@ export default async event => {
   }
 };
 
-async function updateLockerAvgRating(avgRating: Int!) {
+async function updateLockerAvgRating(id, avgRating) {
   const mutation = `
-      mutation updateLocker($avgRating: Int) {
+      mutation updateLocker($id: ID!, $avgRating: Int) {
         updateLocker(
+          id: $id
           avgRating: $avgRating,
         ) {
           id
@@ -41,6 +43,7 @@ async function updateLockerAvgRating(avgRating: Int!) {
     `;
 
   const variables = {
+    id: id,
     avgRating: avgRating
   };
 
