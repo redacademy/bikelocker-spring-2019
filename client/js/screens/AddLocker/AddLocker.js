@@ -4,34 +4,51 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Image,
+  Dimensions
 } from "react-native";
 import LockerRating from "../../components/LockerRating";
 import styles from "./styles";
-import Icon from "react-native-vector-icons/Ionicons";
 import ImagePicker from "react-native-image-picker";
 import { Form, Field } from "react-final-form";
+import WideAddPhoto from "../../components/WideAddPhoto";
+import HalfAddPhoto from "../../components/HalfAddPhoto";
 export default class AddLocker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewRating: null
+      reviewRating: null,
+      photo1Type: null,
+      photo1: null,
+      photo2Type: null,
+      photo2: null
     };
   }
 
-  handleChoosePhoto = () => {
+  handleChoosePhoto1 = () => {
     const options = {
       title: "Select or Take A Picture"
     };
     ImagePicker.showImagePicker(options, response => {
-      console.log("response: ", response);
+      // console.log("PHOTO response: ", response);
+      this.setState({ photo1Type: response.type, photo1: response.data });
+    });
+  };
+  handleChoosePhoto2 = () => {
+    const options = {
+      title: "Select or Take A Picture"
+    };
+    ImagePicker.showImagePicker(options, response => {
+      this.setState({ photo2Type: response.type, photo2: response.data });
+      console.log("PHOTO2 STATE: ", this.state);
     });
   };
 
   handleReviewRating = rating => {
     console.log("rating:", rating);
     this.setState({ reviewRating: rating }, () =>
-      console.log("STATE: ", this.state)
+      console.log("RATING STATE: ", this.state)
     );
   };
 
@@ -41,17 +58,45 @@ export default class AddLocker extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <TouchableOpacity
-          style={styles.photoContainer}
-          onPress={this.handleChoosePhoto}
-        >
-          <Icon name="ios-camera" style={styles.cameraIcon} />
-          <Text style={styles.cameraText}>Take a photo of the spot.</Text>
-          <Text style={styles.cameraText}>
-            Show others what this spot looks like.
-          </Text>
-        </TouchableOpacity>
+      <ScrollView style={styles.allContainer}>
+        {this.state.photo2 !== null ? (
+          <View style={styles.addPhotos}>
+            <Image
+              source={{
+                uri: `data:${this.state.photo1Type};base64,${this.state.photo1}`
+              }}
+              style={{
+                height: Dimensions.get("window").height * 0.2,
+                width: Dimensions.get("window").width * 0.49
+              }}
+            />
+            <Image
+              source={{
+                uri: `data:${this.state.photo2Type};base64,${this.state.photo2}`
+              }}
+              style={{
+                height: Dimensions.get("window").height * 0.2,
+                width: Dimensions.get("window").width * 0.49
+              }}
+            />
+          </View>
+        ) : this.state.photo1 !== null ? (
+          <View style={styles.addPhotos}>
+            <Image
+              source={{
+                uri: `data:${this.state.photo1Type};base64,${this.state.photo1}`
+              }}
+              style={{
+                height: Dimensions.get("window").height * 0.2,
+                width: Dimensions.get("window").width * 0.45,
+                padding: 5
+              }}
+            />
+            <HalfAddPhoto handleChoosePhoto={this.handleChoosePhoto2} />
+          </View>
+        ) : (
+          <WideAddPhoto handleChoosePhoto={this.handleChoosePhoto1} />
+        )}
         <View style={styles.container}>
           <Text style={styles.address}>1100 Block Cambie St.</Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
