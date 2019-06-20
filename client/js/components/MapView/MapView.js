@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text } from "react-native";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { TouchableOpacity } from "react-native";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
-
+import Loader from "../Loader";
 import IconFontAwesome from "react-native-vector-icons/FontAwesome";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import { withNavigation } from "react-navigation";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -52,40 +55,80 @@ class MapViewComponent extends Component {
   render() {
     const { latitude, longitude } = this.state;
     return (
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        style={styles.mapView}
-        region={{
-          latitude: latitude,
-          longitude: longitude,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421
+      <Query query={GET_LOCATION}>
+        {({ loading, error, data }) => {
+          if (loading) return <Loader />;
+          if (data) {
+            return (
+              <MapView
+                provider={PROVIDER_GOOGLE}
+                style={styles.mapView}
+                region={{
+                  latitude: latitude,
+                  longitude: longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421
+                }}
+                initialRegion={{
+                  latitude: 49.2827,
+                  longitude: 123.1207,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421
+                }}
+                maxZoomLevel={20}
+                showsBuildings={true}
+                showsCompass={true}
+                showsUserLocation={true}
+              >
+                <TouchableOpacity
+                  style={styles.locator}
+                  onPress={() => this.getCurrentLocation()}
+                >
+                  <IconFontAwesome
+                    name="location-arrow"
+                    size={30}
+                    color="#FFF"
+                    style={{ textAlign: "center" }}
+                  />
+                </TouchableOpacity>
+                {data.allLockers.map(d => (
+                  <Marker
+                    key={d.id}
+                    coordinate={{
+                      latitude: d.latitude,
+                      longitude: d.longitude
+                    }}
+                    onPress={() =>
+                      this.props.navigation.push("Locker", {
+                        locationID: d.id,
+                        userLat: this.state.latitude,
+                        userLng: this.state.longitude
+                      })
+                    }
+                    title={d.address}
+                  />
+                ))}
+              </MapView>
+            );
+          }
         }}
-        initialRegion={{
-          latitude: 49.2827,
-          longitude: 123.1207,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421
-        }}
-        maxZoomLevel={20}
-        showsBuildings={true}
-        showsCompass={true}
-        showsUserLocation={true}
-      >
-        <TouchableOpacity
-          style={styles.locator}
-          onPress={() => this.getCurrentLocation()}
-        >
-          <IconFontAwesome
-            name="location-arrow"
-            size={30}
-            color="#FFF"
-            style={{ textAlign: "center" }}
-          />
-        </TouchableOpacity>
-      </MapView>
+      </Query>
     );
   }
 }
 
-export default MapViewComponent;
+export default withNavigation(MapViewComponent);
+
+const GET_LOCATION = gql`
+  query {
+    allLockers {
+      id
+      address
+      latitude
+      longitude
+      reviews {
+        rating
+      }
+    }
+  }
+`;

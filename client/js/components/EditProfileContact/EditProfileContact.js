@@ -6,19 +6,9 @@ const Profile = ({ user, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>My Profile</Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("EditProfile", { user: user })}
-        >
-          <Text style={styles.link}>Edit</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Contact</Text>
       </View>
-      <Image
-        borderRadius={75}
-        resizeMode="contain"
-        style={styles.profilePic}
-        source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
-      />
+
       <View style={styles.info}>
         <Text style={styles.userName}>
           {user.firstName} {user.lastName}
