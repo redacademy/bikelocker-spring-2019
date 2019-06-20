@@ -9,7 +9,7 @@ const FindLocker = () => {
   return (
     <GooglePlaceContext.Consumer>
       {({ location, updateLocation }) => (
-        <View style={styles.map}>
+        <View>
           <GoogleMapsSearch updateContextLocation={updateLocation} />
           <MapViewComponent searchedLocation={location} />
         </View>
