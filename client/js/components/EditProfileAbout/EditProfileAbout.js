@@ -6,12 +6,7 @@ const Profile = ({ user, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>My Profile</Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("EditProfile", { user: user })}
-        >
-          <Text style={styles.link}>Edit</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>About</Text>
       </View>
       <Image
         borderRadius={75}

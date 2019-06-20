@@ -1,9 +1,19 @@
 const globalStyles = {
-  titleFont: "Avenir-Heavy", // Font Size should be 30px
-  subheadingFont: "Avenir-Light", // Font Size should be 20px
-  captionFont: "Open-Sans-Semibold", // Font Size should be 16px
-  bodyFont: "Open-Sans-Regular", //Font Size should be 16px
-  titeFontSize: 30, // For titles
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FFF"
+  },
+  link: {
+    color: "#FCAF17",
+    textDecorationLine: "underline"
+  },
+  titleFont: "../assets/fonts/Metropolis-ExtraBold", // Font Size should be 30px
+  subheadingFont: "../assets/fonts/Metropolis-Light", // Font Size should be 20px
+  captionFont: "../assets/fonts/OpenSans-SemiBold", // Font Size should be 16px
+  bodyFont: "../assets/fonts/OpenSans-Regular", //Font Size should be 16px
+  titleFontSize: 30, // For titles
   subheadingFontSize: 20, // For subheadings
   commonFontSize: 16, // For caption and body font sizes
   mediumGreen: "#009887",
