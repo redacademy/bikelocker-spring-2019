@@ -4,18 +4,17 @@ export default async event => {
   console.log(event);
 
   try {
-    // Create Graphcool API (based on https://github.com/graphcool/graphql-request)
+    //Create Graphcool API (based on https://github.com/graphcool/graphql-request)
     const graphcool = fromEvent(event);
     const api = graphcool.api("simple/v1");
 
     const lockerId = event.data.id;
-    const avgRating = await getAvgRating(api, lockerId);
+    // const avgRating = await getAvgRating(api, lockerId);
+
     //dummy avgRating to test mutation
-    // const avgRating = 5
+    const avgRating = 5;
 
     const updatedLocker = await updateLocker(api, lockerId, avgRating);
-    console.log(reviews);
-    console.log(updatedLocker);
 
     return event;
   } catch (e) {
@@ -24,7 +23,7 @@ export default async event => {
   }
 };
 
-async function getAvgeRating(api, id) {
+async function getAvgRating(api, id) {
   const queryLockerReviews = `
     query Locker ($id:ID!){
      Locker(id:$id) {
@@ -39,6 +38,7 @@ async function getAvgeRating(api, id) {
     id
   };
 
+  //will implement only getting 10 later
   return api
     .request(queryLockerReviews, variables)
     .then(
@@ -58,5 +58,5 @@ async function updateLocker(api, id, avgRating) {
 `;
 
   const variables = { id, avgRating };
-  return api.request(updateLockerMutation, variables).then(result => result.id);
+  return api.request(updateLockerMutation, variables);
 }
