@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 
 const About = ({ navigation }) => (
-  <View>
+  <TouchableOpacity onPress={() => navigation.navigate("AddLocker", {})}>
     <Text>This is the About Screen</Text>
-  </View>
+  </TouchableOpacity>
 );
 
 export default About;

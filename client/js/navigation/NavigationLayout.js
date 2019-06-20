@@ -16,6 +16,7 @@ import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -42,7 +43,8 @@ const ProfileStack = createStackNavigator(
 
 const AboutStack = createStackNavigator(
   {
-    About: AboutScreen
+    About: AboutScreen,
+    AddLocker: AddLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
