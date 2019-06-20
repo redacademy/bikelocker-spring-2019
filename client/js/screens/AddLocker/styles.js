@@ -1,9 +1,35 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    width: "80%",
-    alignSelf: "center"
+    width: '80%',
+    alignSelf: 'center',
+  },
+  addImageContainer: {
+    flex: 1,
+  },
+  photoContainer: {
+    flex: 1,
+    backgroundColor: '#009887',
+    height: height * 0.2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  previewContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  previewTouch: {
+    flex: 0.5,
+  },
+  previewImage: {
+    height: height * 0.2,
+    width: width * 0.5,
+  },
+  cameraText: {
+    color: '#fff',
   },
   photoContainer: {
     backgroundColor: "#009887",
@@ -25,97 +51,93 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   addPhotos: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-PhotoView: {
-    flex: 1,
-    flexDirection: "row"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   address: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     padding: 10,
-    width: "100%"
+    width: '100%',
   },
   ratingText: {
-    textAlign: "center",
+    textAlign: 'center',
     padding: 10,
-    color: "#009887"
+    color: '#009887',
   },
   lockerDesc: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   secureText: {
-    color: "#999999",
-    fontSize: 10
+    color: '#999999',
+    fontSize: 10,
   },
   commentText: {
     padding: 10,
-    color: "#009887"
+    color: '#009887',
   },
   form: {
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: "#999999",
-    width: "100%",
+    borderColor: '#999999',
+    width: '100%',
     height: 120,
-    borderRadius: 10
+    borderRadius: 10,
   },
   input: {
-    height: 120
+    height: 120,
   },
   buttons: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
   },
   back: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     height: 40,
     width: 100,
-    textAlign: "center",
-    color: "black"
+    textAlign: 'center',
+    color: 'black',
   },
   submit: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   backSpacing: {
     padding: 11,
     paddingRight: 20,
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     height: 45,
-    width: "50%",
-    borderStyle: "solid",
+    width: '50%',
+    borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: "#999999",
+    borderColor: '#999999',
     borderRadius: 20,
-    textAlign: "center",
-    color: "#000",
-    marginRight: 10
+    textAlign: 'center',
+    color: '#000',
+    marginRight: 10,
   },
   submitSpacing: {
     padding: 11,
     paddingRight: 20,
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     height: 45,
-    width: "50%",
-    borderStyle: "solid",
+    width: '50%',
+    borderStyle: 'solid',
     borderWidth: 2,
-    borderColor: "#999999",
-    backgroundColor: "#999999",
+    borderColor: '#999999',
+    backgroundColor: '#999999',
     borderRadius: 20,
-    textAlign: "center",
-    color: "#000",
-    marginLeft: 10
-  }
+    textAlign: 'center',
+    color: '#000',
+    marginLeft: 10,
+  },
 });
 
 export default styles;

@@ -8,7 +8,7 @@
 // export default class ProfileContainer extends Component {
 //   render() {
 //     return (
-//       <Query
+//       <Query 
 //         query={USER_QUERY}
 //         variables={{ id: "cjx2bg22z08h90166zqgy3ium" }}
 //         fetchPolicy="network-only"
@@ -16,7 +16,9 @@
 //         {({ loading, error, data }) => {
 //           if (loading) return <Loader />;
 //           if (error) return <Text>{`Error! ${error.message}`}</Text>;
-//           return <Profile user={data.User} />;
+//           return (
+//             <Profile user={data.User} navigation={this.props.navigation} />
+//           );
 //         }}
 //       </Query>
 //     );

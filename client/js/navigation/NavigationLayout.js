@@ -5,9 +5,9 @@ import {
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
-// import EditProfileScreen from "../screens/EditProfile";
+import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
-// import ProfileScreen from "../screens/Profile";
+// import ProfileScreen from '../screens/Profile';
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
@@ -32,13 +32,13 @@ const FindLockerStack = createStackNavigator(
 // const ProfileStack = createStackNavigator(
 //   {
 //     Profile: ProfileScreen,
-//     EditProfile: EditProfileScreen
+//     EditProfile: EditProfileScreen,
 //   },
 //   {
 //     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation)
-//     })
-//   }
+//       ...sharedNavigationOptions(navigation),
+//     }),
+//   },
 // );
 
 const AboutStack = createStackNavigator(
@@ -47,6 +47,7 @@ const AboutStack = createStackNavigator(
     AddLocker: AddLockerScreen
   },
   {
+    initialRouteName: "AddLocker",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -141,6 +142,7 @@ export default createDrawerNavigator(
     }
   },
   {
+    initialRouteName: "About",
     contentComponent: props => <DrawerContent {...props} />,
     overlayColor: "black"
   },
