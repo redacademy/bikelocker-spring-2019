@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import FindLocker from "./FindLocker";
 
-export default class FindLockerContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
+class FindLockerContainer extends Component {
+  static navigationOptions = {
+    title: "Find Spot"
+  };
   render() {
     return <FindLocker />;
   }
 }
+
+export default FindLockerContainer;

@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Image, View, TouchableOpacity } from "react-native";
 import { Header } from "react-navigation";
-import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
+import IconEntypo from "react-native-vector-icons/Entypo";
+import theme from "../config/globalStyles";
 
 const AppHeader = props => (
   <View style={{ backgroundColor: "white", overflow: "hidden" }}>
@@ -14,7 +15,9 @@ export const sharedNavigationOptions = navigation => ({
   headerBackTitle: null,
   header: props => <AppHeader {...props} />,
   headerStyle: {
-    backgroundColor: "#009887"
+    backgroundColor: theme.mediumGreen,
+    height: 60,
+    zIndex: -10
   },
   headerTintColor: "white",
   headerTitleStyle: {
@@ -23,7 +26,20 @@ export const sharedNavigationOptions = navigation => ({
   },
   headerLeft: (
     <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-      <Icon name="md-menu" size={25} color="white" style={{ margin: 15 }} />
+      <IconEntypo
+        name="menu"
+        size={45}
+        color="#fff"
+        style={{ marginLeft: 10 }}
+      />
+    </TouchableOpacity>
+  ),
+  headerTitle: (
+    <TouchableOpacity>
+      <Image
+        source={require("../assets/images/bikelockerlogo-white.png")}
+        style={{ width: 40, height: 40, marginBottom: 5 }}
+      />
     </TouchableOpacity>
   )
 });
