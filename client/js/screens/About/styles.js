@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     lineHeight: 25
   },
   image: {
-    marginTop: 60,
+    top: 60,
     padding: 20,
     height: 150,
     width: 150,
