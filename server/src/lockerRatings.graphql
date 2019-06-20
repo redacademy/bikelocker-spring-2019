@@ -1,0 +1,10 @@
+subscription {
+  Review(filter: {
+    mutation_in: [CREATED, UPDATED]
+  }) {
+    node {
+      locker
+      rating
+    }
+  }
+}
