@@ -6,6 +6,7 @@ type User @model {
   firstName: String
   lastName: String
   email: String! @isUnique
+  phone: Int
   password: String!
   age: Int
   bikeType: String
