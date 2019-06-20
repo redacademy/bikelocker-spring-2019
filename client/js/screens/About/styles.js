@@ -4,8 +4,7 @@ import theme from "../../config/globalStyles";
 const styles = StyleSheet.create({
   container: {
     top: 40,
-    marginLeft: 20,
-    marginRight: 20
+    marginHorizontal: 20
   },
   h2: {
     fontSize: theme.titeFontSize,
@@ -13,7 +12,6 @@ const styles = StyleSheet.create({
     fontFamily: theme.titleFont
   },
   p: {
-    // fontFamily: theme.bodyFont,
     fontSize: theme.commonFontSize,
     paddingTop: 10,
     lineHeight: 25
