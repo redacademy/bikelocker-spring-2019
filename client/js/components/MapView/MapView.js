@@ -75,8 +75,6 @@ class MapViewComponent extends Component {
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
                   onLongPress={e => {
-                    console.log(e);
-                    console.log(e.target);
                     if (this.state.slider === true) {
                       this.setState({
                         coordinates: {
