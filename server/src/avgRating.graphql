@@ -1,8 +1,0 @@
-type AverageRatingsPayload {
-  title: String!
-  content: String!
-}
-
-extend type Query {
-  avgRating: [AverageRatingsPayload!]!
-}

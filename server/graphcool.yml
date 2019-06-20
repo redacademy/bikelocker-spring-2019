@@ -16,23 +16,6 @@
 # In the types.graphql you define your data schema
 types: ./types.graphql
 
-functions:
-  startingRating:
-    type: operationAfter
-    operation: Locker.create
-    handler:
-      code: ./src/startRating.js
-  updateLocker:
-    type: operationAfter
-    operation: Locker.update
-    handler:
-      code: ./src/updateLocker.js
-  avgRating:
-    type: resolver
-    schema: avgRating.graphql
-    handler:
-      code: ./src/avgRating.js
-
 # Model/Relation permissions are used to limit the API access
 # To take the burden of thinking about those while development, we
 # preconfigured the wildcard ("*") permission that allows everything
