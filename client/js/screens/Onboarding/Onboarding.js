@@ -1,10 +1,9 @@
 import React from "react";
 import { View, TouchableOpacity } from "react-native";
-import styles from "./styles";
 import Onboarding from "react-native-onboarding-swiper";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import styles from "./styles";
 
-const Onboarding = () => {
+const OnboardingScreens = () => {
   const onboardingScreens = [
     {
       backgroundColor: "#fff",
@@ -23,7 +22,7 @@ const Onboarding = () => {
     }
   ];
   return (
-    <View style={{ flex: 1, height: "100%", width: "100%" }}>
+    <View>
       <TouchableOpacity style={{ backgroundColor: "black" }}>
         <Onboarding
           onSkip={() => console.log("this will go to the map screen")}
@@ -40,4 +39,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default OnboardingScreens;
