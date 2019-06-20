@@ -10,136 +10,121 @@ import {
 } from "react-native";
 import LockerRating from "../../components/LockerRating";
 import styles from "./styles";
-import ImagePicker from "react-native-image-picker";
 import { Form, Field } from "react-final-form";
-import WideAddPhoto from "../../components/WideAddPhoto";
-import HalfAddPhoto from "../../components/HalfAddPhoto";
-export default class AddLocker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviewRating: null,
-      photo1Type: null,
-      photo1: null,
-      photo2Type: null,
-      photo2: null
-    };
-  }
+import ImagePicker from "react-native-image-picker";
+import Icon from "react-native-vector-icons/Ionicons";
 
-  handleChoosePhoto1 = () => {
-    const options = {
-      title: "Select or Take A Picture"
-    };
-    ImagePicker.showImagePicker(options, response => {
-      // console.log("PHOTO response: ", response);
-      this.setState({ photo1Type: response.type, photo1: response.data });
-    });
-  };
-  handleChoosePhoto2 = () => {
-    const options = {
-      title: "Select or Take A Picture"
-    };
-    ImagePicker.showImagePicker(options, response => {
-      this.setState({ photo2Type: response.type, photo2: response.data });
-      console.log("PHOTO2 STATE: ", this.state);
-    });
+const renderAddImage = (saveImage, updateFilesToUpload) => (
+  <TouchableOpacity
+    style={styles.photoContainer}
+    onPress={() => saveImage(updateFilesToUpload)}
+  >
+    <Icon name="ios-camera" style={styles.cameraIcon} />
+    <Text style={styles.cameraText}>Take a photo</Text>
+  </TouchableOpacity>
+);
+
+const saveImage = updateFilesToUpload => {
+  const options = {
+    title: "Pick Bike Locker Image"
   };
 
-  handleReviewRating = rating => {
-    console.log("rating:", rating);
-    this.setState({ reviewRating: rating }, () =>
-      console.log("RATING STATE: ", this.state)
-    );
-  };
+  ImagePicker.showImagePicker(options, response => {
+    if (response.didCancel) {
+      console.log("User cancelled image picker");
+    } else if (response.error) {
+      console.log("ImagePicker Error: ", response.error);
+    } else {
+      updateFilesToUpload(response.uri);
+    }
+  });
+};
 
-  handleInput = () => {
-    console.log("something submitted");
-  };
-
-  render() {
-    return (
-      <ScrollView style={styles.allContainer}>
-        {this.state.photo2 !== null ? (
-          <View style={styles.addPhotos}>
-            <Image
-              source={{
-                uri: `data:${this.state.photo1Type};base64,${this.state.photo1}`
-              }}
-              style={{
-                height: Dimensions.get("window").height * 0.2,
-                width: Dimensions.get("window").width * 0.49
-              }}
-            />
-            <Image
-              source={{
-                uri: `data:${this.state.photo2Type};base64,${this.state.photo2}`
-              }}
-              style={{
-                height: Dimensions.get("window").height * 0.2,
-                width: Dimensions.get("window").width * 0.49
-              }}
-            />
-          </View>
-        ) : this.state.photo1 !== null ? (
-          <View style={styles.addPhotos}>
-            <Image
-              source={{
-                uri: `data:${this.state.photo1Type};base64,${this.state.photo1}`
-              }}
-              style={{
-                height: Dimensions.get("window").height * 0.2,
-                width: Dimensions.get("window").width * 0.45,
-                padding: 5
-              }}
-            />
-            <HalfAddPhoto handleChoosePhoto={this.handleChoosePhoto2} />
-          </View>
-        ) : (
-          <WideAddPhoto handleChoosePhoto={this.handleChoosePhoto1} />
-        )}
-        <View style={styles.container}>
-          <Text style={styles.address}>1100 Block Cambie St.</Text>
-          <Text style={styles.ratingText}>Rate the security of this rack</Text>
-          <LockerRating handleReviewRating={this.handleReviewRating} />
-          <View style={styles.lockerDesc}>
-            <Text style={styles.secureText}>Less secure</Text>
-            <Text style={styles.secureText}>More secure</Text>
-          </View>
-          <Text style={styles.commentText}>Leave a comment</Text>
-
-          <Form
-            onSubmit={this.handleInput}
-            render={({ handleSubmit, pristine, invalid }) => (
-              <View>
-                <Field
-                  name="bio"
-                  render={({ input, meta }) => (
-                    <TextInput
-                      style={styles.form}
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      maxLength={40}
-                      multiline={true}
-                    />
-                  )}
-                />
-              </View>
-            )}
+const AddLocker = ({ state, updateFilesToUpload }) => {
+  return (
+    <ScrollView style={styles.allContainer}>
+      {state.filesToUpload.length === 0 &&
+        renderAddImage(saveImage, updateFilesToUpload)}
+      {state.filesToUpload && state.filesToUpload.length === 1 && (
+        <View style={styles.PhotoView}>
+          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)} />
+          <Image
+            source={{ uri: state.filesToUpload[0] }}
+            style={{
+              height: Dimensions.get("window").height * 0.2,
+              width: Dimensions.get("window").width * 0.5
+            }}
           />
-
-          <View style={styles.buttons}>
-            <TouchableOpacity style={styles.backSpacing}>
-              <Text style={styles.back}>Back</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={this.handleSubmit}
-              style={styles.submitSpacing}
-            >
-              <Text style={styles.submit}>Submit</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity />
+          {renderAddImage(saveImage, updateFilesToUpload)}
         </View>
-      </ScrollView>
-    );
-  }
-}
+      )}
+      {state.filesToUpload && state.filesToUpload.length === 2 && (
+        <View style={styles.PhotoView}>
+          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+            <Image
+              source={{ uri: state.filesToUpload[0] }}
+              style={{
+                height: Dimensions.get("window").height * 0.2,
+                width: Dimensions.get("window").width * 0.5
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+            <Image
+              source={{ uri: state.filesToUpload[1] }}
+              style={{
+                height: Dimensions.get("window").height * 0.2,
+                width: Dimensions.get("window").width * 0.5
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
+      <View style={styles.container}>
+        <Text style={styles.address}>1100 Block Cambie St.</Text>
+        <Text style={styles.ratingText}>Rate the security of this rack</Text>
+        <LockerRating handleReviewRating={this.handleReviewRating} />
+        <View style={styles.lockerDesc}>
+          <Text style={styles.secureText}>Less secure</Text>
+          <Text style={styles.secureText}>More secure</Text>
+        </View>
+        <Text style={styles.commentText}>Leave a comment</Text>
+
+        <Form
+          onSubmit={() => {}}
+          render={({ handleSubmit, pristine, invalid }) => (
+            <View>
+              <Field
+                name="bio"
+                render={({ input, meta }) => (
+                  <TextInput
+                    style={styles.form}
+                    onSubmit={handleSubmit}
+                    editable={true}
+                    maxLength={40}
+                    multiline={true}
+                  />
+                )}
+              />
+            </View>
+          )}
+        />
+
+        <View style={styles.buttons}>
+          <TouchableOpacity style={styles.backSpacing}>
+            <Text style={styles.back}>Back</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.handleSubmit}
+            style={styles.submitSpacing}
+          >
+            <Text style={styles.submit}>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
+export default AddLocker;

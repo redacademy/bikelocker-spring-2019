@@ -1,16 +1,36 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const styles = StyleSheet.create({
-  allContainer: {
-    paddingTop: 5
-  },
   container: {
     width: "80%",
     alignSelf: "center"
   },
+  photoContainer: {
+    backgroundColor: "#009887",
+    height: Dimensions.get("window").height * 0.2,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 20
+  },
+  cameraIcon: {
+    color: "#fff",
+    fontSize: 40
+  },
+  cameraText: {
+    color: "#fff",
+    flex: 1,
+    justifyContent: "center",
+    flexWrap: "wrap",
+    textAlign: "center"
+  },
   addPhotos: {
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+PhotoView: {
+    flex: 1,
+    flexDirection: "row"
   },
   address: {
     textAlign: "center",

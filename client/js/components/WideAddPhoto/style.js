@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 20
+    paddingTop: 10,
+    paddingBottom: 10
   },
   cameraIcon: {
     color: "#fff",
