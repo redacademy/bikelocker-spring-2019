@@ -1,11 +1,22 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
-import Profile from "./Profile";
+import { Text, View } from "react-native";
+import EditProfile from "./EditProfile";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Loader from "../../components/Loader";
 
-export default class ProfileContainer extends Component {
+export default class EditProfileContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switchTab: false
+    };
+  }
+
+  toggleTab = () => {
+    this.setState({ switchTab: !this.state.switchTab });
+  };
+
   render() {
     return (
       <Query
@@ -17,7 +28,11 @@ export default class ProfileContainer extends Component {
           if (loading) return <Loader />;
           if (error) return <Text>{`Error! ${error.message}`}</Text>;
           return (
-            <Profile user={data.User} navigation={this.props.navigation} />
+            <EditProfile
+              user={data.User}
+              toggleTab={this.toggleTab}
+              switchTab={this.state.switchTab}
+            />
           );
         }}
       </Query>
