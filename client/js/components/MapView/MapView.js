@@ -21,8 +21,7 @@ class MapViewComponent extends Component {
         longitude: null
       },
       slider: false,
-      error: null,
-      x: null
+      error: null
     };
   }
 
