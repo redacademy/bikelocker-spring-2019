@@ -129,7 +129,7 @@ class MapViewComponent extends Component {
                 <ActionButton
                   position="right"
                   offsetX={15}
-                  size={70}
+                  size={60}
                   renderIcon={() => (
                     <IconFontAwesome
                       size={30}
@@ -157,7 +157,7 @@ class MapViewComponent extends Component {
                 <ActionButton
                   offsetX={15}
                   position="right"
-                  size={70}
+                  size={60}
                   renderIcon={() => (
                     <IconFontAwesome
                       size={30}

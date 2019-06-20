@@ -11,11 +11,11 @@ const styles = StyleSheet.create({
   },
   actionBtn: {
     position: "absolute",
-    top: height / 1.65
+    top: height / 1.9
   },
   actionBtn2: {
     position: "absolute",
-    top: height / 1.4
+    top: height / 1.5
   }
 });
 
