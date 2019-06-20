@@ -1,24 +1,21 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
 
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
+  mapContainer: { flex: 1 },
   mapView: {
-    width: "100%",
-    height: "100%",
-    zIndex: 0
+    height,
+    width
   },
-  locator: {
-    backgroundColor: theme.mediumGreen,
-    fontSize: 35,
-    width: 70,
-    textAlign: "center",
-    height: 70,
-    borderRadius: 35,
-    top: "70%",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "flex-end",
-    marginRight: 10
+  actionBtn: {
+    position: "absolute",
+    top: height / 1.9
+  },
+  actionBtn2: {
+    position: "absolute",
+    top: height / 1.5
   }
 });
 
