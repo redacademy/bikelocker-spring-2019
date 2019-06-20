@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { TouchableOpacity, Text, View } from "react-native";
-import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
 import Loader from "../Loader";
 import IconFontAwesome from "react-native-vector-icons/FontAwesome";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { withNavigation } from "react-navigation";
-import AddLockerSlider from "../AddLockerSlider";
-import { black } from "ansi-colors";
+import ActionButton from "react-native-action-button";
+import theme from "../../config/globalStyles";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class MapViewComponent extends Component {
         latitude: null,
         longitude: null
       },
+      slider: false,
       error: null,
       x: null
     };
@@ -62,6 +63,7 @@ class MapViewComponent extends Component {
   }
   render() {
     const { latitude, longitude } = this.state;
+
     return (
       <Query query={GET_LOCATION}>
         {({ loading, error, data }) => {
@@ -73,12 +75,16 @@ class MapViewComponent extends Component {
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
                   onLongPress={e => {
-                    this.setState({
-                      coordinates: {
-                        latitude: e.nativeEvent.coordinate.latitude,
-                        longitude: e.nativeEvent.coordinate.longitude
-                      }
-                    });
+                    console.log(e);
+                    console.log(e.target);
+                    if (this.state.slider === true) {
+                      this.setState({
+                        coordinates: {
+                          latitude: e.nativeEvent.coordinate.latitude,
+                          longitude: e.nativeEvent.coordinate.longitude
+                        }
+                      });
+                    }
                   }}
                   region={{
                     latitude: latitude,
@@ -118,26 +124,51 @@ class MapViewComponent extends Component {
                       title={d.address}
                     />
                   ))}
-
-                  <View style={styles.floatingButtons}>
-                    <TouchableOpacity
-                      style={styles.locator}
-                      onPress={() => this.getCurrentLocation()}
-                    >
-                      <IconFontAwesome
-                        name="location-arrow"
-                        // size={30}
-                        // color="#FFF"
-                        style={styles.arrow}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.locator}>
-                    <TouchableOpacity>
-                      <Text style={styles.arrow}>+</Text>
-                    </TouchableOpacity>
-                  </View>
                 </MapView>
+
+                <ActionButton
+                  position="right"
+                  offsetX={15}
+                  size={70}
+                  renderIcon={() => (
+                    <IconFontAwesome
+                      size={30}
+                      color={theme.white}
+                      name="plus"
+                    />
+                  )}
+                  buttonColor={theme.mediumGreen}
+                  style={styles.actionBtn}
+                >
+                  <ActionButton.Item
+                    buttonColor={theme.mediumGreen}
+                    title="Add a locker"
+                    onPress={() =>
+                      this.setState({ slider: !this.state.slider })
+                    }
+                  >
+                    <IconFontAwesome
+                      name="map-marker"
+                      size={30}
+                      color={theme.white}
+                    />
+                  </ActionButton.Item>
+                </ActionButton>
+                <ActionButton
+                  offsetX={15}
+                  position="right"
+                  size={70}
+                  renderIcon={() => (
+                    <IconFontAwesome
+                      size={30}
+                      color={theme.white}
+                      name="location-arrow"
+                    />
+                  )}
+                  buttonColor={theme.mediumGreen}
+                  style={styles.actionBtn2}
+                  onPress={() => this.getCurrentLocation()}
+                />
               </View>
             );
           }

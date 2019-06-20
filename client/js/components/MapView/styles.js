@@ -4,29 +4,18 @@ import theme from "../../config/globalStyles";
 const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  mapContainer: {
-    flex: 1
-  },
+  mapContainer: { flex: 1 },
   mapView: {
     height,
     width
   },
-  addLockerSliderContainer: {},
-  locator: {
-    height: 70,
-    width: 70,
-    alignSelf: "flex-end",
-    top: height / 1.45,
-    right: 20,
-    borderRadius: 100,
-    backgroundColor: theme.mediumGreen
+  actionBtn: {
+    position: "absolute",
+    top: height / 1.65
   },
-  arrow: {
-    textAlign: "center",
-    alignSelf: "center",
-    top: 18,
-    fontSize: 30,
-    color: "white"
+  actionBtn2: {
+    position: "absolute",
+    top: height / 1.4
   }
 });
 
