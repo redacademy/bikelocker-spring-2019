@@ -1,13 +1,32 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import AddLocker from "./AddLocker";
+import React, { Component } from 'react';
+import AddLocker from './AddLocker';
 
 export default class AddLockerContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filesToUpload: [],
+      reviewRating: null,
+    };
+  }
+
+  updateFilesToUpload = file => {
+    const filesToUpload = this.state.filesToUpload;
+    filesToUpload.push(file);
+    this.setState({ filesToUpload });
+  };
+
+  handleReviewRating = rating => {
+    this.setState({ reviewRating: rating });
+  };
+
   render() {
+    console.log(this.state.filesToUpload);
     return (
-      <View navigation={this.props.navigation}>
-        <AddLocker />
-      </View>
+      <AddLocker
+        state={{ ...this.state }}
+        updateFilesToUpload={this.updateFilesToUpload}
+      />
     );
   }
 }
