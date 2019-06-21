@@ -13,8 +13,11 @@ const styles = StyleSheet.create({
     fontSize: theme.subheadingFontSize,
     fontWeight: "bold"
   },
-  page2: {
+  page: {
     flex: 1
+  },
+  image: {
+    marginTop: 30
   }
 });
 
