@@ -11,10 +11,6 @@ import { Form, Field } from "react-final-form";
 import styles from "./styles";
 
 class Register extends Component {
-  static navigationOptions = {
-    title: "Register"
-  };
-
   handleSubmit = () => {
     console.log("something submitted");
   };
