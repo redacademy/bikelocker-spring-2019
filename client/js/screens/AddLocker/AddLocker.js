@@ -40,10 +40,6 @@ const saveImage = updateFilesToUpload => {
   });
 };
 
-onSubmit = () => {
-  console.log("submit submit");
-};
-
 const AddLocker = ({
   state,
   updateFilesToUpload,

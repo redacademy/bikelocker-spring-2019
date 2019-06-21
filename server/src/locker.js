@@ -48,6 +48,4 @@ const csvToJSONObject = async () => {
   }
 };
 
-// csvToJSONObject();
-
 module.exports = csvToJSONObject;
