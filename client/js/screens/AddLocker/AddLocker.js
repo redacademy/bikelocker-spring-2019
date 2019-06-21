@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ScrollView,
   Text,
@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
-  Dimensions,
-} from 'react-native';
-import LockerRating from '../../components/LockerRating';
-import styles from './styles';
-import { Form, Field } from 'react-final-form';
-import ImagePicker from 'react-native-image-picker';
-import Icon from 'react-native-vector-icons/Ionicons';
+  Dimensions
+} from "react-native";
+import LockerRating from "../../components/LockerRating";
+import styles from "./styles";
+import { Form, Field } from "react-final-form";
+import ImagePicker from "react-native-image-picker";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -26,18 +26,22 @@ const renderAddImage = (saveImage, updateFilesToUpload) => (
 
 const saveImage = updateFilesToUpload => {
   const options = {
-    title: 'Pick Bike Locker Image',
+    title: "Pick Bike Locker Image"
   };
 
   ImagePicker.showImagePicker(options, response => {
     if (response.didCancel) {
-      console.log('User cancelled image picker');
+      console.log("User cancelled image picker");
     } else if (response.error) {
-      console.log('ImagePicker Error: ', response.error);
+      console.log("ImagePicker Error: ", response.error);
     } else {
       updateFilesToUpload(response.uri);
     }
   });
+};
+
+onSubmit = () => {
+  console.log("submit submit");
 };
 
 const AddLocker = ({ state, updateFilesToUpload }) => {
@@ -83,13 +87,16 @@ const AddLocker = ({ state, updateFilesToUpload }) => {
         <Text style={styles.commentText}>Leave a comment</Text>
 
         <Form
-          onSubmit={() => {}}
+          onSubmit={() => {
+            this.onSubmit();
+          }}
           render={({ handleSubmit, pristine, invalid }) => (
             <View>
               <Field
                 name="bio"
                 render={({ input, meta }) => (
                   <TextInput
+                    {...input}
                     style={styles.form}
                     onSubmit={handleSubmit}
                     editable={true}
@@ -98,21 +105,20 @@ const AddLocker = ({ state, updateFilesToUpload }) => {
                   />
                 )}
               />
+              <View style={styles.buttons}>
+                <TouchableOpacity style={styles.backSpacing}>
+                  <Text style={styles.back}>Back</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.onSubmit}
+                  style={styles.submitSpacing}
+                >
+                  <Text style={styles.submit}>Submit</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         />
-
-        <View style={styles.buttons}>
-          <TouchableOpacity style={styles.backSpacing}>
-            <Text style={styles.back}>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.handleSubmit}
-            style={styles.submitSpacing}
-          >
-            <Text style={styles.submit}>Submit</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </ScrollView>
   );

@@ -15,7 +15,7 @@ export default class AddLockerContainer extends Component {
     filesToUpload.push(file);
     this.setState({ filesToUpload });
   };
-
+  
   handleReviewRating = rating => {
     this.setState({ reviewRating: rating });
   };
