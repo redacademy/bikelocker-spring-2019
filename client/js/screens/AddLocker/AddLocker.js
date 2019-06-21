@@ -31,9 +31,9 @@ const saveImage = updateFilesToUpload => {
 
   ImagePicker.showImagePicker(options, response => {
     if (response.didCancel) {
-      console.log("User cancelled image picker");
+      return response.didCancel;
     } else if (response.error) {
-      console.log("ImagePicker Error: ", response.error);
+      return response.error;
     } else {
       updateFilesToUpload(response.uri);
     }
@@ -50,7 +50,6 @@ const AddLocker = ({
   handleReviewRating,
   navigation
 }) => {
-  // console.log(navigation);
   return (
     <ScrollView>
       {state.filesToUpload.length === 0 &&

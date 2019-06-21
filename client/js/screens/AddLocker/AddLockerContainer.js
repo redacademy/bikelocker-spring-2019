@@ -21,7 +21,6 @@ export default class AddLockerContainer extends Component {
   };
 
   render() {
-    console.log(this.state.filesToUpload);
     return (
       <AddLocker
         state={{ ...this.state }}
