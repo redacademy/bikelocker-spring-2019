@@ -8,6 +8,6 @@ export default class AboutContainer extends Component {
   }
 
   render() {
-    return <About />;
+    return <About navigation={this.props.navigation} />;
   }
 }
