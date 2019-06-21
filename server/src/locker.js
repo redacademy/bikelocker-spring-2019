@@ -39,13 +39,11 @@ const csvToJSONObject = async () => {
           return parkingSpot[0];
         } catch (error) {
           return error;
-          return error;
         }
       }
     });
     return { data: await Promise.all(spots) };
   } catch (error) {
-    return error;
     return error;
   }
 };

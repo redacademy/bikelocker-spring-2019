@@ -80,7 +80,8 @@ class MapViewComponent extends Component {
                           latitude: e.nativeEvent.coordinate.latitude,
                           longitude: e.nativeEvent.coordinate.longitude
                         }
-                      });
+                      }),
+                        this.props.navigation.navigate("AddLocker", {});
                     }
                   }}
                   region={{
@@ -139,13 +140,10 @@ class MapViewComponent extends Component {
                 >
                   <ActionButton.Item
                     buttonColor={theme.mediumGreen}
-                    onPress={() =>
-                      this.props.navigation.navigate("AddLocker", {})
-                    }
                     title="Add a locker"
-                    // onPress={() =>
-                    //   this.setState({ slider: !this.state.slider })
-                    // }
+                    onPress={() =>
+                      this.setState({ slider: !this.state.slider })
+                    }
                   >
                     <IconFontAwesome
                       name="map-marker"
