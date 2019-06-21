@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, SafeAreaView, Button, AsyncStorage } from "react-native";
+import { Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -12,7 +12,7 @@ import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
-
+import { clearStorage } from "../config/models.js";
 import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
@@ -147,8 +147,13 @@ export default createDrawerNavigator(
           <Button
             title="Logout"
             onPress={async () => {
-              await AsyncStorage.clear();
-              props.navigation.navigate("AuthLoading");
+              try {
+                await clearStorage();
+                props.navigation.navigate("AuthLoading");
+              } catch (e) {
+                console.log(e);
+                throw e;
+              }
             }}
           />
         </SafeAreaView>

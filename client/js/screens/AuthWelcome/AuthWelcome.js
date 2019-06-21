@@ -8,12 +8,8 @@ import {
   TouchableOpacity
 } from "react-native";
 import styles from "./styles";
-import { withNavigation } from "react-navigation";
-class AuthWelcome extends React.Component {
-  static navigationOptions = {
-    title: "Welcome"
-  };
 
+class AuthWelcome extends React.Component {
   render() {
     return (
       <View style={styles.container}>

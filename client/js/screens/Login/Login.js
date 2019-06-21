@@ -9,10 +9,15 @@ import {
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
+import { _signInAsync } from "../../config/models.js";
 
 class Login extends Component {
-  static navigationOptions = {
-    title: "Login"
+  handleInput = () => {
+    console.log("something submitted");
+  };
+
+  goToRegister = () => {
+    this.props.navigation.navigate("Register");
   };
 
   handleInput = () => {
@@ -23,23 +28,10 @@ class Login extends Component {
     this.props.navigation.navigate("Register");
   };
 
-  _signInAsync = async () => {
-    await AsyncStorage.setItem("userToken", "abc");
-    this.props.navigation.navigate("FindLocker");
-  };
-
-  handleInput = () => {
-    console.log("something submitted");
-  };
-
-  goToRegister = () => {
-    this.props.navigation.navigate("Register");
-  };
-
-  _signInAsync = async () => {
-    await AsyncStorage.setItem("userToken", "abc");
-    this.props.navigation.navigate("FindLocker");
-  };
+  // _signInAsync = async () => {
+  //   await AsyncStorage.setItem("userToken", "abc");
+  //   this.props.navigation.navigate("FindLocker");
+  // };
 
   render() {
     return (
@@ -50,7 +42,7 @@ class Login extends Component {
         />
 
         <Form
-          onSubmit={(this._signInAsync, this.goToRegister, this.handleInput)}
+          onSubmit={(_signInAsync, this.goToRegister, this.handleInput)}
           render={({ handleSubmit, pristine, invalid }) => (
             <View style={styles.form}>
               <Text style={styles.labelText}>Email Address</Text>
@@ -89,7 +81,10 @@ class Login extends Component {
 
               <TouchableOpacity
                 style={styles.button1}
-                onPress={this._signInAsync}
+                onPress={() => {
+                  _signInAsync();
+                  this.props.navigation.navigate("FindLocker");
+                }}
               >
                 <Text style={styles.btnFont}> Login </Text>
               </TouchableOpacity>
