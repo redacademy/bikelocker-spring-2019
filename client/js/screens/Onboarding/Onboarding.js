@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Image, Text, Dimensions } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
+import { withNavigation } from "react-navigation";
 import styles from "./styles";
 
-const OnboardingScreens = () => {
+const OnboardingScreens = ({ navigation }) => {
   const onboardingScreens = [
     {
       backgroundColor: "#FFF",
@@ -91,7 +92,8 @@ const OnboardingScreens = () => {
       containerStyles={{ flex: 1, backgroundColor: "white" }}
       bottomBarHighlight={false}
       showNext={false}
-      onSkip={() => console.log("this will go to the map screen")}
+      onDone={() => navigation.navigate("FindLocker", {})}
+      onSkip={() => navigation.navigate("FindLocker", {})}
       bottomBarColor="white"
       pages={onboardingScreens}
     />
