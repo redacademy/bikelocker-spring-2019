@@ -139,10 +139,13 @@ class MapViewComponent extends Component {
                 >
                   <ActionButton.Item
                     buttonColor={theme.mediumGreen}
-                    title="Add a locker"
                     onPress={() =>
-                      this.setState({ slider: !this.state.slider })
+                      this.props.navigation.navigate("AddLocker", {})
                     }
+                    title="Add a locker"
+                    // onPress={() =>
+                    //   this.setState({ slider: !this.state.slider })
+                    // }
                   >
                     <IconFontAwesome
                       name="map-marker"
