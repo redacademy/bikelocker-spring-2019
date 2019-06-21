@@ -16,7 +16,7 @@ class Register extends Component {
   };
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Image
           style={styles.logo}
           source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
@@ -31,7 +31,12 @@ class Register extends Component {
                 name="First Name"
                 render={({ input, meta }) => (
                   <View style={styles.formInput}>
-                    <TextInput onSubmit={handleSubmit} editable={true} />
+                    <TextInput
+                      placeholder="First Name"
+                      keyboardType="default"
+                      editable={true}
+                      value={input.value}
+                    />
                   </View>
                 )}
               />
@@ -39,12 +44,19 @@ class Register extends Component {
               <Field
                 name="Email Address"
                 render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      maxLength={40}
-                    />
+                  <View>
+                    <View style={styles.formInput}>
+                      <TextInput
+                        onSubmit={handleSubmit}
+                        editable={true}
+                        maxLength={40}
+                      />
+                    </View>
+                    <View>
+                      {meta.error && meta.touched && (
+                        <Text style={styles.errorMsg}>{meta.error}</Text>
+                      )}
+                    </View>
                   </View>
                 )}
               />
@@ -52,12 +64,19 @@ class Register extends Component {
               <Field
                 name="Password"
                 render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      secureTextEntry={true}
-                    />
+                  <View>
+                    <View style={styles.formInput}>
+                      <TextInput
+                        onSubmit={handleSubmit}
+                        editable={true}
+                        secureTextEntry={true}
+                      />
+                    </View>
+                    <View>
+                      {meta.error && meta.touched && (
+                        <Text style={styles.errorMsg}>{meta.error}</Text>
+                      )}
+                    </View>
                   </View>
                 )}
               />
@@ -66,7 +85,7 @@ class Register extends Component {
                 style={styles.button1}
                 onPress={this._signInAsync}
               >
-                <Text style={styles.btnFont}> Register </Text>
+                <Text style={styles.btnFont}> Login </Text>
               </TouchableOpacity>
             </View>
           )}

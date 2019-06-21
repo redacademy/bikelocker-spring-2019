@@ -1,5 +1,4 @@
-// import AsyncStorage from "@react-native-community/async-storage";
-import AsyncStorage from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 export const _signInAsync = async () => {
   try {
@@ -11,7 +10,7 @@ export const _signInAsync = async () => {
 
 export const clearStorage = async () => {
   try {
-    await AsyncStorage.clear();
+    await AsyncStorage.setItem("userToken", null);
   } catch (e) {
     return false;
   }
