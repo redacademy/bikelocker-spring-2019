@@ -44,7 +44,7 @@ onSubmit = () => {
   console.log("submit submit");
 };
 
-const AddLocker = ({ state, updateFilesToUpload }) => {
+const AddLocker = ({ state, updateFilesToUpload, handleReviewRating }) => {
   return (
     <ScrollView>
       {state.filesToUpload.length === 0 &&
@@ -79,7 +79,7 @@ const AddLocker = ({ state, updateFilesToUpload }) => {
       <View style={styles.container}>
         <Text style={styles.address}>1100 Block Cambie St.</Text>
         <Text style={styles.ratingText}>Rate the security of this rack</Text>
-        <LockerRating handleReviewRating={this.handleReviewRating} />
+        <LockerRating handleReviewRating={handleReviewRating} />
         <View style={styles.lockerDesc}>
           <Text style={styles.secureText}>Less secure</Text>
           <Text style={styles.secureText}>More secure</Text>
