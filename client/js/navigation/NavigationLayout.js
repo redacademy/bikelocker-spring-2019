@@ -150,9 +150,7 @@ export default createDrawerNavigator(
               try {
                 await clearStorage();
                 props.navigation.navigate("AuthLoading");
-                // props.navigation.navigate("Welcome");
               } catch (e) {
-                console.log(e);
                 throw e;
               }
             }}

@@ -1,22 +1,20 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  StatusBar,
-  ActivityIndicator,
-  AsyncStorage
-} from "react-native";
+import { Text, View, StatusBar, ActivityIndicator } from "react-native";
 import AuthLoading from "./AuthLoading";
+import { getUserToken } from "../../config/models";
+
 class AuthLoadingContainer extends Component {
   constructor(props) {
     super(props);
-    this._bootstrapAsync();
   }
 
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem("userToken");
-
-    this.props.navigation.navigate(userToken ? "FindLocker" : "Welcome");
+  componentDidMount = async () => {
+    try {
+      const userToken = await getUserToken();
+      this.props.navigation.navigate(userToken ? "FindLocker" : "Welcome");
+    } catch (e) {
+      throw e;
+    }
   };
 
   render() {

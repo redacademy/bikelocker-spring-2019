@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
     color: globalStyles.mediumGreen,
     alignSelf: "flex-start"
   },
+  formField: {
+    width: "100%"
+  },
   formInput: {
     borderStyle: "solid",
     borderWidth: 2,

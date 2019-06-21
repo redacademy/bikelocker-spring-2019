@@ -10,7 +10,15 @@ export const _signInAsync = async () => {
 
 export const clearStorage = async () => {
   try {
-    await AsyncStorage.setItem("userToken", null);
+    await AsyncStorage.removeItem("userToken");
+  } catch (e) {
+    return false;
+  }
+};
+
+export const getUserToken = async () => {
+  try {
+    return await AsyncStorage.getItem("userToken");
   } catch (e) {
     return false;
   }

@@ -30,13 +30,20 @@ class Register extends Component {
               <Field
                 name="First Name"
                 render={({ input, meta }) => (
-                  <View style={styles.formInput}>
-                    <TextInput
-                      placeholder="First Name"
-                      keyboardType="default"
-                      editable={true}
-                      value={input.value}
-                    />
+                  <View style={styles.formField}>
+                    <View style={styles.formInput}>
+                      <TextInput
+                        placeholder="First Name"
+                        keyboardType="default"
+                        editable={true}
+                        value={input.value}
+                      />
+                    </View>
+                    <View>
+                      {meta.error && meta.touched && (
+                        <Text style={styles.errorMsg}>{meta.error}</Text>
+                      )}
+                    </View>
                   </View>
                 )}
               />
@@ -44,10 +51,11 @@ class Register extends Component {
               <Field
                 name="Email Address"
                 render={({ input, meta }) => (
-                  <View>
+                  <View style={styles.formField}>
                     <View style={styles.formInput}>
                       <TextInput
                         onSubmit={handleSubmit}
+                        placeholder="Email Address"
                         editable={true}
                         maxLength={40}
                       />
@@ -64,10 +72,11 @@ class Register extends Component {
               <Field
                 name="Password"
                 render={({ input, meta }) => (
-                  <View>
+                  <View style={styles.formField}>
                     <View style={styles.formInput}>
                       <TextInput
                         onSubmit={handleSubmit}
+                        placeholder="Password"
                         editable={true}
                         secureTextEntry={true}
                       />
@@ -85,7 +94,7 @@ class Register extends Component {
                 style={styles.button1}
                 onPress={this._signInAsync}
               >
-                <Text style={styles.btnFont}> Login </Text>
+                <Text style={styles.btnFont}> Register </Text>
               </TouchableOpacity>
             </View>
           )}

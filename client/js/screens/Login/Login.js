@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  TouchableOpacity,
-  AsyncStorage,
-  View,
-  Text,
-  Image,
-  TextInput
-} from "react-native";
+import { TouchableOpacity, View, Text, Image, TextInput } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
 import { _signInAsync } from "../../config/models.js";
