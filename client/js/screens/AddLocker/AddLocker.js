@@ -13,6 +13,10 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
+import Modal from "react-native-modal";
+import ThankYouModal from "../../components/ThankYouModal"
+
+<Modal isVisible={this.state.isModalVisible}></Modal>
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
