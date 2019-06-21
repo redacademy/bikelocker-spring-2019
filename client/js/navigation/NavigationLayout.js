@@ -17,10 +17,12 @@ import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
-    FindLocker: FindLockerScreen
+    FindLocker: FindLockerScreen,
+    AddLocker: AddLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

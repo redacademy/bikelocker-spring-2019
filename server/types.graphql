@@ -11,9 +11,9 @@ type User @model {
   bikeType: String
   bikeBrand: String
   bikeColor: String
+  city: String
   addressOne: String
   addressTwo: String
-  city: String
   province: String
   country: String
   postalCode: String
@@ -42,7 +42,7 @@ type Review @model {
   reviewer: User! @relation(name: "UserReview")
   photos: [File!]! @relation(name: "ReviewFiles")
   locker: Locker! @relation(name: "LockerReviews")
-}
+} 
 
 type Locker @model {
   id: ID! @isUnique
