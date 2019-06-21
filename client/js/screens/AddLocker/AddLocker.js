@@ -44,7 +44,13 @@ onSubmit = () => {
   console.log("submit submit");
 };
 
-const AddLocker = ({ state, updateFilesToUpload, handleReviewRating }) => {
+const AddLocker = ({
+  state,
+  updateFilesToUpload,
+  handleReviewRating,
+  navigation
+}) => {
+  // console.log(navigation);
   return (
     <ScrollView>
       {state.filesToUpload.length === 0 &&
@@ -106,7 +112,10 @@ const AddLocker = ({ state, updateFilesToUpload, handleReviewRating }) => {
                 )}
               />
               <View style={styles.buttons}>
-                <TouchableOpacity style={styles.backSpacing}>
+                <TouchableOpacity
+                  style={styles.backSpacing}
+                  onPress={() => navigation.goBack()}
+                >
                   <Text style={styles.back}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
