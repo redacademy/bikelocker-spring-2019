@@ -1,8 +1,8 @@
 import React from "react";
-import { ScrollView, Text, View, Image } from "react-native";
+import { ScrollView, Text, Image, View } from "react-native";
 import styles from "./styles";
 
-const HowToUseApp = ({ params }) => (
+const HowToUseApp = () => (
   <ScrollView style={styles.container}>
     <Text style={styles.h2}>About the App</Text>
     <Text style={styles.p}>
@@ -10,7 +10,7 @@ const HowToUseApp = ({ params }) => (
       bike racks to your destination will show up as pins on the map.
     </Text>
     <Image
-      source={require("../../assets/images/PinDiagram2.png")}
+      source={require("../../assets/images/pinDiagramWithLabel.png")}
       style={styles.image}
     />
     <Text style={styles.p}>

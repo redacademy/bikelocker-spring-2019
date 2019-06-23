@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    top: 40,
+    marginTop: 40,
     marginHorizontal: 20
   },
   h2: {
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   p: {
     fontSize: theme.commonFontSize,
     paddingTop: 10,
-    lineHeight: 25
+    lineHeight: 25,
+    marginBottom: 5
   },
   image: {
     padding: 20,
