@@ -9,12 +9,14 @@ import {
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
+import { setUserIdToken } from "../../config/models";
 
 class Register extends Component {
   handleSubmit = () => {
     console.log("something submitted");
   };
   render() {
+    const { register, navigation } = this.props;
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Image
@@ -23,20 +25,33 @@ class Register extends Component {
         />
 
         <Form
-          onSubmit={this.handleSubmit}
+          onSubmit={async values => {
+            console.log(values);
+            try {
+              const response = await register({ variables: { ...values } });
+              if (response.data.register) {
+                const { id, token } = response.data.register;
+                await setUserIdToken(id, token);
+                navigation.navigate("FindLocker");
+              }
+            } catch (e) {
+              throw e;
+            }
+          }}
           render={({ handleSubmit, pristine, invalid }) => (
             <View style={styles.form}>
               <Text style={styles.labelText}>First Name</Text>
               <Field
-                name="First Name"
+                name="firstName"
                 render={({ input, meta }) => (
                   <View style={styles.formField}>
                     <View style={styles.formInput}>
                       <TextInput
-                        placeholder="First Name"
-                        keyboardType="default"
-                        editable={true}
+                        {...input}
                         value={input.value}
+                        keyboardType="default"
+                        placeholder="First Name"
+                        editable={true}
                       />
                     </View>
                     <View>
@@ -49,15 +64,16 @@ class Register extends Component {
               />
               <Text style={styles.labelText}>Email Address</Text>
               <Field
-                name="Email Address"
+                name="email"
                 render={({ input, meta }) => (
                   <View style={styles.formField}>
                     <View style={styles.formInput}>
                       <TextInput
-                        onSubmit={handleSubmit}
+                        {...input}
+                        value={input.value}
+                        keyboardType="default"
                         placeholder="Email Address"
                         editable={true}
-                        maxLength={40}
                       />
                     </View>
                     <View>
@@ -70,12 +86,14 @@ class Register extends Component {
               />
               <Text style={styles.labelText}>Password</Text>
               <Field
-                name="Password"
+                name="password"
                 render={({ input, meta }) => (
                   <View style={styles.formField}>
                     <View style={styles.formInput}>
                       <TextInput
-                        onSubmit={handleSubmit}
+                        {...input}
+                        value={input.value}
+                        keyboardType="default"
                         placeholder="Password"
                         editable={true}
                         secureTextEntry={true}
@@ -90,10 +108,7 @@ class Register extends Component {
                 )}
               />
               <Text>Already have an account?</Text>
-              <TouchableOpacity
-                style={styles.button1}
-                onPress={this._signInAsync}
-              >
+              <TouchableOpacity style={styles.button1} onPress={handleSubmit}>
                 <Text style={styles.btnFont}> Register </Text>
               </TouchableOpacity>
             </View>

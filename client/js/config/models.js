@@ -23,3 +23,10 @@ export const getUserToken = async () => {
     return false;
   }
 };
+export const setUserIdToken = async (id, token) => {
+  try {
+    return await AsyncStorage.setItem(["id", id], ["userToken", token]);
+  } catch (e) {
+    return false;
+  }
+};
