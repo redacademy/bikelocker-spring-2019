@@ -81,7 +81,7 @@ class MapViewComponent extends Component {
                           longitude: e.nativeEvent.coordinate.longitude
                         }
                       }),
-                        this.props.navigation.navigate("AddLocker", {
+                        this.props.navigation.navigate("Profile", {
                           coordinates: {
                             latitude: this.state.coordinates.latitude,
                             longitude: this.state.coordinates.latitude

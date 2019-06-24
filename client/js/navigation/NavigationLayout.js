@@ -21,7 +21,9 @@ import AddLockerScreen from "../screens/AddLocker";
 const FindLockerStack = createStackNavigator(
   {
     FindLocker: FindLockerScreen,
-    AddLocker: AddLockerScreen
+    AddLocker: AddLockerScreen,
+    Profile: ProfileScreen,
+    EditProfile: EditProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

@@ -26,11 +26,9 @@ export default class AddLockerContainer extends Component {
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         handleReviewRating={this.handleReviewRating}
-<<<<<<< HEAD
-=======
         navigation={this.props.navigation}
->>>>>>> develop
       />
     );
   }
 }
+  
