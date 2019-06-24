@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
+import validate from "../../helpers/validation";
 import { setUserIdToken } from "../../config/models";
 
 class Register extends Component {
@@ -50,17 +51,16 @@ class Register extends Component {
                 console.log(values);
                 try {
                   const response = await register({ variables: { ...values } });
-                  console.log(response);
                   if (response.data.signupUser) {
                     const { id, token } = response.data.signupUser;
                     await setUserIdToken(id, token);
-                    console.log(id, token);
                     navigation.navigate("FindLocker");
                   }
                 } catch (e) {
-                  throw e;
+                  return e;
                 }
               }}
+              validate={validate}
               render={({ handleSubmit, pristine, invalid }) => (
                 <View style={styles.form}>
                   <Text style={styles.labelText}>First Name</Text>
@@ -96,6 +96,7 @@ class Register extends Component {
                             value={input.value}
                             keyboardType="email-address"
                             placeholder="Email Address"
+                            autoCapitalize="none"
                             editable={true}
                           />
                         </View>
@@ -130,7 +131,7 @@ class Register extends Component {
                       </View>
                     )}
                   />
-                  <Text style={styles.errorMessage}>{this.state.error}</Text>
+
                   <Text style={styles.text}>
                     Already have an account?{" "}
                     <Text style={styles.link} onPress={this.goToLogin}>

@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
   link: {
     color: globalStyles.orange,
     textDecorationLine: "underline"
+  },
+  errorMsg: {
+    color: "red"
   }
 });
 

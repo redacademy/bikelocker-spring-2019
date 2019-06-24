@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     color: globalStyles.mediumGreen,
     alignSelf: "flex-start"
   },
+  formField: {
+    width: "100%"
+  },
   formInput: {
     borderStyle: "solid",
     borderWidth: 2,
@@ -63,6 +66,9 @@ const styles = StyleSheet.create({
   link: {
     color: globalStyles.orange,
     textDecorationLine: "underline"
+  },
+  errorMsg: {
+    color: "red"
   }
 });
 

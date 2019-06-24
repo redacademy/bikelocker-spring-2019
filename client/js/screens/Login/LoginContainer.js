@@ -9,13 +9,10 @@ class LoginContainer extends Component {
   render() {
     return (
       <Mutation mutation={AUTHENTICATE_USER}>
-        {(authenticateUser, { loading, error }) => {
+        {(signIn, { loading, error }) => {
           if (loading) return <Loader />;
           return (
-            <Login
-              navigation={this.props.navigation}
-              authenticate={authenticateUser}
-            />
+            <Login navigation={this.props.navigation} authenticate={signIn} />
           );
         }}
       </Mutation>

@@ -12,7 +12,9 @@ import {
   Keyboard
 } from "react-native";
 import { Form, Field } from "react-final-form";
+import validate from "../../helpers/validation";
 import styles from "./styles";
+import { setUserIdToken } from "../../config/models";
 
 class Login extends Component {
   constructor(props) {
@@ -45,24 +47,37 @@ class Login extends Component {
                   const response = await authenticate({
                     variables: { ...values }
                   });
+                  if (response.data.authenticateUser) {
+                    const { id, token } = response.data.authenticateUser;
+                    await setUserIdToken(id, token);
+                    navigation.navigate("FindLocker");
+                  }
                 } catch (e) {
-                  throw e;
+                  return e;
                 }
               }}
+              validate={validate}
               render={({ handleSubmit, pristine, invalid }) => (
                 <View style={styles.form}>
                   <Text style={styles.labelText}>Email Address</Text>
                   <Field
                     name="email"
                     render={({ input, meta }) => (
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          editable={true}
-                          autoCapitalize="none"
-                          placeholder="email"
-                        />
+                      <View style={styles.formField}>
+                        <View style={styles.formInput}>
+                          <TextInput
+                            {...input}
+                            value={input.value}
+                            editable={true}
+                            autoCapitalize="none"
+                            placeholder="email"
+                          />
+                        </View>
+                        <View>
+                          {meta.error && meta.touched && (
+                            <Text style={styles.errorMsg}>{meta.error}</Text>
+                          )}
+                        </View>
                       </View>
                     )}
                   />
@@ -70,20 +85,25 @@ class Login extends Component {
                   <Field
                     name="password"
                     render={({ input, meta }) => (
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="default"
-                          editable={true}
-                          placeholder="password"
-                          secureTextEntry={true}
-                        />
+                      <View style={styles.formField}>
+                        <View style={styles.formInput}>
+                          <TextInput
+                            {...input}
+                            value={input.value}
+                            keyboardType="default"
+                            editable={true}
+                            placeholder="password"
+                            secureTextEntry={true}
+                          />
+                        </View>
+                        <View>
+                          {meta.error && meta.touched && (
+                            <Text style={styles.errorMsg}>{meta.error}</Text>
+                          )}
+                        </View>
                       </View>
                     )}
                   />
-
-                  <Text style={styles.errorMessage}>{this.state.error}</Text>
 
                   <Text style={styles.text}>Forgot your password?</Text>
 
@@ -96,9 +116,7 @@ class Login extends Component {
 
                   <TouchableOpacity
                     style={styles.button1}
-                    onPress={() => {
-                      handleSubmit, navigation.navigate("FindLocker");
-                    }}
+                    onPress={handleSubmit}
                   >
                     <Text style={styles.btnFont}> Login </Text>
                   </TouchableOpacity>

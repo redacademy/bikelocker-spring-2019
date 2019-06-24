@@ -10,7 +10,7 @@ export const clearStorage = async () => {
 
 export const getUserId = async () => {
   try {
-    return await AsyncStorage.getItem("userId");
+    return await AsyncStorage.getItem("id");
   } catch (e) {
     return e;
   }
@@ -25,7 +25,7 @@ export const getUserToken = async () => {
 };
 export const setUserIdToken = async (id, token) => {
   try {
-    return await AsyncStorage.setItem(["id", id], ["userToken", token]);
+    await AsyncStorage.multiSet([["id", id], ["userToken", token]]);
   } catch (e) {
     return false;
   }

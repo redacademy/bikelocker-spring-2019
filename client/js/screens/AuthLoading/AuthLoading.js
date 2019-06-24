@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { ActivityIndicator, StatusBar, View } from "react-native";
+import { StatusBar, View } from "react-native";
+import Loader from "../../components/Loader";
 
 class AuthLoading extends Component {
   render() {
     return (
       <View>
-        <ActivityIndicator />
+        <Loader />
         <StatusBar barStyle="default" />
       </View>
     );
