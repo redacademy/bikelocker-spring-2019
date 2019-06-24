@@ -44,7 +44,7 @@ class EditProfileAbout extends Component {
             borderRadius={75}
             resizeMode="contain"
             style={styles.profilePic}
-            source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
+            source={require("../../assets/images/profile_pic.jpg")}
           />
           <Text style={styles.labelText}>Change photo</Text>
           <Form
