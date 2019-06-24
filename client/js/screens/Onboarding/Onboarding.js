@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image, Text, Dimensions } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
-import { withNavigation } from "react-navigation";
 import styles from "./styles";
 
 const OnboardingScreens = ({ navigation }) => {
@@ -82,9 +81,6 @@ const OnboardingScreens = ({ navigation }) => {
       )
     }
   ];
-
-  const backgroundColor = isLight => (isLight ? "blue" : "lightblue");
-  const color = isLight => backgroundColor(!isLight);
 
   const { height, width } = Dimensions.get("window");
   return (
