@@ -120,7 +120,7 @@ const AddLocker = ({
                   <Text style={styles.back}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={this.onSubmit}
+                  onPress={toggleModal}
                   style={styles.submitSpacing}
                 >
                   <Text style={styles.submit}>Submit</Text>
@@ -129,9 +129,7 @@ const AddLocker = ({
             </View>
           )}
         />
-        <Modal>
-          <ThankYouModal />
-        </Modal>
+        <ThankYouModal toggleModal={toggleModal} state={state} />
       </View>
     </ScrollView>
   );

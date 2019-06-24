@@ -26,11 +26,13 @@ export default class AddLockerContainer extends Component {
   };
 
   render() {
+    console.log("locker state: ", this.state);
     return (
       <AddLocker
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
+        handleReviewRating={this.handleReviewRating}
       />
     );
   }
