@@ -17,7 +17,6 @@ export default class AddLockerContainer extends Component {
     } else if (this.state.isModalVisible === true) {
       this.setState({ isModalVisible: false });
       this.props.navigation.navigate("FindLocker");
-      console.log(this.props);
     }
   };
 
@@ -32,7 +31,6 @@ export default class AddLockerContainer extends Component {
   };
 
   render() {
-    console.log("locker state: ", this.state);
     return (
       <AddLocker
         state={{ ...this.state }}

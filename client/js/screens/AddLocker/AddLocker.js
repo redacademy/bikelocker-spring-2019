@@ -15,10 +15,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Modal from "react-native-modal";
 import ThankYouModal from "../../components/ThankYouModal";
 
-{
-  /* <Modal isVisible={this.state.isModalVisible}></Modal> */
-}
-
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
     style={styles.photoContainer}

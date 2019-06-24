@@ -66,7 +66,6 @@ class MapViewComponent extends Component {
     return (
       <Query query={GET_LOCATION}>
         {({ loading, error, data }) => {
-          console.log(this.state);
           if (loading || !data) return <Loader />;
           if (data) {
             return (
