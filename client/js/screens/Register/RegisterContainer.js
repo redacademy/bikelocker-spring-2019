@@ -11,7 +11,11 @@ class RegisterContainer extends Component {
         {(register, { loading, error }) => {
           if (loading) return <Loader />;
           return (
-            <Register register={register} navigation={this.props.navigation} />
+            <Register
+              register={register}
+              navigation={this.props.navigation}
+              error={error}
+            />
           );
         }}
       </Mutation>

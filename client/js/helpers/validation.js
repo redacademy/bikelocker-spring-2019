@@ -10,8 +10,8 @@ export default function validate(values) {
   if (!values.password || values.password === "") {
     errors.password = "Password is required";
   }
-  if (values.firstName && !values.firstName) {
-    errors.password = "Full name is required";
+  if (!values.firstName || values.firstName === "") {
+    errors.firstName = "Full name is required";
   }
   return errors;
 }

@@ -12,7 +12,11 @@ class LoginContainer extends Component {
         {(signIn, { loading, error }) => {
           if (loading) return <Loader />;
           return (
-            <Login navigation={this.props.navigation} authenticate={signIn} />
+            <Login
+              navigation={this.props.navigation}
+              authenticate={signIn}
+              error={error}
+            />
           );
         }}
       </Mutation>

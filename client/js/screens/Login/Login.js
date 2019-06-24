@@ -29,7 +29,7 @@ class Login extends Component {
   };
 
   render() {
-    const { navigation, authenticate } = this.props;
+    const { navigation, authenticate, error } = this.props;
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : null}
@@ -105,6 +105,10 @@ class Login extends Component {
                       </View>
                     )}
                   />
+                  {error &&
+                    error.message &&
+                    (console.log(error),
+                    <Text style={styles.errorMsg}>{error.message}</Text>)}
 
                   <Text style={styles.text}>Forgot your password?</Text>
 
@@ -134,7 +138,8 @@ class Login extends Component {
 
 Login.proptypes = {
   navigation: PropTypes.array.isRequired,
-  authenticate: PropTypes.func.isRequired
+  authenticate: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired
 };
 
 export default Login;

@@ -31,7 +31,7 @@ class Register extends Component {
   };
 
   render() {
-    const { register, navigation } = this.props;
+    const { register, navigation, error } = this.props;
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : null}
@@ -129,7 +129,10 @@ class Register extends Component {
                       </View>
                     )}
                   />
-
+                  {error &&
+                    error.message &&
+                    (console.log(error),
+                    <Text style={styles.errorMsg}>{error.message}</Text>)}
                   <Text style={styles.text}>
                     Already have an account?{" "}
                     <Text style={styles.link} onPress={this.goToLogin}>
@@ -155,7 +158,8 @@ class Register extends Component {
 
 Register.proptypes = {
   navigation: PropTypes.array.isRequired,
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired
 };
 
 export default Register;
