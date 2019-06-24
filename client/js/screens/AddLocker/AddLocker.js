@@ -5,23 +5,25 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Image,
-  Dimensions
+  Image
 } from "react-native";
 import LockerRating from "../../components/LockerRating";
 import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
-import Modal from "react-native-modal";
-import ThankYouModal from "../../components/ThankYouModal"
+// import Modal from "react-native-modal";
+// import ThankYouModal from "../../components/ThankYouModal";
 
-<Modal isVisible={this.state.isModalVisible}></Modal>
+{
+  /* <Modal isVisible={this.state.isModalVisible}></Modal> */
+  // saveImage(updateFilesToUpload)
+}
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
     style={styles.photoContainer}
-    onPress={() => saveImage(updateFilesToUpload)}
+    onPress={() => console.log("addlocker pic")}
   >
     <Icon name="ios-camera" style={styles.cameraIcon} />
     <Text style={styles.cameraText}>Take a photo</Text>
@@ -48,7 +50,8 @@ const AddLocker = ({
   state,
   updateFilesToUpload,
   handleReviewRating,
-  navigation
+  navigation,
+  toggleModal
 }) => {
   return (
     <ScrollView>
@@ -81,7 +84,7 @@ const AddLocker = ({
           </TouchableOpacity>
         </View>
       )}
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
         <Text style={styles.address}>1100 Block Cambie St.</Text>
         <Text style={styles.ratingText}>Rate the security of this rack</Text>
         <LockerRating handleReviewRating={handleReviewRating} />
@@ -127,7 +130,7 @@ const AddLocker = ({
             </View>
           )}
         />
-      </View>
+      </View> */}
     </ScrollView>
   );
 };

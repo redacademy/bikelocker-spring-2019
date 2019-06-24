@@ -66,6 +66,7 @@ class MapViewComponent extends Component {
     return (
       <Query query={GET_LOCATION}>
         {({ loading, error, data }) => {
+          console.log(this.state);
           if (loading || !data) return <Loader />;
           if (data) {
             return (
@@ -86,10 +87,11 @@ class MapViewComponent extends Component {
                             latitude: this.state.coordinates.latitude,
                             longitude: this.state.coordinates.latitude
                           }
-                        });
+                        }),
+                        this.setState({ slider: false });
                     }
                   }}
-                  region={{
+                  region={{ 
                     latitude: latitude,
                     longitude: longitude,
                     latitudeDelta: 0.0922,
