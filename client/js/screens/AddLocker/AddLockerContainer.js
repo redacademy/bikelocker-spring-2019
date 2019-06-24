@@ -31,8 +31,6 @@ export default class AddLockerContainer extends Component {
   };
 
   render() {
-    console.log(this.props.navigation);
-
     return (
       <AddLocker
         state={{ ...this.state }}
