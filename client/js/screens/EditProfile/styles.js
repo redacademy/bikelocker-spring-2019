@@ -2,9 +2,10 @@ import theme from "../../config/globalStyles";
 
 const styles = {
   header: {
-    marginVertical: 40,
-    marginHorizontal: 30,
-    width: "100%"
+    width: "30%",
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center"
   },
   title: {
     fontSize: theme.subheadingFontSize,
