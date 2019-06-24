@@ -37,11 +37,11 @@ const EditProfile = ({ toggleTab, secondTabActive, user }) => (
         </Text>
       </TouchableOpacity>
     </View>
-    {/* {!secondTabActive ? (
+    {!secondTabActive ? (
       <EditProfileAbout user={user} />
     ) : (
       <EditProfileContact user={user} />
-    )} */}
+    )}
   </ScrollView>
 );
 
