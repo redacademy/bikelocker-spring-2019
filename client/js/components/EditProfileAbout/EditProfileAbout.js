@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Image,
   Keyboard,
+  Picker,
   Text,
   TextInput,
   TouchableOpacity,
@@ -20,8 +21,17 @@ class EditProfileAbout extends Component {
     this.fileInput = React.createRef();
     this.state = {
       fileSelected: false,
-      done: false
+      done: false,
+      ageRange: []
     };
+  }
+
+  componentDidMount() {
+    const ageRange = [];
+    for (let i = 15; i <= 75; i++) {
+      ageRange.push(i);
+    }
+    this.setState({ ageRange });
   }
 
   render() {
@@ -36,9 +46,9 @@ class EditProfileAbout extends Component {
             style={styles.profilePic}
             source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
           />
+          <Text style={styles.labelText}>Change photo</Text>
           <Form
             onSubmit={async values => {
-              console.log(values);
               try {
                 const response = await register({ variables: { ...values } });
                 if (response.data.register) {
@@ -116,11 +126,9 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder={
-                            user.age ? user.age : "Enter your age..."
-                          }
+                          placeholder={user.age ? user.age : "30"}
                           editable={true}
-                          style={styles.textInput}
+                          style={styles.ageInput}
                         />
                       </View>
                       <View>
@@ -212,18 +220,18 @@ class EditProfileAbout extends Component {
                     </View>
                   )}
                 />
-                <View style={{ flex: 1 }}>
+                <View style={styles.buttons}>
                   <TouchableOpacity
-                    style={styles.button1}
+                    style={styles.backButton}
                     onPress={handleSubmit}
                   >
-                    <Text style={styles.btnFont}>Back</Text>
+                    <Text style={styles.backButtonLabel}>Back</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={styles.button1}
+                    style={styles.submitButton}
                     onPress={handleSubmit}
                   >
-                    <Text style={styles.btnFont}>Submit</Text>
+                    <Text style={styles.submitButtonLabel}>Submit</Text>
                   </TouchableOpacity>
                 </View>
               </View>

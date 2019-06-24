@@ -8,7 +8,8 @@ const styles = {
     justifyContent: "flex-start"
   },
   profilePic: {
-    margin: 35,
+    marginTop: 35,
+    marginBottom: 10,
     height: 150,
     width: 150
   },
@@ -19,24 +20,60 @@ const styles = {
   labelText: {
     color: theme.mediumGreen,
     marginBottom: 5,
-    marginTop: 10
+    marginTop: 15
   },
   textInput: {
+    width: "75%",
     color: theme.black,
     borderColor: theme.lightGrey,
     borderWidth: 2,
     borderRadius: 15,
     padding: 10
   },
-  subheading: {
-    marginTop: 25,
-    fontSize: theme.subheadingFontSize,
-    color: theme.darkGrey
+  ageInput: {
+    width: "25%",
+    color: theme.black,
+    borderColor: theme.lightGrey,
+    borderWidth: 2,
+    borderRadius: 15,
+    padding: 10
   },
-  caption: {
-    fontSize: theme.commonFontSize,
-    color: theme.darkGrey,
-    fontWeight: "bold"
+  buttons: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 25
+  },
+  backButton: {
+    flexDirection: "row",
+    height: 40,
+    width: "50%",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: theme.lightGrey,
+    borderRadius: 20,
+    alignSelf: "center",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "white",
+    padding: 3
+  },
+  backButtonLabel: {
+    color: theme.black
+  },
+  submitButton: {
+    flexDirection: "row",
+    height: 40,
+    width: "43%",
+    borderRadius: 20,
+    alignSelf: "center",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: theme.mediumGreen,
+    padding: 3
+  },
+  submitButtonLabel: {
+    color: theme.white
   }
 };
 
