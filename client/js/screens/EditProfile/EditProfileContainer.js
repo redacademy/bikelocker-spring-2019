@@ -42,22 +42,19 @@ export default class EditProfileContainer extends Component {
 const USER_QUERY = gql`
   query User($id: ID) {
     User(id: $id) {
-      profilePhoto {
-        contentType
-        id
-        name
-        secret
-        size
-        url
-      }
-      city
       firstName
       lastName
+      age
+      bikeType
+      bikeBrand
+      bikeColor
+      addressOne
+      addressTwo
+      city
       province
       country
-      bikeColor
-      bikeBrand
-      bikeType
+      postalCode
+      email
     }
   }
 `;
