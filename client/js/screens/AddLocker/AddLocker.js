@@ -5,7 +5,8 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from "react-native";
 import LockerRating from "../../components/LockerRating";
 import styles from "./styles";
@@ -50,83 +51,85 @@ const AddLocker = ({
 }) => {
   return (
     <ScrollView>
-      {state.filesToUpload.length === 0 &&
-        renderAddImage(saveImage, updateFilesToUpload)}
-      {state.filesToUpload && state.filesToUpload.length === 1 && (
-        <View style={styles.previewContainer}>
-          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)} />
-          <Image
-            style={styles.previewImage}
-            source={{ uri: state.filesToUpload[0] }}
-          />
-          <TouchableOpacity />
-          {renderAddImage(saveImage, updateFilesToUpload)}
-        </View>
-      )}
-      {state.filesToUpload && state.filesToUpload.length === 2 && (
-        <View style={styles.previewContainer}>
-          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+      <KeyboardAvoidingView behavior="position" enabled>
+        {state.filesToUpload.length === 0 &&
+          renderAddImage(saveImage, updateFilesToUpload)}
+        {state.filesToUpload && state.filesToUpload.length === 1 && (
+          <View style={styles.previewContainer}>
+            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)} />
             <Image
+              style={styles.previewImage}
               source={{ uri: state.filesToUpload[0] }}
-              style={styles.previewImage}
             />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
-            <Image
-              source={{ uri: state.filesToUpload[1] }}
-              style={styles.previewImage}
-            />
-          </TouchableOpacity>
-        </View>
-      )}
-      <View style={styles.container}>
-        <Text style={styles.address}>1100 Block Cambie St.</Text>
-        <Text style={styles.ratingText}>Rate the security of this rack</Text>
-        <LockerRating handleReviewRating={handleReviewRating} />
-        <View style={styles.lockerDesc}>
-          <Text style={styles.secureText}>Less secure</Text>
-          <Text style={styles.secureText}>More secure</Text>
-        </View>
-        <Text style={styles.commentText}>Leave a comment</Text>
-
-        <Form
-          onSubmit={() => {
-            this.onSubmit();
-          }}
-          render={({ handleSubmit, pristine, invalid }) => (
-            <View>
-              <Field
-                name="bio"
-                render={({ input, meta }) => (
-                  <TextInput
-                    {...input}
-                    style={styles.form}
-                    onSubmit={handleSubmit}
-                    editable={true}
-                    maxLength={40}
-                    multiline={true}
-                  />
-                )}
+            <TouchableOpacity />
+            {renderAddImage(saveImage, updateFilesToUpload)}
+          </View>
+        )}
+        {state.filesToUpload && state.filesToUpload.length === 2 && (
+          <View style={styles.previewContainer}>
+            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+              <Image
+                source={{ uri: state.filesToUpload[0] }}
+                style={styles.previewImage}
               />
-              <View style={styles.buttons}>
-                <TouchableOpacity
-                  style={styles.backSpacing}
-                  onPress={() => navigation.goBack()}
-                >
-                  <Text style={styles.back}>Back</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={toggleModal}
-                  style={styles.submitSpacing}
-                >
-                  <Text style={styles.submit}>Submit</Text>
-                </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+              <Image
+                source={{ uri: state.filesToUpload[1] }}
+                style={styles.previewImage}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
+        <View style={styles.container}>
+          <Text style={styles.address}>1100 Block Cambie St.</Text>
+          <Text style={styles.ratingText}>Rate the security of this rack</Text>
+          <LockerRating handleReviewRating={handleReviewRating} />
+          <View style={styles.lockerDesc}>
+            <Text style={styles.secureText}>Less secure</Text>
+            <Text style={styles.secureText}>More secure</Text>
+          </View>
+          <Text style={styles.commentText}>Leave a comment</Text>
+
+          <Form
+            onSubmit={() => {
+              this.onSubmit();
+            }}
+            render={({ handleSubmit, pristine, invalid }) => (
+              <View>
+                <Field
+                  name="bio"
+                  render={({ input, meta }) => (
+                    <TextInput
+                      {...input}
+                      style={styles.form}
+                      onSubmit={handleSubmit}
+                      editable={true}
+                      maxLength={40}
+                      multiline={true}
+                    />
+                  )}
+                />
+                <View style={styles.buttons}>
+                  <TouchableOpacity
+                    style={styles.backSpacing}
+                    onPress={() => navigation.goBack()}
+                  >
+                    <Text style={styles.back}>Back</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={toggleModal}
+                    style={styles.submitSpacing}
+                  >
+                    <Text style={styles.submit}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          )}
-        />
-        <ThankYouModal toggleModal={toggleModal} state={state} />
-      </View>
+            )}
+          />
+          <ThankYouModal toggleModal={toggleModal} state={state} />
+        </View>
+      </KeyboardAvoidingView>
     </ScrollView>
   );
 };
