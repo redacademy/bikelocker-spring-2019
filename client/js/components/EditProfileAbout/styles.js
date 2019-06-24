@@ -4,7 +4,7 @@ const styles = {
   container: {
     ...theme.container,
     height: "100%",
-    marginHorizontal: 20,
+    marginHorizontal: "8%",
     justifyContent: "flex-start"
   },
   profilePic: {
@@ -12,18 +12,21 @@ const styles = {
     height: 150,
     width: 150
   },
-  info: {
+  form: {
     width: "100%",
     alignContent: "flex-start"
   },
-  userName: {
-    fontSize: theme.subheadingFontSize,
-    color: theme.darkGrey,
-    fontWeight: "bold"
+  labelText: {
+    color: theme.mediumGreen,
+    marginBottom: 5,
+    marginTop: 10
   },
-  userLocation: {
-    fontSize: theme.commonFontSize,
-    color: theme.darkGrey
+  textInput: {
+    color: theme.black,
+    borderColor: theme.lightGrey,
+    borderWidth: 2,
+    borderRadius: 15,
+    padding: 10
   },
   subheading: {
     marginTop: 25,

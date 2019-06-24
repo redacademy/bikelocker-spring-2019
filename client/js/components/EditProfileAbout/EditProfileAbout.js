@@ -6,10 +6,10 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  SafeAreaView,
+  ScrollView,
   View
 } from "react-native";
-import { Field, Form, FormSpy } from "react-final-form";
+import { Field, Form } from "react-final-form";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import styles from "./styles";
@@ -24,68 +24,18 @@ class EditProfileAbout extends Component {
     };
   }
 
-  handleSelectFile = event => {
-    this.setState({
-      fileSelected: this.fileInput.current.files[0]
-    });
-  };
-
-  getBase64Url() {
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = e => {
-        resolve(
-          `data:${this.state.fileSelected.type};base64, ${btoa(
-            e.target.result
-          )}`
-        );
-      };
-      reader.readAsBinaryString(this.state.fileSelected);
-    });
-  }
-
-  resetFileInput = () => {
-    this.fileInput.current.value = "";
-    this.props.resetImage();
-    this.setState({
-      fileSelected: false
-    });
-  };
-
-  // dispatchUpdate(values, updateItem) {
-  //   if (!values.imageurl && this.state.fileSelected) {
-  //     this.getBase64Url().then(imageurl => {
-  //       updateItem({
-  //         imageurl
-  //       });
-  //     });
-  //   }
-  //   updateItem({
-  //     ...values
-  //   });
-  // }
-
-  triggerInputFile = () => this.fileInput.current.click();
-  saveItem = async (values, addItem) => {
-    try {
-      const newItem = { ...values };
-      await addItem({ variables: { item: newItem } });
-    } catch (e) {
-      throw Error(e);
-    }
-  };
-
   render() {
     const { user } = this.props;
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
           <Image
-            style={styles.logo}
-            source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
+            borderRadius={75}
+            resizeMode="contain"
+            style={styles.profilePic}
+            source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
           />
-
           <Form
             onSubmit={async values => {
               console.log(values);
@@ -94,7 +44,7 @@ class EditProfileAbout extends Component {
                 if (response.data.register) {
                   const { id, token } = response.data.register;
                   await setUserIdToken(id, token);
-                  navigation.navigate("FindLocker");
+                  navigation.navigate("Profile");
                 }
               } catch (e) {
                 throw e;
@@ -102,7 +52,7 @@ class EditProfileAbout extends Component {
             }}
             render={({ handleSubmit, pristine, invalid }) => (
               <View style={styles.form}>
-                <Text style={styles.labelText}>First Name</Text>
+                <Text style={styles.labelText}>First Name *</Text>
                 <Field
                   name="firstName"
                   render={({ input, meta }) => (
@@ -112,8 +62,13 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder="First Name"
+                          placeholder={
+                            user.firstName
+                              ? user.firstName
+                              : "Enter your first name..."
+                          }
                           editable={true}
+                          style={styles.textInput}
                         />
                       </View>
                       <View>
@@ -124,31 +79,9 @@ class EditProfileAbout extends Component {
                     </View>
                   )}
                 />
-                <Text style={styles.labelText}>Email Address</Text>
+                <Text style={styles.labelText}>Last Name *</Text>
                 <Field
-                  name="email"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="email-address"
-                          placeholder="Email Address"
-                          editable={true}
-                        />
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Password</Text>
-                <Field
-                  name="password"
+                  name="lastName"
                   render={({ input, meta }) => (
                     <View style={styles.formField}>
                       <View style={styles.formInput}>
@@ -156,9 +89,13 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder="Password"
+                          placeholder={
+                            user.lastName
+                              ? user.lastName
+                              : "Enter your last name..."
+                          }
                           editable={true}
-                          secureTextEntry={true}
+                          style={styles.textInput}
                         />
                       </View>
                       <View>
@@ -169,15 +106,130 @@ class EditProfileAbout extends Component {
                     </View>
                   )}
                 />
-                <Text style={styles.text}>Already have an account?</Text>
-                <TouchableOpacity style={styles.button1} onPress={handleSubmit}>
-                  <Text style={styles.btnFont}> Register </Text>
-                </TouchableOpacity>
-                <View style={{ flex: 1 }} />
+                <Text style={styles.labelText}>Age</Text>
+                <Field
+                  name="age"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="default"
+                          placeholder={
+                            user.age ? user.age : "Enter your age..."
+                          }
+                          editable={true}
+                          style={styles.textInput}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.labelText}>Bike Type</Text>
+                <Field
+                  name="bikeType"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="email-address"
+                          placeholder={
+                            user.bikeType
+                              ? user.bikeType
+                              : "Enter your bike type..."
+                          }
+                          editable={true}
+                          style={styles.textInput}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.labelText}>Bike Brand</Text>
+                <Field
+                  name="bikeBrand"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="email-address"
+                          placeholder={
+                            user.bikeBrand
+                              ? user.bikeBrand
+                              : "Enter your bike brand..."
+                          }
+                          editable={true}
+                          style={styles.textInput}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.labelText}>Bike Colour</Text>
+                <Field
+                  name="bikeColor"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="email-address"
+                          placeholder={
+                            user.bikeColor
+                              ? user.bikeColor
+                              : "Enter your bike colour..."
+                          }
+                          editable={true}
+                          style={styles.textInput}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <View style={{ flex: 1 }}>
+                  <TouchableOpacity
+                    style={styles.button1}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.btnFont}>Back</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.button1}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.btnFont}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             )}
           />
-        </SafeAreaView>
+        </ScrollView>
       </TouchableWithoutFeedback>
     );
   }
