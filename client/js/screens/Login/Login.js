@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
-import validate from "../../helpers/validation";
+import validate from "../../helpers/validationLogin";
 import styles from "./styles";
 import { setUserIdToken } from "../../config/models";
 
@@ -60,6 +60,7 @@ class Login extends Component {
               validate={validate}
               render={({ handleSubmit, pristine, invalid }) => (
                 <View style={styles.form}>
+                  {console.log("i'm sid")}
                   <Text style={styles.labelText}>Email Address</Text>
                   <Field
                     name="email"
@@ -68,7 +69,6 @@ class Login extends Component {
                         <View style={styles.formInput}>
                           <TextInput
                             {...input}
-                            value={input.value}
                             editable={true}
                             autoCapitalize="none"
                             placeholder="email"
@@ -90,7 +90,6 @@ class Login extends Component {
                         <View style={styles.formInput}>
                           <TextInput
                             {...input}
-                            value={input.value}
                             keyboardType="default"
                             editable={true}
                             placeholder="password"
@@ -110,16 +109,12 @@ class Login extends Component {
                       {error.graphQLErrors[0].message}
                     </Text>
                   )}
-
-                  <Text style={styles.text}>Forgot your password?</Text>
-
                   <Text style={styles.text}>
                     Don't have an account yet?{" "}
                     <Text style={styles.link} onPress={this.goToRegister}>
                       Register
                     </Text>
                   </Text>
-
                   <TouchableOpacity
                     style={styles.button1}
                     onPress={handleSubmit}

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   errorMsg: {
     color: "red",
-    marginTop: 20
+    marginTop: 10
   }
 });
 

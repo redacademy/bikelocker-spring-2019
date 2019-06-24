@@ -14,7 +14,7 @@ import {
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import validate from "../../helpers/validation";
+import validate from "../../helpers/validationRegister";
 import { setUserIdToken } from "../../config/models";
 
 class Register extends Component {
