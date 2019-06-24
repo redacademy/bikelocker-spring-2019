@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text, View } from "react-native";
+import { View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
 import Loader from "../Loader";
@@ -100,7 +100,7 @@ class MapViewComponent extends Component {
                   showsMyLocationButton={true}
                   showsUserLocation={true}
                 >
-                  {this.state.coordinates.latitude !== null ||
+                  {this.state.coordinates.latitude !== null &&
                   this.state.coordinates.longitude !== null ? (
                     <Marker coordinate={this.state.coordinates} />
                   ) : null}
