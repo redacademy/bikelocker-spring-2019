@@ -72,14 +72,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder={
-                            user.firstName
-                              ? user.firstName
-                              : "Enter your first name..."
-                          }
+                          placeholder={"Enter your first name..."}
                           editable={true}
                           style={styles.textInput}
-                        />
+                        >
+                          {user.firstName}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -99,14 +97,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder={
-                            user.lastName
-                              ? user.lastName
-                              : "Enter your last name..."
-                          }
+                          placeholder={"Enter your last name..."}
                           editable={true}
                           style={styles.textInput}
-                        />
+                        >
+                          {user.lastName}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -126,10 +122,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="default"
-                          placeholder={user.age ? user.age : "30"}
+                          placeholder={"30"}
                           editable={true}
                           style={styles.ageInput}
-                        />
+                        >
+                          {user.age}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -149,14 +147,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="email-address"
-                          placeholder={
-                            user.bikeType
-                              ? user.bikeType
-                              : "Enter your bike type..."
-                          }
+                          placeholder={"Enter your bike type..."}
                           editable={true}
                           style={styles.textInput}
-                        />
+                        >
+                          {user.bikeType}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -176,14 +172,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="email-address"
-                          placeholder={
-                            user.bikeBrand
-                              ? user.bikeBrand
-                              : "Enter your bike brand..."
-                          }
+                          placeholder={"Enter your bike brand..."}
                           editable={true}
                           style={styles.textInput}
-                        />
+                        >
+                          {user.bikeBrand}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -203,14 +197,12 @@ class EditProfileAbout extends Component {
                           {...input}
                           value={input.value}
                           keyboardType="email-address"
-                          placeholder={
-                            user.bikeColor
-                              ? user.bikeColor
-                              : "Enter your bike colour..."
-                          }
+                          placeholder={"Enter your bike colour..."}
                           editable={true}
                           style={styles.textInput}
-                        />
+                        >
+                          {user.bikeColor}
+                        </TextInput>
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -245,7 +237,7 @@ class EditProfileAbout extends Component {
 
 export default EditProfileAbout;
 
-const UPADTE_USER = gql`
+const UPDATE_USER = gql`
   mutation updateUser(
     $id: ID!
     $firstName: String
