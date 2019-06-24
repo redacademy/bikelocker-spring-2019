@@ -84,7 +84,7 @@ const AddLocker = ({
           </TouchableOpacity>
         </View>
       )}
-      {/* <View style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.address}>1100 Block Cambie St.</Text>
         <Text style={styles.ratingText}>Rate the security of this rack</Text>
         <LockerRating handleReviewRating={handleReviewRating} />
@@ -130,7 +130,7 @@ const AddLocker = ({
             </View>
           )}
         />
-      </View> */}
+      </View>
     </ScrollView>
   );
 };
