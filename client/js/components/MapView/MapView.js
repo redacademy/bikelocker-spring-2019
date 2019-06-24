@@ -61,7 +61,7 @@ class MapViewComponent extends Component {
     }
   }
   render() {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, coordinates, slider } = this.state;
 
     return (
       <Query query={GET_LOCATION}>
@@ -73,8 +73,8 @@ class MapViewComponent extends Component {
                 <MapView
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
-                  onLongPress={e => {
-                    if (this.state.slider === true) {
+                  onPress={e => {
+                    if (slider === true) {
                       this.setState({
                         coordinates: {
                           latitude: e.nativeEvent.coordinate.latitude,
@@ -83,12 +83,21 @@ class MapViewComponent extends Component {
                       });
                     }
                   }}
-                  region={{
-                    latitude: latitude,
-                    longitude: longitude,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                  }}
+                  region={
+                    slider === true && coordinates.latitude !== null
+                      ? {
+                          latitude: coordinates.latitude,
+                          longitude: coordinates.longitude,
+                          latitudeDelta: 0.0922,
+                          longitudeDelta: 0.0421
+                        }
+                      : {
+                          latitude: latitude,
+                          longitude: longitude,
+                          latitudeDelta: 0.0922,
+                          longitudeDelta: 0.0421
+                        }
+                  }
                   initialRegion={{
                     latitude: 49.2827,
                     longitude: 123.1207,
@@ -100,8 +109,8 @@ class MapViewComponent extends Component {
                   showsMyLocationButton={true}
                   showsUserLocation={true}
                 >
-                  {this.state.coordinates.latitude !== null &&
-                  this.state.coordinates.longitude !== null ? (
+                  {coordinates.latitude !== null &&
+                  coordinates.longitude !== null ? (
                     <Marker coordinate={this.state.coordinates} />
                   ) : null}
                   {data.allLockers.map(d => (
@@ -139,10 +148,11 @@ class MapViewComponent extends Component {
                 >
                   <ActionButton.Item
                     buttonColor={theme.mediumGreen}
-                    title="Add a locker"
-                    onPress={() =>
-                      this.setState({ slider: !this.state.slider })
-                    }
+                    title="Press map to add pin"
+                    onPress={() => {
+                      // return (slider = true);
+                      this.setState({ slider: !slider });
+                    }}
                   >
                     <IconFontAwesome
                       name="map-marker"
