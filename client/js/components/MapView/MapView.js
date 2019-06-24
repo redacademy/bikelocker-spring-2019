@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text, View } from "react-native";
+import { View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import styles from "./styles";
 import Loader from "../Loader";
@@ -13,6 +13,7 @@ import theme from "../../config/globalStyles";
 class MapViewComponent extends Component {
   constructor(props) {
     super(props);
+    this.slider = false;
     this.state = {
       latitude: 49.2827,
       longitude: 123.1207,
@@ -20,7 +21,6 @@ class MapViewComponent extends Component {
         latitude: null,
         longitude: null
       },
-      slider: false,
       error: null
     };
   }
@@ -61,7 +61,7 @@ class MapViewComponent extends Component {
     }
   }
   render() {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, coordinates } = this.state;
 
     return (
       <Query query={GET_LOCATION}>
@@ -80,7 +80,10 @@ class MapViewComponent extends Component {
                           latitude: e.nativeEvent.coordinate.latitude,
                           longitude: e.nativeEvent.coordinate.longitude
                         }
-                      }),
+
+                      });
+                      this.slider = false;
+
                         this.props.navigation.navigate("AddLocker", {
                           coordinates: {
                             latitude: this.state.coordinates.latitude,
@@ -90,12 +93,21 @@ class MapViewComponent extends Component {
                         this.setState({ slider: false });
                     }
                   }}
-                  region={{
-                    latitude: latitude,
-                    longitude: longitude,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                  }}
+                  region={
+                    this.slider === true && coordinates.latitude !== null
+                      ? {
+                          latitude: coordinates.latitude,
+                          longitude: coordinates.longitude,
+                          latitudeDelta: 0.0922,
+                          longitudeDelta: 0.0421
+                        }
+                      : {
+                          latitude: latitude,
+                          longitude: longitude,
+                          latitudeDelta: 0.0922,
+                          longitudeDelta: 0.0421
+                        }
+                  }
                   initialRegion={{
                     latitude: 49.2827,
                     longitude: 123.1207,
@@ -107,8 +119,8 @@ class MapViewComponent extends Component {
                   showsMyLocationButton={true}
                   showsUserLocation={true}
                 >
-                  {this.state.coordinates.latitude !== null ||
-                  this.state.coordinates.longitude !== null ? (
+                  {coordinates.latitude !== null &&
+                  coordinates.longitude !== null ? (
                     <Marker coordinate={this.state.coordinates} />
                   ) : null}
                   {data.allLockers.map(d => (
@@ -146,10 +158,10 @@ class MapViewComponent extends Component {
                 >
                   <ActionButton.Item
                     buttonColor={theme.mediumGreen}
-                    title="Add a locker"
-                    onPress={() =>
-                      this.setState({ slider: !this.state.slider })
-                    }
+                    title="Press map to add pin"
+                    onPress={() => {
+                      this.slider = true;
+                    }}
                   >
                     <IconFontAwesome
                       name="map-marker"
