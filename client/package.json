@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.5.0",
     "apollo-boost": "^0.4.2",
     "apollo-client": "^2.6.2",
     "final-form": "^4.15.0",
@@ -27,6 +28,7 @@
     "react-native-maps": "^0.24.2",
     "react-native-modal": "^11.0.2",
     "react-native-navigation": "^2.21.0-experimental.1",
+    "react-native-onboarding-swiper": "^1.1.0",
     "react-native-ratings": "^6.3.1",
     "react-native-swipe-up-down": "^1.0.7",
     "react-native-vector-icons": "^6.5.0",
