@@ -13,6 +13,7 @@ import theme from "../../config/globalStyles";
 class MapViewComponent extends Component {
   constructor(props) {
     super(props);
+    this.slider = false;
     this.state = {
       latitude: 49.2827,
       longitude: 123.1207,
@@ -20,7 +21,6 @@ class MapViewComponent extends Component {
         latitude: null,
         longitude: null
       },
-      slider: false,
       error: null
     };
   }
@@ -61,7 +61,7 @@ class MapViewComponent extends Component {
     }
   }
   render() {
-    const { latitude, longitude, coordinates, slider } = this.state;
+    const { latitude, longitude, coordinates } = this.state;
 
     return (
       <Query query={GET_LOCATION}>
@@ -74,17 +74,18 @@ class MapViewComponent extends Component {
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
                   onPress={e => {
-                    if (slider === true) {
+                    if (this.slider === true) {
                       this.setState({
                         coordinates: {
                           latitude: e.nativeEvent.coordinate.latitude,
                           longitude: e.nativeEvent.coordinate.longitude
                         }
                       });
+                      this.slider = false;
                     }
                   }}
                   region={
-                    slider === true && coordinates.latitude !== null
+                    this.slider === true && coordinates.latitude !== null
                       ? {
                           latitude: coordinates.latitude,
                           longitude: coordinates.longitude,
@@ -150,8 +151,7 @@ class MapViewComponent extends Component {
                     buttonColor={theme.mediumGreen}
                     title="Press map to add pin"
                     onPress={() => {
-                      // return (slider = true);
-                      this.setState({ slider: !slider });
+                      this.slider = true;
                     }}
                   >
                     <IconFontAwesome
