@@ -13,7 +13,10 @@ const ThankYouModal = ({ toggleModal, state }) => {
             You’re helping to reduce bike theft in your city and making the
             Biking Community better!
           </Text>
-          <TouchableOpacity onPress={toggleModal} style={styles.continueContainer}>
+          <TouchableOpacity
+            onPress={toggleModal}
+            style={styles.continueContainer}
+          >
             <Text style={styles.continue}>Continue</Text>
           </TouchableOpacity>
         </View>

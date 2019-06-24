@@ -20,7 +20,7 @@ import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
-    // FindLocker: FindLockerScreen,
+    FindLocker: FindLockerScreen,
     AddLocker: AddLockerScreen
   },
   {

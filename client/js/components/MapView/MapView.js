@@ -74,7 +74,7 @@ class MapViewComponent extends Component {
                 <MapView
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
-                  onLongPress={e => {
+                  onPress={e => {
                     if (this.state.slider === true) {
                       this.setState({
                         coordinates: {
@@ -91,7 +91,7 @@ class MapViewComponent extends Component {
                         this.setState({ slider: false });
                     }
                   }}
-                  region={{ 
+                  region={{
                     latitude: latitude,
                     longitude: longitude,
                     latitudeDelta: 0.0922,

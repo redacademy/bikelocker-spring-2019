@@ -12,7 +12,13 @@ export default class AddLockerContainer extends Component {
   }
 
   toggleModal = () => {
-    this.setState({ isModalVisible: !this.state.isModalVisible });
+    if (this.state.isModalVisible === false) {
+      this.setState({ isModalVisible: true });
+    } else if (this.state.isModalVisible === true) {
+      this.setState({ isModalVisible: false });
+      this.props.navigation.navigate("FindLocker");
+      console.log(this.props);
+    }
   };
 
   updateFilesToUpload = file => {
