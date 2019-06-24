@@ -5,7 +5,7 @@ import {
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
-import { DrawerActions } from "react-navigation-drawer";
+import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
@@ -16,10 +16,12 @@ import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
-    FindLocker: FindLockerScreen
+    FindLocker: FindLockerScreen,
+    AddLocker: AddLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -30,7 +32,8 @@ const FindLockerStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
+    EditProfile: EditProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

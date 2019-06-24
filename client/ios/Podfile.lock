@@ -90,6 +90,8 @@ PODS:
     - React/RCTBlob
   - ReactNativeNavigation (2.21.0-experimental.1):
     - React
+  - rn-fetch-blob (0.10.6):
+    - React/Core
   - yoga (0.59.9.React)
 
 DEPENDENCIES:
@@ -114,6 +116,7 @@ DEPENDENCIES:
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -137,6 +140,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -151,8 +156,9 @@ SPEC CHECKSUMS:
   react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
   ReactNativeNavigation: 2d4b9a6c61ab8601003e9018ca80aad79dd376d7
+  rn-fetch-blob: 766f85cabd2992300dfa1be2bc9e4e258abc6f04
   yoga: 03ff42a6f223fb88deeaed60249020d80c3091ee
 
-PODFILE CHECKSUM: 651aa25d6d26c9ddbf82fb371f80902b69d52210
+PODFILE CHECKSUM: 858630abbe45619386625473648bab57749ad740
 
 COCOAPODS: 1.7.2
