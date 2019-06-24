@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import AddLocker from "./AddLocker";
+import React, { Component } from 'react';
+import AddLocker from './AddLocker';
 
 export default class AddLockerContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filesToUpload: [],
-      reviewRating: null
+      reviewRating: null,
     };
   }
 
@@ -26,7 +26,6 @@ export default class AddLockerContainer extends Component {
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         handleReviewRating={this.handleReviewRating}
-        navigation={this.props.navigation}
       />
     );
   }

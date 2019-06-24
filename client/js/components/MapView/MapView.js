@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { TouchableOpacity, Text, View } from "react-native";
-import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
-import styles from "./styles";
-import Loader from "../Loader";
-import IconFontAwesome from "react-native-vector-icons/FontAwesome";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { withNavigation } from "react-navigation";
-import ActionButton from "react-native-action-button";
-import theme from "../../config/globalStyles";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import styles from './styles';
+import Loader from '../Loader';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import { withNavigation } from 'react-navigation';
+import ActionButton from 'react-native-action-button';
+import theme from '../../config/globalStyles';
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -18,10 +18,10 @@ class MapViewComponent extends Component {
       longitude: 123.1207,
       coordinates: {
         latitude: null,
-        longitude: null
+        longitude: null,
       },
       slider: false,
-      error: null
+      error: null,
     };
   }
 
@@ -31,7 +31,7 @@ class MapViewComponent extends Component {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
 
-        error: null
+        error: null,
       });
     });
   }
@@ -42,11 +42,11 @@ class MapViewComponent extends Component {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-          error: null
+          error: null,
         });
       },
       error => console.log(error),
-      {}
+      {},
     );
   };
 
@@ -56,7 +56,7 @@ class MapViewComponent extends Component {
     if (this.props.searchedLocation !== prevProps.searchedLocation) {
       this.setState({
         latitude: this.props.searchedLocation.lat,
-        longitude: this.props.searchedLocation.lng
+        longitude: this.props.searchedLocation.lng,
       });
     }
   }
@@ -73,33 +73,28 @@ class MapViewComponent extends Component {
                 <MapView
                   provider={PROVIDER_GOOGLE}
                   style={styles.mapView}
-                  onLongPress={e => {
+                  onPress={e => {
                     if (this.state.slider === true) {
                       this.setState({
                         coordinates: {
                           latitude: e.nativeEvent.coordinate.latitude,
-                          longitude: e.nativeEvent.coordinate.longitude
-                        }
+                          longitude: e.nativeEvent.coordinate.longitude,
+                        },
                       }),
-                        this.props.navigation.navigate("AddLocker", {
-                          coordinates: {
-                            latitude: this.state.coordinates.latitude,
-                            longitude: this.state.coordinates.latitude
-                          }
-                        });
+                        this.props.navigation.navigate('AddLocker');
                     }
                   }}
                   region={{
                     latitude: latitude,
                     longitude: longitude,
                     latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
+                    longitudeDelta: 0.0421,
                   }}
                   initialRegion={{
                     latitude: 49.2827,
                     longitude: 123.1207,
                     latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
+                    longitudeDelta: 0.0421,
                   }}
                   maxZoomLevel={20}
                   showsBuildings={true}
@@ -115,13 +110,13 @@ class MapViewComponent extends Component {
                       key={d.id}
                       coordinate={{
                         latitude: d.latitude,
-                        longitude: d.longitude
+                        longitude: d.longitude,
                       }}
                       onPress={() =>
-                        this.props.navigation.push("Locker", {
+                        this.props.navigation.push('Locker', {
                           locationID: d.id,
                           userLat: this.state.latitude,
-                          userLng: this.state.longitude
+                          userLng: this.state.longitude,
                         })
                       }
                       title={d.address}

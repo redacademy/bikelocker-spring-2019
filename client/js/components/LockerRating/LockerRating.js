@@ -1,7 +1,7 @@
 import React from "react";
-import { Rating, AirbnbRating } from "react-native-ratings";
+import { Rating } from "react-native-ratings";
 const LOCK_IMAGE = require("../../assets/images/ratinglockoutlinedtransparent.png");
-const Loader = ({ handleReviewRating }) => {
+const Loader = ({ handleReviewRating, state }) => {
   return (
     <Rating
       type="custom"

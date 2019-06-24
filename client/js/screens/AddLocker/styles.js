@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   addImageContainer: {
-    flex: 1,
+    // flex: 1,
   },
   photoContainer: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#009887',
     height: height * 0.2,
     alignItems: 'center',
@@ -32,23 +32,23 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   photoContainer: {
-    backgroundColor: "#009887",
-    height: Dimensions.get("window").height * 0.2,
+    backgroundColor: '#009887',
+    height: Dimensions.get('window').height * 0.2,
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 20
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
   },
   cameraIcon: {
-    color: "#fff",
-    fontSize: 40
+    color: '#fff',
+    fontSize: 40,
   },
   cameraText: {
-    color: "#fff",
+    color: '#fff',
     flex: 1,
-    justifyContent: "center",
-    flexWrap: "wrap",
-    textAlign: "center"
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    textAlign: 'center',
   },
   addPhotos: {
     flexDirection: 'row',

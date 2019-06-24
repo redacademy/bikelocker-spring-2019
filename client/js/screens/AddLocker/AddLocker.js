@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   ScrollView,
   Text,
@@ -6,13 +6,12 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
-  Dimensions
-} from "react-native";
-import LockerRating from "../../components/LockerRating";
-import styles from "./styles";
-import { Form, Field } from "react-final-form";
-import ImagePicker from "react-native-image-picker";
-import Icon from "react-native-vector-icons/Ionicons";
+} from 'react-native';
+import LockerRating from '../../components/LockerRating';
+import styles from './styles';
+import { Form, Field } from 'react-final-form';
+import ImagePicker from 'react-native-image-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -25,8 +24,10 @@ const renderAddImage = (saveImage, updateFilesToUpload) => (
 );
 
 const saveImage = updateFilesToUpload => {
+  console.log('jhsbdfkjans');
+
   const options = {
-    title: "Pick Bike Locker Image"
+    title: 'Pick Bike Locker Image',
   };
 
   ImagePicker.showImagePicker(options, response => {
@@ -40,11 +41,15 @@ const saveImage = updateFilesToUpload => {
   });
 };
 
+onSubmit = () => {
+  console.log('submit submit');
+};
+
 const AddLocker = ({
   state,
   updateFilesToUpload,
   handleReviewRating,
-  navigation
+  navigation,
 }) => {
   return (
     <ScrollView>
@@ -80,7 +85,7 @@ const AddLocker = ({
       <View style={styles.container}>
         <Text style={styles.address}>1100 Block Cambie St.</Text>
         <Text style={styles.ratingText}>Rate the security of this rack</Text>
-        <LockerRating handleReviewRating={handleReviewRating} />
+        <LockerRating handleReviewRating={handleReviewRating} state={state} />
         <View style={styles.lockerDesc}>
           <Text style={styles.secureText}>Less secure</Text>
           <Text style={styles.secureText}>More secure</Text>
