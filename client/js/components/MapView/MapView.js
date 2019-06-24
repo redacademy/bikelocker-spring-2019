@@ -80,8 +80,17 @@ class MapViewComponent extends Component {
                           latitude: e.nativeEvent.coordinate.latitude,
                           longitude: e.nativeEvent.coordinate.longitude
                         }
+
                       });
                       this.slider = false;
+
+                        this.props.navigation.navigate("AddLocker", {
+                          coordinates: {
+                            latitude: this.state.coordinates.latitude,
+                            longitude: this.state.coordinates.latitude
+                          }
+                        });
+
                     }
                   }}
                   region={

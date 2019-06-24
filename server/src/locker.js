@@ -21,7 +21,7 @@ const csvToJSONObject = async () => {
       randomSpots.push(await convertedCsv[Math.floor(Math.random() * 1732)]);
     }
 
-    randomSpots.map(async location => {
+    const spots = randomSpots.map(async location => {
       let address;
       if (location && location["Street Name"] && location["Street Number"]) {
         address = `${location["Street Name"]} ${location["Street Number"]}`;
@@ -36,18 +36,16 @@ const csvToJSONObject = async () => {
           const parkingSpot = await geocoder.geocode(
             address + ", Vancouver, BC, Canada"
           );
-          console.log(parkingSpot);
-          return parkingSpot;
+          return parkingSpot[0];
         } catch (error) {
           return error;
         }
       }
     });
+    return { data: await Promise.all(spots) };
   } catch (error) {
     return error;
   }
 };
-
-csvToJSONObject();
 
 module.exports = csvToJSONObject;
