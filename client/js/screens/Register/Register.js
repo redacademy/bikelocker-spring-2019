@@ -13,13 +13,11 @@ import {
 } from "react-native";
 import { Form, Field } from "react-final-form";
 import styles from "./styles";
+import PropTypes from "prop-types";
 import validate from "../../helpers/validation";
 import { setUserIdToken } from "../../config/models";
 
 class Register extends Component {
-  // handleSubmit = () => {
-  //   console.log("something submitted");
-  // };
   constructor(props) {
     super(props);
     this.state = {
@@ -154,5 +152,10 @@ class Register extends Component {
     );
   }
 }
+
+Register.proptypes = {
+  navigation: PropTypes.array.isRequired,
+  register: PropTypes.func.isRequired
+};
 
 export default Register;

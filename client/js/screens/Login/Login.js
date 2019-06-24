@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   Keyboard
 } from "react-native";
+import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import validate from "../../helpers/validation";
 import styles from "./styles";
@@ -130,5 +131,10 @@ class Login extends Component {
     );
   }
 }
+
+Login.proptypes = {
+  navigation: PropTypes.array.isRequired,
+  authenticate: PropTypes.func.isRequired
+};
 
 export default Login;
