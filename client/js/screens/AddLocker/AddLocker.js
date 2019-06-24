@@ -12,18 +12,17 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
-// import Modal from "react-native-modal";
-// import ThankYouModal from "../../components/ThankYouModal";
+import Modal from "react-native-modal";
+import ThankYouModal from "../../components/ThankYouModal";
 
 {
   /* <Modal isVisible={this.state.isModalVisible}></Modal> */
-  // saveImage(updateFilesToUpload)
 }
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
     style={styles.photoContainer}
-    onPress={() => console.log("addlocker pic")}
+    onPress={() => saveImage(updateFilesToUpload)}
   >
     <Icon name="ios-camera" style={styles.cameraIcon} />
     <Text style={styles.cameraText}>Take a photo</Text>
@@ -130,6 +129,9 @@ const AddLocker = ({
             </View>
           )}
         />
+        <Modal>
+          <ThankYouModal />
+        </Modal>
       </View>
     </ScrollView>
   );
