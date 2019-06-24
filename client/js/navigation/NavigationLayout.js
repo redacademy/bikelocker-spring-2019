@@ -7,7 +7,7 @@ import {
 } from "react-navigation";
 import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
-// import ProfileScreen from '../screens/Profile';
+import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
@@ -20,7 +20,8 @@ import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
-    FindLocker: FindLockerScreen
+    FindLocker: FindLockerScreen,
+    AddLocker: AddLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -29,25 +30,23 @@ const FindLockerStack = createStackNavigator(
   }
 );
 
-// const ProfileStack = createStackNavigator(
-//   {
-//     Profile: ProfileScreen,
-//     EditProfile: EditProfileScreen,
-//   },
-//   {
-//     defaultNavigationOptions: ({ navigation }) => ({
-//       ...sharedNavigationOptions(navigation),
-//     }),
-//   },
-// );
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    EditProfile: EditProfileScreen
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation)
+    })
+  }
+);
 
 const AboutStack = createStackNavigator(
   {
-    About: AboutScreen,
-    AddLocker: AddLockerScreen
+    About: AboutScreen
   },
   {
-    initialRouteName: "AddLocker",
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation)
     })
@@ -125,7 +124,7 @@ export default createDrawerNavigator(
         title: "Find a spot"
       })
     },
-    // Profile: ProfileStack,
+    Profile: ProfileStack,
     About: AboutStack,
     Contact: ContactStack,
     HowToUseApp: {
@@ -142,7 +141,6 @@ export default createDrawerNavigator(
     }
   },
   {
-    initialRouteName: "About",
     contentComponent: props => <DrawerContent {...props} />,
     overlayColor: "black"
   },

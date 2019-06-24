@@ -31,20 +31,21 @@ const saveImage = updateFilesToUpload => {
 
   ImagePicker.showImagePicker(options, response => {
     if (response.didCancel) {
-      console.log("User cancelled image picker");
+      return response.didCancel;
     } else if (response.error) {
-      console.log("ImagePicker Error: ", response.error);
+      return response.error;
     } else {
       updateFilesToUpload(response.uri);
     }
   });
 };
 
-onSubmit = () => {
-  console.log("submit submit");
-};
-
-const AddLocker = ({ state, updateFilesToUpload, handleReviewRating }) => {
+const AddLocker = ({
+  state,
+  updateFilesToUpload,
+  handleReviewRating,
+  navigation
+}) => {
   return (
     <ScrollView>
       {state.filesToUpload.length === 0 &&
@@ -106,7 +107,10 @@ const AddLocker = ({ state, updateFilesToUpload, handleReviewRating }) => {
                 )}
               />
               <View style={styles.buttons}>
-                <TouchableOpacity style={styles.backSpacing}>
+                <TouchableOpacity
+                  style={styles.backSpacing}
+                  onPress={() => navigation.goBack()}
+                >
                   <Text style={styles.back}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
