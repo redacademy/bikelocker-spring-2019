@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Keyboard,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  SafeAreaView,
+  View
+} from "react-native";
 import { Field, Form, FormSpy } from "react-final-form";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
@@ -70,95 +79,106 @@ class EditProfileAbout extends Component {
     const { user } = this.props;
 
     return (
-      <View style={styles.container}>
-        <Mutation
-          refetchQueries={() => [
-            { query: ALL_ITEMS_QUERY, variables: { id: viewer.id } }
-          ]}
-          mutation={UPADTE_USER}
-        >
-          {(addItem, { data }) => (
-            <Form
-              onSubmit={values => {
-                this.saveItem(values, addItem);
-              }}
-              render={({ handleSubmit, pristine, invalid, form, values }) => {
-                return (
-                  <form
-                    onSubmit={values => {
-                      handleSubmit(values);
-                      form.reset();
-                      this.props.resetItem();
-                    }}
-                    className={styles.formContainer}
-                  >
-                    {/* <FormSpy
-                    subscription={{ values: true }}
-                    component={({ values }) => {
-                      if (values) {
-                        this.dispatchUpdate(values, updateItem);
-                      }
-                      return "";
-                    }}
-                  /> */}
-                    {this.state.fileSelected ? (
-                      <TouchableOpacity
-                        onClick={this.resetFileInput}
-                        className={styles.resetTouchableOpacity}
-                      >
-                        <Text>Change photo</Text>
-                      </TouchableOpacity>
-                    ) : (
-                      <TouchableOpacity
-                        onClick={this.triggerInputFile}
-                        variant="contained"
-                        className={styles.TouchableOpacity}
-                      >
-                        <Text>Add photo</Text>
-                      </TouchableOpacity>
-                    )}
-                    {/* <input
-                    hidden
-                    ref={this.fileInput}
-                    onChange={e => this.handleSelectFile(e)}
-                    type="file"
-                    name="imageSelect"
-                    id="imageSelect"
-                  /> */}
-                    <TouchableOpacity
-                      type="submit"
-                      variant="contained"
-                      size="large"
-                      color="primary"
-                      className={styles.share}
-                    >
-                      <Text>Share</Text>
-                    </TouchableOpacity>
-                  </form>
-                );
-              }}
-            />
-          )}
-        </Mutation>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView style={styles.container}>
+          <Image
+            style={styles.logo}
+            source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
+          />
 
-        <Image
-          borderRadius={75}
-          resizeMode="contain"
-          style={styles.profilePic}
-          source={require("../../assets/images/profile_pic.jpg")} // replace by profile pic once upload mutation is working
-        />
-        <View style={styles.info}>
-          <Text style={styles.userName}>
-            {user.firstName} {user.lastName}
-          </Text>
-          <Text style={styles.userLocation}>
-            {user.city}, {user.province}, {user.country}
-          </Text>
-          <Text style={styles.caption}>
-            {user.bikeColor} {user.bikeBrand} {user.bikeType}
-          </Text>
-        </View>
-      </View>
+          <Form
+            onSubmit={async values => {
+              console.log(values);
+              try {
+                const response = await register({ variables: { ...values } });
+                if (response.data.register) {
+                  const { id, token } = response.data.register;
+                  await setUserIdToken(id, token);
+                  navigation.navigate("FindLocker");
+                }
+              } catch (e) {
+                throw e;
+              }
+            }}
+            render={({ handleSubmit, pristine, invalid }) => (
+              <View style={styles.form}>
+                <Text style={styles.labelText}>First Name</Text>
+                <Field
+                  name="firstName"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="default"
+                          placeholder="First Name"
+                          editable={true}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.labelText}>Email Address</Text>
+                <Field
+                  name="email"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="email-address"
+                          placeholder="Email Address"
+                          editable={true}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.labelText}>Password</Text>
+                <Field
+                  name="password"
+                  render={({ input, meta }) => (
+                    <View style={styles.formField}>
+                      <View style={styles.formInput}>
+                        <TextInput
+                          {...input}
+                          value={input.value}
+                          keyboardType="default"
+                          placeholder="Password"
+                          editable={true}
+                          secureTextEntry={true}
+                        />
+                      </View>
+                      <View>
+                        {meta.error && meta.touched && (
+                          <Text style={styles.errorMsg}>{meta.error}</Text>
+                        )}
+                      </View>
+                    </View>
+                  )}
+                />
+                <Text style={styles.text}>Already have an account?</Text>
+                <TouchableOpacity style={styles.button1} onPress={handleSubmit}>
+                  <Text style={styles.btnFont}> Register </Text>
+                </TouchableOpacity>
+                <View style={{ flex: 1 }} />
+              </View>
+            )}
+          />
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
     );
   }
 }
