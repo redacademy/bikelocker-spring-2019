@@ -5,12 +5,14 @@ const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center"
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "flex-end"
   },
   logo: {
     width: width * 0.6,
     marginTop: height * 0.1,
-    marginBottom: height * 0.1,
+    marginBottom: height * 0.06,
     resizeMode: "contain"
   },
   btnRow: {
@@ -55,6 +57,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: "center",
     paddingLeft: 10
+  },
+  text: {
+    marginTop: 15
+  },
+  link: {
+    color: globalStyles.orange,
+    textDecorationLine: "underline"
   }
 });
 
