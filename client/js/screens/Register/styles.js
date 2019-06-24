@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline"
   },
   errorMsg: {
-    color: "red"
+    color: "red",
+    marginTop: 20
   }
 });
 

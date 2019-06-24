@@ -129,10 +129,11 @@ class Register extends Component {
                       </View>
                     )}
                   />
-                  {error &&
-                    error.message &&
-                    (console.log(error),
-                    <Text style={styles.errorMsg}>{error.message}</Text>)}
+                  {error && error.message && error.graphQLErrors[0] && (
+                    <Text style={styles.errorMsg}>
+                      {error.graphQLErrors[0].message}
+                    </Text>
+                  )}
                   <Text style={styles.text}>
                     Already have an account?{" "}
                     <Text style={styles.link} onPress={this.goToLogin}>
