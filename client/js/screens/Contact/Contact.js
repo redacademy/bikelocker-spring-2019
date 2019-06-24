@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, TextInput } from "react-native";
-import theme from "../../config/globalStyles";
-import Modal from "react-native-modal";
+import { Modal, Text, View, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
 
 class Contact extends Component {

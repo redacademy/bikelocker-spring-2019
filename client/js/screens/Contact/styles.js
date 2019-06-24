@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
+
+const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
   modalView: {
+    top: height / 2.6,
     backgroundColor: "white",
     height: "25%",
     borderRadius: 20,
