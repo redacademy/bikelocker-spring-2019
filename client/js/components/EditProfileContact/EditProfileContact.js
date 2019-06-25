@@ -33,7 +33,7 @@ class EditProfileContact extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, navigation } = this.props;
     user.phone && (user.phone = user.phone.toString());
 
     return (
@@ -246,13 +246,13 @@ class EditProfileContact extends Component {
                 <View style={styles.buttons}>
                   <TouchableOpacity
                     style={styles.backButton}
-                    onPress={handleSubmit}
+                    onPress={() => navigation.navigate("Profile")}
                   >
                     <Text style={styles.backButtonLabel}>Back</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={styles.submitButton}
-                    onPress={handleSubmit}
+                    onPress={() => handleSubmit()}
                   >
                     <Text style={styles.submitButtonLabel}>Submit</Text>
                   </TouchableOpacity>
@@ -283,6 +283,7 @@ const UPDATE_USER = gql`
     $province: String
     $country: String
     $postalCode: String
+    $phone: Int
     $email: String
   ) {
     updateUser(
@@ -299,6 +300,7 @@ const UPDATE_USER = gql`
       province: $province
       country: $country
       postalCode: $postalCode
+      phone: $phone
       email: $email
     ) {
       id
@@ -314,6 +316,7 @@ const UPDATE_USER = gql`
       province
       country
       postalCode
+      phone
       email
     }
   }
