@@ -130,7 +130,6 @@ class MapViewComponent extends Component {
                     <Marker coordinate={this.state.coordinates} />
                   ) : null}
                   {data.allLockers.map(d => {
-                    console.log(d);
                     let i;
                     if (d.reviews.length === 0) {
                       i = blackPin;
