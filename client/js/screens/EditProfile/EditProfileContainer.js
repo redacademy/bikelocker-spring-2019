@@ -55,6 +55,7 @@ const USER_QUERY = gql`
       country
       postalCode
       email
+      phone
     }
   }
 `;
