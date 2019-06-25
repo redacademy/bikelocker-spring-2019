@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, ScrollView, Image } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class Carousel extends Component {
   render() {
@@ -60,3 +61,7 @@ export default class PhotoCarousel extends Component {
     );
   }
 }
+
+PhotoCarousel.propTypes = {
+  images: PropTypes.array
+};

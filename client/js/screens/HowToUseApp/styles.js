@@ -9,10 +9,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 20
   },
   h2: {
+    fontFamily: theme.titleFont,
     fontSize: theme.titleFontSize,
     color: theme.black
   },
   p: {
+    fontFamily: theme.bodyFont,
     fontSize: theme.commonFontSize,
     paddingTop: 10,
     lineHeight: 25,

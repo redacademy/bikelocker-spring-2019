@@ -3,6 +3,7 @@ import theme from "../../config/globalStyles";
 
 const styles = StyleSheet.create({
   p: {
+    fontFamily: theme.bodyFont,
     fontSize: theme.subheadingFontSize,
     textAlign: "center",
     paddingBottom: 10,

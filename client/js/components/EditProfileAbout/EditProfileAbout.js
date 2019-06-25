@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Image,
   Keyboard,
-  Picker,
   Text,
   TextInput,
   TouchableOpacity,
@@ -14,6 +13,7 @@ import { Field, Form } from "react-final-form";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class EditProfileAbout extends Component {
   constructor(props) {
@@ -231,6 +231,11 @@ class EditProfileAbout extends Component {
 }
 
 export default EditProfileAbout;
+
+EditProfileAbout.propTypes = {
+  user: PropTypes.object,
+  navigation: PropTypes.object
+};
 
 const UPDATE_USER = gql`
   mutation updateUser(

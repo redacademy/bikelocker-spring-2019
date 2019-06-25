@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import { Field, Form } from "react-final-form";
 import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class EditProfileContact extends Component {
   constructor(props) {
@@ -267,6 +267,11 @@ class EditProfileContact extends Component {
 }
 
 export default EditProfileContact;
+
+EditProfileContact.propTypes = {
+  user: PropTypes.object,
+  navigation: PropTypes.object
+};
 
 const UPDATE_USER = gql`
   mutation updateUser(

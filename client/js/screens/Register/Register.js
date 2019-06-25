@@ -157,10 +157,10 @@ class Register extends Component {
   }
 }
 
+export default Register;
+
 Register.proptypes = {
   navigation: PropTypes.array.isRequired,
   register: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired
 };
-
-export default Register;

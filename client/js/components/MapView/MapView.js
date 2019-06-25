@@ -127,7 +127,10 @@ class MapViewComponent extends Component {
                 >
                   {coordinates.latitude !== null &&
                   coordinates.longitude !== null ? (
-                    <Marker coordinate={this.state.coordinates} />
+                    <Marker
+                      image={blackPin}
+                      coordinate={this.state.coordinates}
+                    />
                   ) : null}
                   {data.allLockers.map(d => {
                     let i;

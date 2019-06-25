@@ -13,8 +13,8 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
-import Modal from "react-native-modal";
 import ThankYouModal from "../../components/ThankYouModal";
+import PropTypes from "prop-types";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -135,3 +135,11 @@ const AddLocker = ({
 };
 
 export default AddLocker;
+
+AddLocker.propTypes = {
+  state: PropTypes.object,
+  updateFilesToUpload: PropTypes.func,
+  handleReviewRating: PropTypes.func,
+  navigation: PropTypes.object,
+  toggleModal: PropTypes.func
+};
