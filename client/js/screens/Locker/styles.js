@@ -1,8 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 import globalStyles from "../../config/globalStyles.js";
 
-const { width } = Dimensions.get("window");
-const height = width * 0.8;
+const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +9,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 1,
-    margin: 15
+    margin: 20
   },
   topbar: {
     flexDirection: "row",
@@ -73,10 +72,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
     resizeMode: "contain"
   },
-  reviewer: {
+  reviewBox: {
     flexDirection: "row",
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    width: width * 0.7
   },
   address: {
     fontFamily: globalStyles.titleFont,
@@ -94,6 +94,26 @@ const styles = StyleSheet.create({
   review: {
     fontFamily: globalStyles.subheadingFont,
     fontSize: 15
+  },
+  rating: {
+    paddingTop: 20,
+    paddingBottom: 10,
+    flexDirection: "row",
+    alignSelf: "flex-start"
+  },
+  placeholder: {
+    backgroundColor: globalStyles.lightGrey,
+    borderRadius: 10,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    height: height * 0.3,
+    padding: 20,
+    marginBottom: 30
+  },
+  promptPlaceholder: {
+    alignSelf: "center"
   }
 });
 

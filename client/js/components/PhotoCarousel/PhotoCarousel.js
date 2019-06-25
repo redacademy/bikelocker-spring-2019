@@ -30,25 +30,25 @@ export default class PhotoCarousel extends Component {
       {
         source: {
           uri:
-            "https://cdn.pixabay.com/photo/2017/05/19/07/34/teacup-2325722__340.jpg"
+            "https://cdn.pixabay.com/photo/2014/05/21/15/17/bicycles-349788_960_720.jpg"
         }
       },
       {
         source: {
           uri:
-            "https://cdn.pixabay.com/photo/2017/05/02/22/43/mushroom-2279558__340.jpg"
+            "https://cdn.pixabay.com/photo/2018/12/09/19/14/colors-3865538_960_720.jpg"
         }
       },
       {
         source: {
           uri:
-            "https://cdn.pixabay.com/photo/2017/05/18/21/54/tower-bridge-2324875__340.jpg"
+            "https://cdn.pixabay.com/photo/2015/09/05/00/20/bikes-923451_960_720.jpg"
         }
       },
       {
         source: {
           uri:
-            "https://cdn.pixabay.com/photo/2017/05/16/21/24/gorilla-2318998__340.jpg"
+            "https://cdn.pixabay.com/photo/2016/11/18/15/50/bicycle-rack-1835463_960_720.jpg"
         }
       }
     ];

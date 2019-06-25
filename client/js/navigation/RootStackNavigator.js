@@ -44,6 +44,13 @@ export default createAppContainer(
     {
       initialRouteName: "AuthLoading"
     },
-    { mode: "modal", headerMode: "none" }
+    {
+      mode: "modal",
+      headerMode: "none",
+      transparentCard: true,
+      defaultNavigationOptions: {
+        gesturesEnabled: true
+      }
+    }
   )
 );
