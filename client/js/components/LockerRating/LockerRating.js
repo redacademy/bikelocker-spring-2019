@@ -1,13 +1,9 @@
 import React from "react";
 import { Rating } from "react-native-ratings";
 const LOCK_IMAGE = require("../../assets/images/ratinglockoutlinedtransparent.png");
-<<<<<<< HEAD
 import PropTypes from "prop-types";
 
 const Loader = ({ handleReviewRating }) => {
-=======
-const Loader = ({ handleReviewRating, state }) => {
->>>>>>> develop
   return (
     <Rating
       type="custom"
