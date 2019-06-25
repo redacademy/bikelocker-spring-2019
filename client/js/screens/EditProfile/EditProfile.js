@@ -4,7 +4,7 @@ import EditProfileAbout from "../../components/EditProfileAbout";
 import EditProfileContact from "../../components/EditProfileContact";
 import styles from "./styles";
 
-const EditProfile = ({ toggleTab, secondTabActive, user }) => (
+const EditProfile = ({ toggleTab, secondTabActive, user, navigation }) => (
   <ScrollView>
     <View style={styles.header}>
       <Text style={styles.title}>Profile</Text>
@@ -38,9 +38,9 @@ const EditProfile = ({ toggleTab, secondTabActive, user }) => (
       </TouchableOpacity>
     </View>
     {!secondTabActive ? (
-      <EditProfileAbout user={user} />
+      <EditProfileAbout user={user} navigation={navigation} />
     ) : (
-      <EditProfileContact user={user} />
+      <EditProfileContact user={user} navigation={navigation} />
     )}
   </ScrollView>
 );
