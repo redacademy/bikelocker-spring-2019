@@ -3,7 +3,6 @@ import MapViewComponent from "../../components/MapView";
 import { View, Text, Button } from "react-native";
 import GoogleMapsSearch from "../../components/GoogleMapSearch";
 import GooglePlaceContext from "../../context/GooglePlaceContext";
-import styles from "./styles";
 
 const FindLocker = () => {
   return (
