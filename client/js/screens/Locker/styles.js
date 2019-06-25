@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     padding: 3
   },
   btnFont1: {
-    color: "white"
-    // fontFamily: globalStyles.titleFont
+    color: "white",
+    fontFamily: globalStyles.titleFont
   },
   btnFont2: {
-    color: globalStyles.mediumGreen
-    // fontFamily: globalStyles.titleFont
+    color: globalStyles.mediumGreen,
+    fontFamily: globalStyles.titleFont
   },
   twoBtns: {
     flexDirection: "row",
@@ -79,20 +79,20 @@ const styles = StyleSheet.create({
     width: width * 0.7
   },
   address: {
-    // fontFamily: globalStyles.titleFont,
+    fontFamily: globalStyles.titleFont,
     fontSize: 20
   },
   acctName: {
-    // fontFamily: globalStyles.titleFont,
+    fontFamily: globalStyles.titleFont,
     fontSize: 15
   },
   time: {
-    // fontFamily: globalStyles.subheadingFont,
+    fontFamily: globalStyles.subheadingFont,
     fontSize: 10,
     marginBottom: 4
   },
   review: {
-    // fontFamily: globalStyles.subheadingFont,
+    fontFamily: globalStyles.subheadingFont,
     fontSize: 15
   },
   rating: {
