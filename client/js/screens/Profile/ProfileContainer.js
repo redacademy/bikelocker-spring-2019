@@ -4,24 +4,43 @@ import Profile from "./Profile";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Loader from "../../components/Loader";
+import AsyncStorage from "@react-native-community/async-storage";
+import { getUserId } from "../../config/models";
 
 export default class ProfileContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { userId: "" };
+  }
+  componentDidMount = async () => {
+    try {
+      const userId = await getUserId();
+      this.setState({ userId });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
-    return (
-      <Query
-        query={USER_QUERY}
-        variables={{ id: "cjx2bg22z08h90166zqgy3ium" }}
-        fetchPolicy="network-only"
-      >
-        {({ loading, error, data }) => {
-          if (loading) return <Loader />;
-          if (error) return <Text>{`Error! ${error.message}`}</Text>;
-          return (
-            <Profile user={data.User} navigation={this.props.navigation} />
-          );
-        }}
-      </Query>
-    );
+    console.log("userId", this.state.userId);
+
+    if (this.state.userId)
+      return (
+        <Query
+          query={USER_QUERY}
+          variables={{ id: this.state.userId }}
+          fetchPolicy="network-only"
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <Loader />;
+            if (error) return <Text>{`Error! ${error.message}`}</Text>;
+            return (
+              <Profile user={data.User} navigation={this.props.navigation} />
+            );
+          }}
+        </Query>
+      );
+    else return <Loader />;
   }
 }
 
