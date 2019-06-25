@@ -30,10 +30,8 @@ export default class AddLockerContainer extends Component {
     this.setState({ reviewRating: rating });
   };
   render() {
-    console.log(this.props.navigation);
     const latitude = this.props.navigation.state.params.coordinates.latitude;
     const longitude = this.props.navigation.state.params.coordinates.longitude;
-    console.log(latitude, longitude);
     return (
       <AddLocker
         state={{ ...this.state }}

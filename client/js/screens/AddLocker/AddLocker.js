@@ -15,9 +15,9 @@ import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import Modal from "react-native-modal";
 import ThankYouModal from "../../components/ThankYouModal";
 import Loader from "../../components/LockerRating/LockerRating";
+import { getUserId } from "../../config/models";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -103,10 +103,16 @@ const AddLocker = ({
                   onSubmit={async values => {
                     try {
                       values = {
-                        ...values,
                         address: "123 Red ave",
                         latitude: latitude,
-                        longitude: longitude
+                        longitude: longitude,
+                        reviews: [
+                          {
+                            review: values.review,
+                            rating: state.reviewRating,
+                            reviewerId: await getUserId()
+                          }
+                        ]
                       };
                       await createLocker({ variables: values });
                       toggleModal();
@@ -117,7 +123,7 @@ const AddLocker = ({
                   render={({ handleSubmit, pristine, invalid }) => (
                     <View>
                       <Field
-                        name="bio"
+                        name="review"
                         render={({ input, meta }) => (
                           <TextInput
                             {...input}
