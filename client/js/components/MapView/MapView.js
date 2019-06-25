@@ -9,6 +9,13 @@ import gql from "graphql-tag";
 import { withNavigation } from "react-navigation";
 import ActionButton from "react-native-action-button";
 import theme from "../../config/globalStyles";
+import { lockerAvgRating } from "../../helpers/avgRating";
+import blackPin from "../../assets/icons/pins/0.png";
+import redPin from "../../assets/icons/pins/1.png";
+import yellowPin from "../../assets/icons/pins/2.png";
+import orangePin from "../../assets/icons/pins/3.png";
+import turquoisePin from "../../assets/icons/pins/4.png";
+import greenPin from "../../assets/icons/pins/5.png";
 
 class MapViewComponent extends Component {
   constructor(props) {
@@ -60,6 +67,7 @@ class MapViewComponent extends Component {
       });
     }
   }
+
   render() {
     const { latitude, longitude, coordinates } = this.state;
 
@@ -80,17 +88,15 @@ class MapViewComponent extends Component {
                           latitude: e.nativeEvent.coordinate.latitude,
                           longitude: e.nativeEvent.coordinate.longitude
                         }
-
                       });
                       this.slider = false;
 
-                        this.props.navigation.navigate("AddLocker", {
-                          coordinates: {
-                            latitude: this.state.coordinates.latitude,
-                            longitude: this.state.coordinates.latitude
-                          }
-                        });
-
+                      this.props.navigation.navigate("AddLocker", {
+                        coordinates: {
+                          latitude: this.state.coordinates.latitude,
+                          longitude: this.state.coordinates.latitude
+                        }
+                      });
                     }
                   }}
                   region={
@@ -123,23 +129,42 @@ class MapViewComponent extends Component {
                   coordinates.longitude !== null ? (
                     <Marker coordinate={this.state.coordinates} />
                   ) : null}
-                  {data.allLockers.map(d => (
-                    <Marker
-                      key={d.id}
-                      coordinate={{
-                        latitude: d.latitude,
-                        longitude: d.longitude
-                      }}
-                      onPress={() =>
-                        this.props.navigation.push("Locker", {
-                          locationID: d.id,
-                          userLat: this.state.latitude,
-                          userLng: this.state.longitude
-                        })
-                      }
-                      title={d.address}
-                    />
-                  ))}
+                  {data.allLockers.map(d => {
+                    console.log(d);
+                    let i;
+                    if (d.reviews.length === 0) {
+                      i = blackPin;
+                    } else if (lockerAvgRating(d) < 2) {
+                      i = redPin;
+                    } else if (lockerAvgRating(d) < 3) {
+                      i = yellowPin;
+                    } else if (lockerAvgRating(d) < 4) {
+                      i = orangePin;
+                    } else if (lockerAvgRating(d) < 5) {
+                      i = turquoisePin;
+                    } else if (lockerAvgRating(d) < 6) {
+                      i = greenPin;
+                    }
+
+                    return (
+                      <Marker
+                        key={d.id}
+                        coordinate={{
+                          latitude: d.latitude,
+                          longitude: d.longitude
+                        }}
+                        image={i}
+                        onPress={() =>
+                          this.props.navigation.push("Locker", {
+                            locationID: d.id,
+                            userLat: this.state.latitude,
+                            userLng: this.state.longitude
+                          })
+                        }
+                        title={d.address}
+                      />
+                    );
+                  })}
                 </MapView>
 
                 <ActionButton
