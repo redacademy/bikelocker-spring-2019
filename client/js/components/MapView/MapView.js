@@ -153,13 +153,13 @@ class MapViewComponent extends Component {
                           longitude: d.longitude
                         }}
                         image={i}
-                        onPress={() =>
-                          this.props.navigation.push("Locker", {
+                        onPress={() => {
+                          this.props.navigation.push("LockerView", {
                             locationID: d.id,
                             userLat: this.state.latitude,
                             userLng: this.state.longitude
-                          })
-                        }
+                          });
+                        }}
                         title={d.address}
                       />
                     );

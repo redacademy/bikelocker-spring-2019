@@ -18,6 +18,7 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AddLockerScreen from "../screens/AddLocker";
+import LockerModal from "../screens/Locker";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -116,6 +117,7 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
+
 export default createDrawerNavigator(
   {
     FindLocker: {
