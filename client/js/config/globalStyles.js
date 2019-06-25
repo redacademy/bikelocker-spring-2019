@@ -17,7 +17,7 @@ const globalStyles = {
   subheadingFontSize: 20, // For subheadings
   commonFontSize: 16, // For caption and body font sizes
   mediumGreen: "#009887",
-  darkGreen: "005A4A",
+  darkGreen: "#005A4A",
   orange: "#FCAF17",
   darkGrey: "#404040",
   lightGrey: "#DBDBDB",

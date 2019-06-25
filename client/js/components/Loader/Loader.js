@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, View, ActivityIndicator } from "react-native";
-
+import { View, ActivityIndicator } from "react-native";
+import styles from "./styles";
 const Loader = () => {
   return (
-    <View>
-      <ActivityIndicator />
+    <View style={styles.container}>
+      <ActivityIndicator style={styles.spinner} />
     </View>
   );
 };
