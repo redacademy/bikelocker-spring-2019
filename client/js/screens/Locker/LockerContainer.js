@@ -16,7 +16,12 @@ export default class LockerContainer extends Component {
       >
         {({ loading, data }) => {
           if (loading || !data) return <Loader />;
-          return <Locker lockerinfo={data.Locker} />;
+          return (
+            <Locker
+              lockerinfo={data.Locker}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );

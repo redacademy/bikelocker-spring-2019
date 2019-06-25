@@ -11,7 +11,7 @@ const About = () => (
       map their route, and rate and review the space.
     </Text>
     <Image
-      source={require("../../assets/icons/bikelocker/combinedlogo/vertical/mediumgreen.png")}
+      source={require("../../assets/images/bikelockerlogo.png")}
       style={styles.image}
     />
   </View>

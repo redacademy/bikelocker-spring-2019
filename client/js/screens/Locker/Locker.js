@@ -12,6 +12,19 @@ import {
 import styles from "./styles";
 import PhotoCarousel from "../../components/PhotoCarousel";
 import { Gravatar } from "react-native-gravatar";
+import Rating from "../../components/LockerRatingReadOnly";
+import moment from "moment";
+import { lockerAvgRating } from "../../helpers/avgRating";
+
+const ReviewPlaceholder = () => {
+  return (
+    <View style={styles.placeholder}>
+      <Text style={styles.placeholderPrompt}>
+        To leave a review, click the review button
+      </Text>
+    </View>
+  );
+};
 
 class Locker extends Component {
   constructor(props) {
@@ -24,7 +37,7 @@ class Locker extends Component {
     this.setState({ modalVisible: visible });
   }
   render() {
-    const { lockerinfo } = this.props;
+    const { lockerinfo, navigation } = this.props;
 
     const srcLatitude = 49.2633479;
     const srcLongitude = -123.140316;
@@ -32,7 +45,6 @@ class Locker extends Component {
     const destLongitude = lockerinfo.longitude;
     const srcLatLng = `${srcLatitude},${srcLongitude}`;
     const destLatLng = `${destLatitude},${destLongitude}`;
-    const label = "Custom Label";
 
     const url = Platform.select({
       ios: `http://maps.apple.com/?saddr=${srcLatLng}&daddr=${destLatLng}&dirflg=d`,
@@ -46,6 +58,7 @@ class Locker extends Component {
             style={styles.topbar}
             onPress={() => {
               this.setModalVisible(!this.state.modalVisible);
+              navigation.goBack();
             }}
           >
             <Image
@@ -57,8 +70,21 @@ class Locker extends Component {
 
           <View style={styles.infoContainer}>
             <Text style={styles.address}>{lockerinfo.address}</Text>
+            <View style={styles.rating}>
+              <Rating avgRating={lockerAvgRating(lockerinfo)} />
+            </View>
             <View style={styles.twoBtns}>
-              <TouchableOpacity style={styles.button1}>
+              <TouchableOpacity
+                style={styles.button1}
+                onPress={() =>
+                  navigation.navigate("AddLocker", {
+                    coordinates: {
+                      latitude: lockerinfo.latitude,
+                      longitude: lockerinfo.longitude
+                    }
+                  })
+                }
+              >
                 <Image
                   style={styles.icon}
                   source={require("../../assets/icons/review.png")}
@@ -76,28 +102,37 @@ class Locker extends Component {
                 <Text style={styles.btnFont2}>Directions</Text>
               </TouchableOpacity>
             </View>
-
-            {lockerinfo.reviews.map((entry, index) => {
-              return (
-                <View key={index} style={styles.reviewer}>
-                  <Gravatar
-                    options={{
-                      email: entry.reviewer.email,
-                      parameters: { size: "200", d: "mm" },
-                      secure: true
-                    }}
-                    style={styles.roundedProfileImage}
-                  />
-                  <View style={styles.review}>
-                    <Text style={styles.acctName}>
-                      {entry.reviewer.firstName} {entry.reviewer.lastName}
-                    </Text>
-                    <Text style={styles.time}>{entry.createdAt}</Text>
-                    <Text style={styles.review}>{entry.review}</Text>
+            {lockerinfo.reviews.length < 1 ? (
+              <View>
+                <ReviewPlaceholder />
+              </View>
+            ) : (
+              lockerinfo.reviews.map((entry, index) => {
+                return (
+                  <View key={index} style={styles.reviewBox}>
+                    <Gravatar
+                      options={{
+                        email: entry.reviewer.email,
+                        parameters: { size: "200", d: "mm" },
+                        secure: true
+                      }}
+                      style={styles.roundedProfileImage}
+                    />
+                    <View style={styles.review}>
+                      <Text style={styles.acctName}>
+                        {entry.reviewer.firstName} {entry.reviewer.lastName}
+                      </Text>
+                      <Text style={styles.time}>
+                        {moment(entry.createdAt)
+                          .startOf("day")
+                          .fromNow()}
+                      </Text>
+                      <Text style={styles.review}>{entry.review}</Text>
+                    </View>
                   </View>
-                </View>
-              );
-            })}
+                );
+              })
+            )}
           </View>
         </ScrollView>
       </Modal>

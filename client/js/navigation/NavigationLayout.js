@@ -1,22 +1,23 @@
-import React from 'react';
-import { Image, View } from 'react-native';
+import React from "react";
+import { Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
-  DrawerItems,
-} from 'react-navigation';
-import EditProfileScreen from '../screens/EditProfile';
-import FindLockerScreen from '../screens/FindLocker';
-import ProfileScreen from '../screens/Profile';
-import AboutScreen from '../screens/About';
-import ContactScreen from '../screens/Contact';
-import HowToUseAppScreen from '../screens/HowToUseApp';
-import ResourcesScreen from '../screens/Resources';
-import { sharedNavigationOptions } from './config';
-import IconIonicons from 'react-native-vector-icons/Ionicons';
-import theme from '../config/globalStyles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import AddLockerScreen from '../screens/AddLocker';
+  DrawerItems
+} from "react-navigation";
+import EditProfileScreen from "../screens/EditProfile";
+import FindLockerScreen from "../screens/FindLocker";
+import ProfileScreen from "../screens/Profile";
+import AboutScreen from "../screens/About";
+import ContactScreen from "../screens/Contact";
+import HowToUseAppScreen from "../screens/HowToUseApp";
+import ResourcesScreen from "../screens/Resources";
+import { clearStorage } from "../config/models.js";
+import { sharedNavigationOptions } from "./config";
+import IconIonicons from "react-native-vector-icons/Ionicons";
+import theme from "../config/globalStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -115,13 +116,32 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
-
 export default createDrawerNavigator(
   {
-    FindLocker: FindLockerStack,
-    Profile: ProfileStack,
-    About: AboutStack,
-    Contact: ContactStack,
+    FindLocker: {
+      screen: FindLockerStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Find a spot"
+      })
+    },
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "My Profile"
+      })
+    },
+    About: {
+      screen: AboutStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "About Bike Locker"
+      })
+    },
+    Contact: {
+      screen: ContactStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Contact Us"
+      })
+    },
     HowToUseApp: {
       screen: HowToUseAppStack,
       navigationOptions: ({ navigation }) => ({
@@ -138,7 +158,25 @@ export default createDrawerNavigator(
   {
     initialRouteName: 'FindLocker',
     contentComponent: props => <DrawerContent {...props} />,
-    overlayColor: 'black',
+    contentComponent: props => (
+      <View style={{ flex: 1 }}>
+        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+          <DrawerItems {...props} />
+          <Button
+            title="Logout"
+            onPress={async () => {
+              try {
+                await clearStorage();
+                props.navigation.navigate("AuthLoading");
+              } catch (e) {
+                throw e;
+              }
+            }}
+          />
+        </SafeAreaView>
+      </View>
+    ),
+    overlayColor: "black"
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({}),

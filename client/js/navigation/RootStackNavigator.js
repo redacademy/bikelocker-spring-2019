@@ -1,17 +1,53 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import NavigationLayout from './NavigationLayout';
-import LockerModal from '../screens/Locker';
+import React from "react";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator
+} from "react-navigation";
+import NavigationLayout from "./NavigationLayout";
+import LockerModal from "../screens/Locker";
+
+import AuthWelcomeScreen from "../screens/AuthWelcome/AuthWelcomeContainer";
+import AuthLoadingScreen from "../screens/AuthLoading";
+import RegisterScreen from "../screens/Register";
+import LoginScreen from "../screens/Login";
+
+const AuthStack = createStackNavigator({
+  Welcome: {
+    screen: AuthWelcomeScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
+});
 
 export default createAppContainer(
-  createStackNavigator(
+  createSwitchNavigator(
     {
+      AuthLoading: AuthLoadingScreen,
+      Auth: AuthStack,
       Layout: NavigationLayout,
-      Locker: { screen: LockerModal, gestureResponseDistance: 50 },
+      Locker: LockerModal
     },
     {
-      mode: 'modal',
-      headerMode: 'none',
-      transparentCard: false,
+      initialRouteName: "AuthLoading"
+    },
+    {
+      mode: "modal",
+      headerMode: "none",
+      transparentCard: true,
       defaultNavigationOptions: {
         gesturesEnabled: true,
       },
