@@ -83,20 +83,21 @@ class MapViewComponent extends Component {
                   style={styles.mapView}
                   onPress={e => {
                     if (this.slider === true) {
-                      this.setState({
-                        coordinates: {
-                          latitude: e.nativeEvent.coordinate.latitude,
-                          longitude: e.nativeEvent.coordinate.longitude
-                        }
-                      });
-                      this.slider = false;
+                      this.setState(
+                        {
+                          coordinates: {
+                            latitude: e.nativeEvent.coordinate.latitude,
+                            longitude: e.nativeEvent.coordinate.longitude
+                          }
+                        },
+                        () => {
+                          this.slider = false;
 
-                      this.props.navigation.navigate("AddLocker", {
-                        coordinates: {
-                          latitude: this.state.coordinates.latitude,
-                          longitude: this.state.coordinates.latitude
+                          this.props.navigation.navigate("AddLocker", {
+                            coordinates: this.state.coordinates
+                          });
                         }
-                      });
+                      );
                     }
                   }}
                   region={

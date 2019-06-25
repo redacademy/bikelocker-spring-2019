@@ -13,8 +13,16 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
+<<<<<<< HEAD
 import ThankYouModal from "../../components/ThankYouModal";
 import PropTypes from "prop-types";
+=======
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
+import ThankYouModal from "../../components/ThankYouModal";
+import Loader from "../../components/LockerRating/LockerRating";
+import { getUserId } from "../../config/models";
+>>>>>>> develop
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -47,7 +55,9 @@ const AddLocker = ({
   updateFilesToUpload,
   handleReviewRating,
   navigation,
-  toggleModal
+  toggleModal,
+  latitude,
+  longitude
 }) => {
   return (
     <ScrollView>
@@ -90,43 +100,65 @@ const AddLocker = ({
             <Text style={styles.secureText}>More secure</Text>
           </View>
           <Text style={styles.commentText}>Leave a comment</Text>
-
-          <Form
-            onSubmit={() => {
-              this.onSubmit();
-            }}
-            render={({ handleSubmit, pristine, invalid }) => (
-              <View>
-                <Field
-                  name="bio"
-                  render={({ input, meta }) => (
-                    <TextInput
-                      {...input}
-                      style={styles.form}
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      maxLength={40}
-                      multiline={true}
-                    />
+          <Mutation mutation={ADD_LOCKER}>
+            {(createLocker, { loading, data, error }) => {
+              if (loading) return <Loader />;
+              return (
+                <Form
+                  onSubmit={async values => {
+                    try {
+                      values = {
+                        address: "123 Red ave",
+                        latitude: latitude,
+                        longitude: longitude,
+                        reviews: [
+                          {
+                            review: values.review,
+                            rating: state.reviewRating,
+                            reviewerId: await getUserId()
+                          }
+                        ]
+                      };
+                      await createLocker({ variables: values });
+                      toggleModal();
+                    } catch (e) {
+                      throw e;
+                    }
+                  }}
+                  render={({ handleSubmit, pristine, invalid }) => (
+                    <View>
+                      <Field
+                        name="review"
+                        render={({ input, meta }) => (
+                          <TextInput
+                            {...input}
+                            style={styles.form}
+                            editable={true}
+                            maxLength={40}
+                            multiline={true}
+                          />
+                        )}
+                      />
+                      <View style={styles.buttons}>
+                        <TouchableOpacity
+                          style={styles.backSpacing}
+                          onPress={() => navigation.goBack()}
+                        >
+                          <Text style={styles.back}>Back</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={handleSubmit}
+                          style={styles.submitSpacing}
+                        >
+                          <Text style={styles.submit}>Submit</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
                   )}
                 />
-                <View style={styles.buttons}>
-                  <TouchableOpacity
-                    style={styles.backSpacing}
-                    onPress={() => navigation.goBack()}
-                  >
-                    <Text style={styles.back}>Back</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={toggleModal}
-                    style={styles.submitSpacing}
-                  >
-                    <Text style={styles.submit}>Submit</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          />
+              );
+            }}
+          </Mutation>
           <ThankYouModal toggleModal={toggleModal} state={state} />
         </View>
       </KeyboardAvoidingView>
@@ -136,6 +168,7 @@ const AddLocker = ({
 
 export default AddLocker;
 
+<<<<<<< HEAD
 AddLocker.propTypes = {
   state: PropTypes.object,
   updateFilesToUpload: PropTypes.func,
@@ -143,3 +176,31 @@ AddLocker.propTypes = {
   navigation: PropTypes.object,
   toggleModal: PropTypes.func
 };
+=======
+const ADD_LOCKER = gql`
+  mutation createLocker(
+    $address: String!
+    $latitude: Float!
+    $longitude: Float!
+    $reviews: [LockerreviewsReview!]
+  ) {
+    createLocker(
+      address: $address
+      latitude: $latitude
+      longitude: $longitude
+      reviews: $reviews
+    ) {
+      id
+      address
+      reviews {
+        id
+        rating
+        reviewer {
+          id
+        }
+        review
+      }
+    }
+  }
+`;
+>>>>>>> develop

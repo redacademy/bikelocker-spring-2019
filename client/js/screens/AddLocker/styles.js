@@ -30,12 +30,16 @@ const styles = StyleSheet.create({
     width: width * 0.5
   },
   cameraText: {
+<<<<<<< HEAD
     fontFamily: theme.bodyFont,
     color: "#fff",
     flex: 1,
     justifyContent: "center",
     flexWrap: "wrap",
     textAlign: "center"
+=======
+    color: "#fff"
+>>>>>>> develop
   },
   photoContainer: {
     backgroundColor: "#009887",
@@ -54,7 +58,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   address: {
+<<<<<<< HEAD
     fontFamily: theme.bodyFont,
+=======
+>>>>>>> develop
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
@@ -62,7 +69,10 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   ratingText: {
+<<<<<<< HEAD
     fontFamily: theme.bodyFont,
+=======
+>>>>>>> develop
     textAlign: "center",
     padding: 10,
     color: "#009887"
@@ -72,7 +82,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   secureText: {
+<<<<<<< HEAD
     fontFamily: theme.bodyFont,
+=======
+>>>>>>> develop
     color: "#999999",
     fontSize: 10
   },
