@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import AddLocker from './AddLocker';
+import React, { Component } from "react";
+import AddLocker from "./AddLocker";
 
 export default class AddLockerContainer extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ export default class AddLockerContainer extends Component {
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
+        navigation={this.navigation}
       />
     );
   }

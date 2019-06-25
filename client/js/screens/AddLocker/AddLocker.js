@@ -17,6 +17,7 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import Modal from "react-native-modal";
 import ThankYouModal from "../../components/ThankYouModal";
+import Loader from "../../components/LockerRating/LockerRating";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -96,43 +97,60 @@ const AddLocker = ({
             <Text style={styles.secureText}>More secure</Text>
           </View>
           <Text style={styles.commentText}>Leave a comment</Text>
-
-          <Form
-            onSubmit={() => {
-              this.onSubmit();
-            }}
-            render={({ handleSubmit, pristine, invalid }) => (
-              <View>
-                <Field
-                  name="bio"
-                  render={({ input, meta }) => (
-                    <TextInput
-                      {...input}
-                      style={styles.form}
-                      onSubmit={handleSubmit}
-                      editable={true}
-                      maxLength={40}
-                      multiline={true}
-                    />
+          <Mutation mutation={ADD_LOCKER}>
+            {(createLocker, { loading, data, error }) => {
+              if (loading) return <Loader />;
+              return (
+                <Form
+                  onSubmit={async values => {
+                    try {
+                      values = {
+                        ...values,
+                        address: "123 Red ave",
+                        latitude: -123.1207,
+                        longitude: 49.2827
+                      };
+                      await createLocker({ variables: values });
+                      toggleModal();
+                    } catch (e) {
+                      console.log(e);
+                    }
+                  }}
+                  render={({ handleSubmit, pristine, invalid }) => (
+                    <View>
+                      <Field
+                        name="bio"
+                        render={({ input, meta }) => (
+                          <TextInput
+                            {...input}
+                            style={styles.form}
+                            editable={true}
+                            maxLength={40}
+                            multiline={true}
+                          />
+                        )}
+                      />
+                      <View style={styles.buttons}>
+                        <TouchableOpacity
+                          style={styles.backSpacing}
+                          onPress={() => navigation.goBack()}
+                        >
+                          <Text style={styles.back}>Back</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={handleSubmit}
+                          // onPress={toggleModal}
+                          style={styles.submitSpacing}
+                        >
+                          <Text style={styles.submit}>Submit</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
                   )}
                 />
-                <View style={styles.buttons}>
-                  <TouchableOpacity
-                    style={styles.backSpacing}
-                    onPress={() => navigation.goBack()}
-                  >
-                    <Text style={styles.back}>Back</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={toggleModal}
-                    style={styles.submitSpacing}
-                  >
-                    <Text style={styles.submit}>Submit</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          />
+              );
+            }}
+          </Mutation>
           <ThankYouModal toggleModal={toggleModal} state={state} />
         </View>
       </KeyboardAvoidingView>
