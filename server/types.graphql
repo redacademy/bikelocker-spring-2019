@@ -6,15 +6,17 @@ type User @model {
   firstName: String
   lastName: String
   email: String! @isUnique
+  phone: Int
   password: String!
-  age: Int 
-  bikeType: String 
-  bikeBrand: String 
-  bikeColor: String 
-  addressOne: String 
-  addressTwo: String 
+  age: Int
+  bikeType: String
+  bikeBrand: String
+  bikeColor: String
+  city: String
+  addressOne: String
+  addressTwo: String
   province: String
-  country: String 
+  country: String
   postalCode: String
   profilePhoto: File @relation(name: "UserFile")
   reviews: [Review!]! @relation(name: "UserReview")
@@ -22,9 +24,8 @@ type User @model {
   updatedAt: DateTime! # read-only (managed by Graphcool)
 }
 
-
-type File @model{
-  id: ID! @isUnique 
+type File @model {
+  id: ID! @isUnique
   contentType: String
   name: String
   secret: String
@@ -35,19 +36,20 @@ type File @model{
 }
 
 type Review @model {
-   id: ID! @isUnique
-   createdAt: DateTime!
-   review: String!
-   rating: Int
-   reviewer: User! @relation(name: "UserReview")
-   photos: [File!]! @relation(name: "ReviewFiles")
-   locker: Locker! @relation(name: "LockerReviews")
+  id: ID! @isUnique
+  createdAt: DateTime!
+  review: String!
+  rating: Int
+  reviewer: User! @relation(name: "UserReview")
+  photos: [File!]! @relation(name: "ReviewFiles")
+  locker: Locker! @relation(name: "LockerReviews")
 }
 
 type Locker @model {
-   id: ID! @isUnique
-   latitude: Float! 
-   longitude: Float! 
-   reviews: [Review!]! @relation (name: "LockerReviews") 
-   address: String! 
+  id: ID! @isUnique
+  latitude: Float!
+  longitude: Float!
+  reviews: [Review!]! @relation(name: "LockerReviews")
+  address: String!
+  avgRating: Int
 }
