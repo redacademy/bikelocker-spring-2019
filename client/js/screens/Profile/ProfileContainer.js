@@ -4,7 +4,6 @@ import Profile from "./Profile";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Loader from "../../components/Loader";
-import AsyncStorage from "@react-native-community/async-storage";
 import { getUserId } from "../../config/models";
 
 export default class ProfileContainer extends Component {
