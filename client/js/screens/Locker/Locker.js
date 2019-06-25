@@ -36,8 +36,9 @@ class Locker extends Component {
     this.setState({ modalVisible: visible });
   }
   render() {
-    const { lockerinfo, navigation, userLat, userLng } = this.props;
-
+    const { lockerinfo, navigation } = this.props;
+    const userLat = navigation.getParam("userLat");
+    const userLng = navigation.getParam("userLng");
     const srcLatitude = userLat;
     const srcLongitude = userLng;
     const destLatitude = lockerinfo.latitude;
