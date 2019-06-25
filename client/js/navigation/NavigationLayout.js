@@ -124,9 +124,24 @@ export default createDrawerNavigator(
         title: "Find a spot"
       })
     },
-    Profile: ProfileStack,
-    About: AboutStack,
-    Contact: ContactStack,
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "My Profile"
+      })
+    },
+    About: {
+      screen: AboutStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "About Bike Locker"
+      })
+    },
+    Contact: {
+      screen: ContactStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Contact Us"
+      })
+    },
     HowToUseApp: {
       screen: HowToUseAppStack,
       navigationOptions: ({ navigation }) => ({

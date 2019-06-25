@@ -9,10 +9,10 @@ const globalStyles = {
     color: "#FCAF17",
     textDecorationLine: "underline"
   },
-  titleFont: "../assets/fonts/Metropolis-ExtraBold", // Font Size should be 30px
-  subheadingFont: "../assets/fonts/Metropolis-Light", // Font Size should be 20px
-  captionFont: "../assets/fonts/OpenSans-SemiBold", // Font Size should be 16px
-  bodyFont: "../assets/fonts/OpenSans-Regular", //Font Size should be 16px
+  titleFont: "Metropolis-ExtraBold", // Font Size should be 30px
+  subheadingFont: "Metropolis-Light", // Font Size should be 20px
+  captionFont: "OpenSans-SemiBold", // Font Size should be 16px
+  bodyFont: "OpenSans-Regular", //Font Size should be 16px
   titleFontSize: 30, // For titles
   subheadingFontSize: 20, // For subheadings
   commonFontSize: 16, // For caption and body font sizes
