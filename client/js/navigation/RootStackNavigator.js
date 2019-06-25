@@ -13,7 +13,7 @@ export default createAppContainer(
     {
       mode: "modal",
       headerMode: "none",
-      transparentCard: false,
+      transparentCard: true,
       defaultNavigationOptions: {
         gesturesEnabled: true
       }
