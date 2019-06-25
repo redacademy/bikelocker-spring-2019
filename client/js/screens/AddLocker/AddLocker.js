@@ -113,7 +113,7 @@ const AddLocker = ({
                       await createLocker({ variables: values });
                       toggleModal();
                     } catch (e) {
-                      console.log(e);
+                      throw e;
                     }
                   }}
                   render={({ handleSubmit, pristine, invalid }) => (
