@@ -39,8 +39,9 @@ class EditProfileAbout extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, navigation } = this.props;
     user.age && (user.age = user.age.toString());
+    console.log("navigation", navigation);
 
     return (
       <Mutation mutation={UPDATE_USER}>
@@ -207,7 +208,7 @@ class EditProfileAbout extends Component {
                     <View style={styles.buttons}>
                       <TouchableOpacity
                         style={styles.backButton}
-                        onPress={handleSubmit}
+                        onPress={() => navigation.navigate("Profile")}
                       >
                         <Text style={styles.backButtonLabel}>Back</Text>
                       </TouchableOpacity>

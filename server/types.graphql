@@ -3,7 +3,7 @@
 
 type User @model {
   id: ID! @isUnique # read-only (managed by Graphcool)
-  firstName: String
+  firstName: String!
   lastName: String
   email: String! @isUnique
   phone: Int
@@ -43,7 +43,7 @@ type Review @model {
   reviewer: User! @relation(name: "UserReview")
   photos: [File!]! @relation(name: "ReviewFiles")
   locker: Locker! @relation(name: "LockerReviews")
-} 
+}
 
 type Locker @model {
   id: ID! @isUnique

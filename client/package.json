@@ -6,8 +6,13 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "./js/assets/fonts/"
+    ]
+  },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.5.0",
+    "@react-native-community/async-storage": "react-native-community/async-storage#LEGACY",
     "apollo-boost": "^0.4.2",
     "apollo-client": "^2.6.2",
     "final-form": "^4.15.0",
@@ -26,6 +31,7 @@
     "react-native-gravatar": "^1.0.2",
     "react-native-image-picker": "^0.28.1",
     "react-native-maps": "^0.24.2",
+    "react-native-modal": "^11.0.2",
     "react-native-navigation": "^2.21.0-experimental.1",
     "react-native-onboarding-swiper": "^1.1.0",
     "react-native-ratings": "^6.3.1",
