@@ -1,12 +1,12 @@
-import React from "react";
-import { Image, View, TouchableOpacity } from "react-native";
-import { Header } from "react-navigation";
-import PropTypes from "prop-types";
-import IconEntypo from "react-native-vector-icons/Entypo";
-import theme from "../config/globalStyles";
+import React from 'react';
+import { Image, View, TouchableOpacity } from 'react-native';
+import { Header } from 'react-navigation';
+import PropTypes from 'prop-types';
+import IconEntypo from 'react-native-vector-icons/Entypo';
+import theme from '../config/globalStyles';
 
 const AppHeader = props => (
-  <View style={{ backgroundColor: "white", overflow: "hidden" }}>
+  <View style={{ backgroundColor: 'white', overflow: 'hidden' }}>
     <Header {...props} />
   </View>
 );
@@ -17,12 +17,12 @@ export const sharedNavigationOptions = navigation => ({
   headerStyle: {
     backgroundColor: theme.mediumGreen,
     height: 60,
-    zIndex: -10
+    zIndex: -10,
   },
-  headerTintColor: "white",
+  headerTintColor: 'white',
   headerTitleStyle: {
     fontSize: 18,
-    color: "white"
+    color: 'white',
   },
   headerLeft: (
     <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -37,14 +37,14 @@ export const sharedNavigationOptions = navigation => ({
   headerTitle: (
     <TouchableOpacity>
       <Image
-        source={require("../assets/images/bikelockerlogo-white.png")}
+        source={require('../assets/images/bikelockerlogo-white.png')}
         style={{ width: 40, height: 40, marginBottom: 5 }}
       />
     </TouchableOpacity>
-  )
+  ),
 });
 
 AppHeader.propTypes = {
   props: PropTypes.object,
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
 };

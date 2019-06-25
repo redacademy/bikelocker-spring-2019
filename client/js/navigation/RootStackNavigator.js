@@ -50,8 +50,8 @@ export default createAppContainer(
       headerMode: "none",
       transparentCard: true,
       defaultNavigationOptions: {
-        gesturesEnabled: true
-      }
-    }
-  )
+        gesturesEnabled: true,
+      },
+    },
+  ),
 );
