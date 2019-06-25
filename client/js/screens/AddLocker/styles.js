@@ -7,11 +7,7 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center"
   },
-  addImageContainer: {
-    // flex: 1,
-  },
   photoContainer: {
-    // flex: 1,
     backgroundColor: "#009887",
     height: height * 0.2,
     alignItems: "center",

@@ -26,7 +26,7 @@ class MapViewComponent extends Component {
       longitude: 123.1207,
       coordinates: {
         latitude: null,
-        longitude: null,
+        longitude: null
       },
       error: null
     };
@@ -38,7 +38,7 @@ class MapViewComponent extends Component {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
 
-        error: null,
+        error: null
       });
     });
   }
@@ -49,11 +49,11 @@ class MapViewComponent extends Component {
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-          error: null,
+          error: null
         });
       },
       error => console.log(error),
-      {},
+      {}
     );
   };
 
@@ -63,7 +63,7 @@ class MapViewComponent extends Component {
     if (this.props.searchedLocation !== prevProps.searchedLocation) {
       this.setState({
         latitude: this.props.searchedLocation.lat,
-        longitude: this.props.searchedLocation.lng,
+        longitude: this.props.searchedLocation.lng
       });
     }
   }
@@ -83,20 +83,21 @@ class MapViewComponent extends Component {
                   style={styles.mapView}
                   onPress={e => {
                     if (this.slider === true) {
-                      this.setState({
-                        coordinates: {
-                          latitude: e.nativeEvent.coordinate.latitude,
-                          longitude: e.nativeEvent.coordinate.longitude
-                        }
-                      });
-                      this.slider = false;
+                      this.setState(
+                        {
+                          coordinates: {
+                            latitude: e.nativeEvent.coordinate.latitude,
+                            longitude: e.nativeEvent.coordinate.longitude
+                          }
+                        },
+                        () => {
+                          this.slider = false;
 
-                      this.props.navigation.navigate("AddLocker", {
-                        coordinates: {
-                          latitude: this.state.coordinates.latitude,
-                          longitude: this.state.coordinates.latitude
+                          this.props.navigation.navigate("AddLocker", {
+                            coordinates: this.state.coordinates
+                          });
                         }
-                      });
+                      );
                     }
                   }}
                   region={
@@ -118,7 +119,7 @@ class MapViewComponent extends Component {
                     latitude: 49.2827,
                     longitude: 123.1207,
                     latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
+                    longitudeDelta: 0.0421
                   }}
                   maxZoomLevel={20}
                   showsBuildings={true}

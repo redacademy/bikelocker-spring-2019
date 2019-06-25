@@ -45,16 +45,14 @@ const saveImage = updateFilesToUpload => {
   });
 };
 
-onSubmit = () => {
-  console.log("submit submit");
-};
-
 const AddLocker = ({
   state,
   updateFilesToUpload,
   handleReviewRating,
   navigation,
-  toggleModal
+  toggleModal,
+  latitude,
+  longitude
 }) => {
   return (
     <ScrollView>
@@ -107,8 +105,8 @@ const AddLocker = ({
                       values = {
                         ...values,
                         address: "123 Red ave",
-                        latitude: -123.1207,
-                        longitude: 49.2827
+                        latitude: latitude,
+                        longitude: longitude
                       };
                       await createLocker({ variables: values });
                       toggleModal();
@@ -139,7 +137,6 @@ const AddLocker = ({
                         </TouchableOpacity>
                         <TouchableOpacity
                           onPress={handleSubmit}
-                          // onPress={toggleModal}
                           style={styles.submitSpacing}
                         >
                           <Text style={styles.submit}>Submit</Text>
