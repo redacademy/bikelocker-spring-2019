@@ -70,7 +70,7 @@ const OnboardingScreens = ({ navigation }) => {
         <View style={styles.page}>
           <Image
             style={{ width: width, resizeMode: "contain" }}
-            source={require("../../assets/images/comorimage.png")}
+            source={require("../../assets/images/Comorwbackground.png")}
           />
           <Text style={styles.p}>
             <Text style={styles.bold}>Bonus: </Text>

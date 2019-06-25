@@ -10,7 +10,10 @@ const About = () => (
       bicycle in Vancouver. Using the app, users can locate an available space,
       map their route, and rate and review the space.
     </Text>
-    <Image source={require("../../assets/images/")} style={styles.image} />
+    <Image
+      source={require("../../assets/images/bikelockerlogo.png")}
+      style={styles.image}
+    />
   </View>
 );
 
