@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20
   },
   h2: {
-    fontSize: theme.titeFontSize,
+    fontSize: theme.titleFontSize,
     color: theme.black
   },
   p: {

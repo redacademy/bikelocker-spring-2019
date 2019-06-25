@@ -5,8 +5,9 @@ type User @model {
   id: ID! @isUnique # read-only (managed by Graphcool)
   firstName: String
   lastName: String
-  email: String @isUnique
-  password: String
+  email: String! @isUnique
+  phone: Int
+  password: String!
   age: Int
   bikeType: String
   bikeBrand: String
@@ -50,4 +51,5 @@ type Locker @model {
   longitude: Float!
   reviews: [Review!]! @relation(name: "LockerReviews")
   address: String!
+  avgRating: Int
 }

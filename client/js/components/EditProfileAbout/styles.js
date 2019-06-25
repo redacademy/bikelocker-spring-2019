@@ -30,14 +30,6 @@ const styles = {
     borderRadius: 15,
     padding: 10
   },
-  ageInput: {
-    width: "25%",
-    color: theme.black,
-    borderColor: theme.lightGrey,
-    borderWidth: 2,
-    borderRadius: 15,
-    padding: 10
-  },
   buttons: {
     flex: 1,
     flexDirection: "row",
