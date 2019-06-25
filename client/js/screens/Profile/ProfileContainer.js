@@ -28,6 +28,7 @@ export default class ProfileContainer extends Component {
 const USER_QUERY = gql`
   query User($id: ID) {
     User(id: $id) {
+      id
       profilePhoto {
         contentType
         id
