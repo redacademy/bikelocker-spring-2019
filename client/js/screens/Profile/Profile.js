@@ -8,7 +8,12 @@ const Profile = ({ user, navigation }) => {
       <View style={styles.header}>
         <Text style={styles.title}>My Profile</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("EditProfile", { user: user })}
+          onPress={() =>
+            navigation.navigate("EditProfile", {
+              user: user,
+              navigation: navigation
+            })
+          }
         >
           <Text style={styles.link}>Edit</Text>
         </TouchableOpacity>

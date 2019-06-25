@@ -5,6 +5,9 @@ const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  modalContainer: {
     width: width * 0.9,
     height: height * 0.35,
     backgroundColor: "#fff",
@@ -15,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: globalStyles.mediumGreen,
     textAlign: "center",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingTop: 10
   },
   modalText: {
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
   },
   continue: {
     color: "#fff",
-    fontWeight: 'bold',
+    fontWeight: "bold"
   }
 });
 

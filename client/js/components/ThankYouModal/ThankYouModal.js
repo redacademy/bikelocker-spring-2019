@@ -5,9 +5,9 @@ import styles from "./styles";
 
 const ThankYouModal = ({ toggleModal, state }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <Modal isVisible={state.isModalVisible}>
-        <View style={styles.container}>
+        <View style={styles.modalContainer}>
           <Text style={styles.thankYou}>Thank you!</Text>
           <Text style={styles.modalText}>
             You’re helping to reduce bike theft in your city and making the

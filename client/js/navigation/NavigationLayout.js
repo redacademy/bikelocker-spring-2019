@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -12,6 +12,7 @@ import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
+import { clearStorage } from "../config/models.js";
 import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
@@ -115,7 +116,6 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
-
 export default createDrawerNavigator(
   {
     FindLocker: {
@@ -124,9 +124,24 @@ export default createDrawerNavigator(
         title: "Find a spot"
       })
     },
-    Profile: ProfileStack,
-    About: AboutStack,
-    Contact: ContactStack,
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "My Profile"
+      })
+    },
+    About: {
+      screen: AboutStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "About Bike Locker"
+      })
+    },
+    Contact: {
+      screen: ContactStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Contact Us"
+      })
+    },
     HowToUseApp: {
       screen: HowToUseAppStack,
       navigationOptions: ({ navigation }) => ({
@@ -142,6 +157,24 @@ export default createDrawerNavigator(
   },
   {
     contentComponent: props => <DrawerContent {...props} />,
+    contentComponent: props => (
+      <View style={{ flex: 1 }}>
+        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
+          <DrawerItems {...props} />
+          <Button
+            title="Logout"
+            onPress={async () => {
+              try {
+                await clearStorage();
+                props.navigation.navigate("AuthLoading");
+              } catch (e) {
+                throw e;
+              }
+            }}
+          />
+        </SafeAreaView>
+      </View>
+    ),
     overlayColor: "black"
   },
   {
