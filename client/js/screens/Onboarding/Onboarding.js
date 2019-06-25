@@ -68,10 +68,10 @@ const OnboardingScreens = ({ navigation }) => {
       title: "Your contributions will help your local cycling community.",
       subtitle: (
         <View style={styles.page}>
-          {/* <Image
+          <Image
             style={{ width: width, resizeMode: "contain" }}
-            source={require("../../assets/images/comorimage.png")}
-          /> */}
+            source={require("../../assets/images/Comorwbackground.png")}
+          />
           <Text style={styles.p}>
             <Text style={styles.bold}>Bonus: </Text>
             once you've added your first pin, you can head to COMOR and save
