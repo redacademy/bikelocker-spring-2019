@@ -9,14 +9,13 @@ export default class EditProfileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      switchTab: false
+      secondTabActive: false
     };
   }
 
   toggleTab = () => {
-    this.setState({ switchTab: !this.state.switchTab });
+    this.setState({ secondTabActive: !this.state.secondTabActive });
   };
-
   render() {
     return (
       <Query
@@ -31,7 +30,7 @@ export default class EditProfileContainer extends Component {
             <EditProfile
               user={data.User}
               toggleTab={this.toggleTab}
-              switchTab={this.state.switchTab}
+              secondTabActive={this.state.secondTabActive}
             />
           );
         }}
@@ -43,22 +42,19 @@ export default class EditProfileContainer extends Component {
 const USER_QUERY = gql`
   query User($id: ID) {
     User(id: $id) {
-      profilePhoto {
-        contentType
-        id
-        name
-        secret
-        size
-        url
-      }
-      city
       firstName
       lastName
+      age
+      bikeType
+      bikeBrand
+      bikeColor
+      addressOne
+      addressTwo
+      city
       province
       country
-      bikeColor
-      bikeBrand
-      bikeType
+      postalCode
+      email
     }
   }
 `;
