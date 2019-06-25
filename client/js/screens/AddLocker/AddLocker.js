@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
   ScrollView,
   Text,
   View,
   TouchableOpacity,
   TextInput,
-  Image,
-} from 'react-native';
-import LockerRating from '../../components/LockerRating';
-import styles from './styles';
-import { Form, Field } from 'react-final-form';
-import ImagePicker from 'react-native-image-picker';
-import Icon from 'react-native-vector-icons/Ionicons';
+  Image
+} from "react-native";
+import LockerRating from "../../components/LockerRating";
+import styles from "./styles";
+import { Form, Field } from "react-final-form";
+import ImagePicker from "react-native-image-picker";
+import Icon from "react-native-vector-icons/Ionicons";
+import gql from 'graphql-tag';
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -24,10 +25,8 @@ const renderAddImage = (saveImage, updateFilesToUpload) => (
 );
 
 const saveImage = updateFilesToUpload => {
-  console.log('jhsbdfkjans');
-
   const options = {
-    title: 'Pick Bike Locker Image',
+    title: "Pick Bike Locker Image"
   };
 
   ImagePicker.showImagePicker(options, response => {
@@ -42,14 +41,14 @@ const saveImage = updateFilesToUpload => {
 };
 
 onSubmit = () => {
-  console.log('submit submit');
+  console.log("submit submit");
 };
 
 const AddLocker = ({
   state,
   updateFilesToUpload,
   handleReviewRating,
-  navigation,
+  navigation
 }) => {
   return (
     <ScrollView>
@@ -134,3 +133,29 @@ const AddLocker = ({
 };
 
 export default AddLocker;
+
+const = ADD_LOCKER = gql`
+mutation createLocker(
+    $address: 
+    $latitude: 
+    $longitude: 
+    $reviews: [
+      {
+        $reviewerId: userId
+        $rating: rating
+        $review: review
+      }
+    ]
+  ) {
+    id
+    address
+    reviews {
+      id
+      rating
+      reviewer {
+        id
+      }
+      review
+    }
+  }
+`;
