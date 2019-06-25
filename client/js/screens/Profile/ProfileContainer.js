@@ -22,8 +22,6 @@ export default class ProfileContainer extends Component {
   };
 
   render() {
-    console.log("userId", this.state.userId);
-
     if (this.state.userId)
       return (
         <Query
