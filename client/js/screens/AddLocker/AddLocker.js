@@ -12,7 +12,8 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -134,28 +135,29 @@ const AddLocker = ({
 
 export default AddLocker;
 
-const = ADD_LOCKER = gql`
-mutation createLocker(
-    $address: 
-    $latitude: 
-    $longitude: 
-    $reviews: [
-      {
-        $reviewerId: userId
-        $rating: rating
-        $review: review
-      }
-    ]
+const ADD_LOCKER = gql`
+  mutation createLocker(
+    $address: String!
+    $latitude: Float!
+    $longitude: Float!
+    $reviews: [LockerreviewsReview!]
   ) {
-    id
-    address
-    reviews {
+    createLocker(
+      address: $address
+      latitude: $latitude
+      longitude: $longitude
+      reviews: $reviews
+    ) {
       id
-      rating
-      reviewer {
+      address
+      reviews {
         id
+        rating
+        reviewer {
+          id
+        }
+        review
       }
-      review
     }
   }
 `;
