@@ -34,203 +34,197 @@ class EditProfileAbout extends Component {
     this.setState({ ageRange });
   }
 
+  handleSubmit() {
+    console.log("data", variables);
+  }
+
   render() {
     const { user } = this.props;
+    user.age && (user.age = user.age.toString());
 
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView contentContainerStyle={styles.container}>
-          <Image
-            borderRadius={75}
-            resizeMode="contain"
-            style={styles.profilePic}
-            source={require("../../assets/images/profile_pic.jpg")}
-          />
-          <Text style={styles.labelText}>Change photo</Text>
-          <Form
-            onSubmit={async values => {
-              try {
-                const response = await register({ variables: { ...values } });
-                if (response.data.register) {
-                  const { id, token } = response.data.register;
-                  await setUserIdToken(id, token);
-                  navigation.navigate("Profile");
-                }
-              } catch (e) {
-                throw e;
-              }
-            }}
-            render={({ handleSubmit, pristine, invalid }) => (
-              <View style={styles.form}>
-                <Text style={styles.labelText}>First Name *</Text>
-                <Field
-                  name="firstName"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="default"
-                          placeholder={"Enter your first name..."}
-                          editable={true}
-                          style={styles.textInput}
-                        >
-                          {user.firstName}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
+      <Mutation mutation={UPDATE_USER}>
+        {(updateUser, { data }) => (
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <ScrollView contentContainerStyle={styles.container}>
+              <Image
+                borderRadius={75}
+                resizeMode="contain"
+                style={styles.profilePic}
+                source={require("../../assets/images/profile_pic.jpg")}
+              />
+              <Text style={styles.labelText}>Change photo</Text>
+              <Form
+                initialValues={user}
+                onSubmit={async values => {
+                  try {
+                    const response = await register({
+                      variables: { ...values }
+                    });
+                    if (response.data.register) {
+                      const { id, token } = response.data.register;
+                      await setUserIdToken(id, token);
+                      navigation.navigate("Profile");
+                    }
+                  } catch (e) {
+                    throw e;
+                  }
+                }}
+                render={({ handleSubmit, pristine, invalid, values }) => (
+                  <View style={styles.form}>
+                    <Text style={styles.labelText}>First Name *</Text>
+                    <Field
+                      name="firstName"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="default"
+                              placeholder={"Enter your first name..."}
+                              editable={true}
+                              style={styles.textInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <Text style={styles.labelText}>Last Name *</Text>
+                    <Field
+                      name="lastName"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="default"
+                              placeholder={"Enter your last name..."}
+                              editable={true}
+                              style={styles.textInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <Text style={styles.labelText}>Age</Text>
+                    <Field
+                      name="age"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="default"
+                              placeholder={"30"}
+                              editable={true}
+                              style={styles.ageInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <Text style={styles.labelText}>Bike Type</Text>
+                    <Field
+                      name="bikeType"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="email-address"
+                              placeholder={"Enter your bike type..."}
+                              editable={true}
+                              style={styles.textInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <Text style={styles.labelText}>Bike Brand</Text>
+                    <Field
+                      name="bikeBrand"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="email-address"
+                              placeholder={"Enter your bike brand..."}
+                              editable={true}
+                              style={styles.textInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <Text style={styles.labelText}>Bike Colour</Text>
+                    <Field
+                      name="bikeColor"
+                      render={({ input, meta }) => (
+                        <View style={styles.formField}>
+                          <View style={styles.formInput}>
+                            <TextInput
+                              {...input}
+                              keyboardType="email-address"
+                              placeholder={"Enter your bike colour..."}
+                              editable={true}
+                              style={styles.textInput}
+                            />
+                          </View>
+                          <View>
+                            {meta.error && meta.touched && (
+                              <Text style={styles.errorMsg}>{meta.error}</Text>
+                            )}
+                          </View>
+                        </View>
+                      )}
+                    />
+                    <View style={styles.buttons}>
+                      <TouchableOpacity
+                        style={styles.backButton}
+                        onPress={handleSubmit}
+                      >
+                        <Text style={styles.backButtonLabel}>Back</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={() => handleSubmit()}
+                      >
+                        <Text style={styles.submitButtonLabel}>Submit</Text>
+                      </TouchableOpacity>
                     </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Last Name *</Text>
-                <Field
-                  name="lastName"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="default"
-                          placeholder={"Enter your last name..."}
-                          editable={true}
-                          style={styles.textInput}
-                        >
-                          {user.lastName}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Age</Text>
-                <Field
-                  name="age"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="default"
-                          placeholder={"30"}
-                          editable={true}
-                          style={styles.ageInput}
-                        >
-                          {user.age}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Bike Type</Text>
-                <Field
-                  name="bikeType"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="email-address"
-                          placeholder={"Enter your bike type..."}
-                          editable={true}
-                          style={styles.textInput}
-                        >
-                          {user.bikeType}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Bike Brand</Text>
-                <Field
-                  name="bikeBrand"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="email-address"
-                          placeholder={"Enter your bike brand..."}
-                          editable={true}
-                          style={styles.textInput}
-                        >
-                          {user.bikeBrand}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <Text style={styles.labelText}>Bike Colour</Text>
-                <Field
-                  name="bikeColor"
-                  render={({ input, meta }) => (
-                    <View style={styles.formField}>
-                      <View style={styles.formInput}>
-                        <TextInput
-                          {...input}
-                          value={input.value}
-                          keyboardType="email-address"
-                          placeholder={"Enter your bike colour..."}
-                          editable={true}
-                          style={styles.textInput}
-                        >
-                          {user.bikeColor}
-                        </TextInput>
-                      </View>
-                      <View>
-                        {meta.error && meta.touched && (
-                          <Text style={styles.errorMsg}>{meta.error}</Text>
-                        )}
-                      </View>
-                    </View>
-                  )}
-                />
-                <View style={styles.buttons}>
-                  <TouchableOpacity
-                    style={styles.backButton}
-                    onPress={handleSubmit}
-                  >
-                    <Text style={styles.backButtonLabel}>Back</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.submitButton}
-                    onPress={handleSubmit}
-                  >
-                    <Text style={styles.submitButtonLabel}>Submit</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          />
-        </ScrollView>
-      </TouchableWithoutFeedback>
+                  </View>
+                )}
+              />
+            </ScrollView>
+          </TouchableWithoutFeedback>
+        )}
+      </Mutation>
     );
   }
 }

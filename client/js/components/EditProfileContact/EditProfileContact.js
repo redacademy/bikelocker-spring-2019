@@ -34,12 +34,13 @@ class EditProfileContact extends Component {
 
   render() {
     const { user } = this.props;
-    console.log("user", user);
+    user.phone && (user.phone = user.phone.toString());
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView contentContainerStyle={styles.container}>
           <Form
+            initialValues={user}
             onSubmit={async values => {
               try {
                 const response = await register({ variables: { ...values } });
@@ -62,14 +63,11 @@ class EditProfileContact extends Component {
                       <View style={styles.formInput}>
                         <TextInput
                           {...input}
-                          value={input.value}
                           keyboardType="default"
                           placeholder={"Enter your street address..."}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.addressOne}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -92,9 +90,7 @@ class EditProfileContact extends Component {
                           placeholder={"Enter your address complement..."}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.addressTwo}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -112,14 +108,11 @@ class EditProfileContact extends Component {
                       <View style={styles.formInput}>
                         <TextInput
                           {...input}
-                          value={input.value}
                           keyboardType="default"
                           placeholder={"30"}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.city}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -144,9 +137,7 @@ class EditProfileContact extends Component {
                               placeholder={"BC"}
                               editable={true}
                               style={styles.textInput}
-                            >
-                              {user.province}
-                            </TextInput>
+                            />
                           </View>
                           <View>
                             {meta.error && meta.touched && (
@@ -171,9 +162,7 @@ class EditProfileContact extends Component {
                               placeholder={"Canada"}
                               editable={true}
                               style={styles.textInput}
-                            >
-                              {user.country}
-                            </TextInput>
+                            />
                           </View>
                           <View>
                             {meta.error && meta.touched && (
@@ -198,9 +187,7 @@ class EditProfileContact extends Component {
                           placeholder={"Enter your postal code..."}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.postalCode}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -223,9 +210,7 @@ class EditProfileContact extends Component {
                           placeholder={"Enter your phone number..."}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.phone}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
@@ -248,9 +233,7 @@ class EditProfileContact extends Component {
                           placeholder={"Enter your email..."}
                           editable={true}
                           style={styles.textInput}
-                        >
-                          {user.email}
-                        </TextInput>
+                        />
                       </View>
                       <View>
                         {meta.error && meta.touched && (
