@@ -31,6 +31,7 @@ export default class EditProfileContainer extends Component {
               user={data.User}
               toggleTab={this.toggleTab}
               secondTabActive={this.state.secondTabActive}
+              navigation={this.props.navigation}
             />
           );
         }}
