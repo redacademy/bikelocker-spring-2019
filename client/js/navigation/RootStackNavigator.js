@@ -6,7 +6,7 @@ import {
 } from "react-navigation";
 import NavigationLayout from "./NavigationLayout";
 import LockerModal from "../screens/Locker";
-
+import OnboardingScreen from "../screens/Onboarding";
 import AuthWelcomeScreen from "../screens/AuthWelcome/AuthWelcomeContainer";
 import AuthLoadingScreen from "../screens/AuthLoading";
 import RegisterScreen from "../screens/Register";
@@ -39,7 +39,8 @@ export default createAppContainer(
       AuthLoading: AuthLoadingScreen,
       Auth: AuthStack,
       Layout: NavigationLayout,
-      Locker: LockerModal
+      Locker: LockerModal,
+      Onboarding: OnboardingScreen
     },
     {
       initialRouteName: "AuthLoading"
