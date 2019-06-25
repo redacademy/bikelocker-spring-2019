@@ -12,11 +12,16 @@ export default class LockerContainer extends Component {
     return (
       <Query
         query={GET_ONE_LOCKER_DATA}
-        variables={{ id: "cjwti3c164ynu0112ym882o5l" }}
+        variables={{ id: this.props.navigation.getParam("locationID") }}
       >
         {({ loading, data }) => {
           if (loading || !data) return <Loader />;
-          return <Locker lockerinfo={data.Locker} />;
+          return (
+            <Locker
+              lockerinfo={data.Locker}
+              navigation={this.props.navigation}
+            />
+          );
         }}
       </Query>
     );

@@ -3,17 +3,18 @@
 
 type User @model {
   id: ID! @isUnique # read-only (managed by Graphcool)
-  firstName: String
+  firstName: String!
   lastName: String
   email: String! @isUnique
+  phone: Int
   password: String!
   age: Int
   bikeType: String
   bikeBrand: String
   bikeColor: String
+  city: String
   addressOne: String
   addressTwo: String
-  city: String
   province: String
   country: String
   postalCode: String
@@ -21,18 +22,6 @@ type User @model {
   reviews: [Review!]! @relation(name: "UserReview")
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime! # read-only (managed by Graphcool)
-}
-
-type Review @model {
-  id: ID! @isUnique
-  review: String!
-  rating: Int
-  reviewer: User! @relation(name: "UserReview")
-  photos: [File!]
-  locker: Locker! @relation(name: "lockerReviews")
-
-  # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-  author: User! @relation(name: "UserPosts")
 }
 
 type File @model {
@@ -62,4 +51,5 @@ type Locker @model {
   longitude: Float!
   reviews: [Review!]! @relation(name: "LockerReviews")
   address: String!
+  avgRating: Int
 }

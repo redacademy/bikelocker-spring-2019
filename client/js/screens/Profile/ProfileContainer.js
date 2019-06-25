@@ -16,7 +16,9 @@ export default class ProfileContainer extends Component {
         {({ loading, error, data }) => {
           if (loading) return <Loader />;
           if (error) return <Text>{`Error! ${error.message}`}</Text>;
-          return <Profile user={data.User} />;
+          return (
+            <Profile user={data.User} navigation={this.props.navigation} />
+          );
         }}
       </Query>
     );
@@ -26,6 +28,7 @@ export default class ProfileContainer extends Component {
 const USER_QUERY = gql`
   query User($id: ID) {
     User(id: $id) {
+      id
       profilePhoto {
         contentType
         id

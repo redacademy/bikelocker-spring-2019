@@ -1,18 +1,20 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
-import { withNavigation } from "react-navigation";
+import { Text, View, Image } from "react-native";
+import styles from "./styles";
 
-const About = ({ navigation }) => (
-  <View>
-    <Text>This is the About Screen</Text>
-    <Button
-      onPress={() => {
-        navigation.push("Locker");
-      }}
-      title="Locker Info"
-      color="#841584"
+const About = () => (
+  <View style={styles.container}>
+    <Text style={styles.h2}>About Bike Locker</Text>
+    <Text style={styles.p}>
+      Bike Locker is an app that enables cyclists to find safe parking for their
+      bicycle in Vancouver. Using the app, users can locate an available space,
+      map their route, and rate and review the space.
+    </Text>
+    <Image
+      source={require("../../assets/images/bikelockerlogo.png")}
+      style={styles.image}
     />
   </View>
 );
 
-export default withNavigation(About);
+export default About;

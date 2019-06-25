@@ -1,25 +1,28 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Text, Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
-import { DrawerActions } from "react-navigation-drawer";
+import EditProfileScreen from "../screens/EditProfile";
 import FindLockerScreen from "../screens/FindLocker";
 import ProfileScreen from "../screens/Profile";
 import AboutScreen from "../screens/About";
 import ContactScreen from "../screens/Contact";
 import HowToUseAppScreen from "../screens/HowToUseApp";
 import ResourcesScreen from "../screens/Resources";
+import { clearStorage } from "../config/models.js";
 import { sharedNavigationOptions } from "./config";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AddLockerScreen from "../screens/AddLocker";
 
 const FindLockerStack = createStackNavigator(
   {
-    FindLocker: FindLockerScreen
+    FindLocker: FindLockerScreen,
+    AddLocker: AddLockerScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -30,7 +33,8 @@ const FindLockerStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
+    EditProfile: EditProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -112,7 +116,6 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
-
 export default createDrawerNavigator(
   {
     FindLocker: {
@@ -121,9 +124,24 @@ export default createDrawerNavigator(
         title: "Find a spot"
       })
     },
-    Profile: ProfileStack,
-    About: AboutStack,
-    Contact: ContactStack,
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "My Profile"
+      })
+    },
+    About: {
+      screen: AboutStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "About Bike Locker"
+      })
+    },
+    Contact: {
+      screen: ContactStack,
+      navigationOptions: ({ navigation }) => ({
+        title: "Contact Us"
+      })
+    },
     HowToUseApp: {
       screen: HowToUseAppStack,
       navigationOptions: ({ navigation }) => ({
@@ -138,7 +156,25 @@ export default createDrawerNavigator(
     }
   },
   {
-    contentComponent: props => <DrawerContent {...props} />,
+    contentComponent: props => (
+      <View style={{ flex: 1 }}>
+        <DrawerContent {...props} />
+        <TouchableOpacity
+          onPress={async () => {
+            try {
+              await clearStorage();
+              props.navigation.navigate("AuthLoading");
+            } catch (e) {
+              throw e;
+            }
+          }}
+        >
+          <Text style={{ fontSize: 16, marginLeft: 15 }} title="Logout">
+            Logout
+          </Text>
+        </TouchableOpacity>
+      </View>
+    ),
     overlayColor: "black"
   },
   {
