@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, SafeAreaView, Button } from "react-native";
+import { Text, Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -156,23 +156,23 @@ export default createDrawerNavigator(
     }
   },
   {
-    contentComponent: props => <DrawerContent {...props} />,
     contentComponent: props => (
       <View style={{ flex: 1 }}>
-        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
-          <DrawerItems {...props} />
-          <Button
-            title="Logout"
-            onPress={async () => {
-              try {
-                await clearStorage();
-                props.navigation.navigate("AuthLoading");
-              } catch (e) {
-                throw e;
-              }
-            }}
-          />
-        </SafeAreaView>
+        <DrawerContent {...props} />
+        <TouchableOpacity
+          onPress={async () => {
+            try {
+              await clearStorage();
+              props.navigation.navigate("AuthLoading");
+            } catch (e) {
+              throw e;
+            }
+          }}
+        >
+          <Text style={{ fontSize: 16, marginLeft: 15 }} title="Logout">
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
     ),
     overlayColor: "black"

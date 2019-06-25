@@ -43,6 +43,7 @@ export default class EditProfileContainer extends Component {
 const USER_QUERY = gql`
   query User($id: ID) {
     User(id: $id) {
+      id
       firstName
       lastName
       age

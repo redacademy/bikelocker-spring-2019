@@ -35,7 +35,7 @@ const OnboardingScreens = ({ navigation }) => {
           />
           <Image
             style={styles.image}
-            source={require("../../assets/images/pindiagram.png")}
+            source={require("../../assets/images/pinDiagramWithLabel.png")}
           />
         </View>
       ),

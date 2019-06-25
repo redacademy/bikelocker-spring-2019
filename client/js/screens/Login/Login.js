@@ -60,7 +60,6 @@ class Login extends Component {
               validate={validate}
               render={({ handleSubmit, pristine, invalid }) => (
                 <View style={styles.form}>
-                  {console.log("i'm sid")}
                   <Text style={styles.labelText}>Email Address</Text>
                   <Field
                     name="email"
