@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     maxWidth: width / 7,
     maxHeight: width / 7,
     borderRadius: width / 14,
-    marginRight: 10,
+    marginRight: 15,
     resizeMode: "contain"
   },
   reviewBox: {
@@ -84,12 +84,13 @@ const styles = StyleSheet.create({
   },
   acctName: {
     fontFamily: globalStyles.titleFont,
-    fontSize: 15
+    fontSize: 15,
+    marginBottom: 5
   },
   time: {
     fontFamily: globalStyles.subheadingFont,
     fontSize: 10,
-    marginBottom: 4
+    marginBottom: 10
   },
   review: {
     fontFamily: globalStyles.subheadingFont,
@@ -108,12 +109,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    height: height * 0.3,
+    height: height * 0.2,
     padding: 20,
-    marginBottom: 30
+    marginBottom: 30,
+    marginTop: 10
   },
-  promptPlaceholder: {
-    alignSelf: "center"
+  placeholderPrompt: {
+    textAlign: "center"
   }
 });
 
