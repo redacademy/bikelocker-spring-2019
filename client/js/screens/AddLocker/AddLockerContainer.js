@@ -66,7 +66,7 @@ export default class AddLockerContainer extends Component {
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
-        navigation={this.navigation}
+        navigation={this.props.navigation}
       />
     );
   }
