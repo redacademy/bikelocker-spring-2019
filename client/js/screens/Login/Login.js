@@ -11,11 +11,11 @@ import {
   KeyboardAvoidingView,
   Keyboard
 } from "react-native";
-import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import validate from "../../helpers/validationLogin";
 import styles from "./styles";
 import { setUserIdToken } from "../../config/models";
+import PropTypes from "prop-types";
 
 class Login extends Component {
   constructor(props) {
@@ -131,10 +131,10 @@ class Login extends Component {
   }
 }
 
+export default Login;
+
 Login.proptypes = {
   navigation: PropTypes.array.isRequired,
   authenticate: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired
 };
-
-export default Login;

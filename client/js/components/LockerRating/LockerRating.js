@@ -1,6 +1,8 @@
 import React from "react";
-import { Rating, AirbnbRating } from "react-native-ratings";
+import { Rating } from "react-native-ratings";
 const LOCK_IMAGE = require("../../assets/images/ratinglockoutlinedtransparent.png");
+import PropTypes from "prop-types";
+
 const Loader = ({ handleReviewRating }) => {
   return (
     <Rating
@@ -17,3 +19,7 @@ const Loader = ({ handleReviewRating }) => {
 };
 
 export default Loader;
+
+Loader.propTypes = {
+  handleReviewRating: PropTypes.func
+};

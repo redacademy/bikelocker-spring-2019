@@ -33,25 +33,27 @@ const AuthStack = createStackNavigator({
   }
 });
 
+const AppStack = createStackNavigator(
+  {
+    Navigation: NavigationLayout,
+    LockerView: LockerModal
+  },
+  {
+    mode: "modal",
+    headerMode: "none"
+  }
+);
+
 export default createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoadingScreen,
       Auth: AuthStack,
-      Layout: NavigationLayout,
-      Locker: LockerModal,
+      App: AppStack,
       Onboarding: OnboardingScreen
     },
     {
       initialRouteName: "AuthLoading"
-    },
-    {
-      mode: "modal",
-      headerMode: "none",
-      transparentCard: true,
-      defaultNavigationOptions: {
-        gesturesEnabled: true
-      }
     }
   )
 );

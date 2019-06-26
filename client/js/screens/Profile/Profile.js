@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, ScrollView, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Profile = ({ user, navigation }) => {
   return (
@@ -41,3 +42,8 @@ const Profile = ({ user, navigation }) => {
 };
 
 export default Profile;
+
+Profile.propTypes = {
+  user: PropTypes.object,
+  navigation: PropTypes.object
+};
