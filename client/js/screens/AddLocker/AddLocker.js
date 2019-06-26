@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   ScrollView,
   Text,
@@ -18,7 +19,6 @@ import { Mutation } from "react-apollo";
 import ThankYouModal from "../../components/ThankYouModal";
 import Loader from "../../components/LockerRating/LockerRating";
 import { getUserId } from "../../config/models";
-import { API_KEY } from "react-native-dotenv";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -51,34 +51,8 @@ const AddLocker = ({
   updateFilesToUpload,
   handleReviewRating,
   navigation,
-  toggleModal,
-  latitude,
-  longitude,
-  setAddress
+  toggleModal
 }) => {
-  getAddress = async (latitude, longitude) => {
-    await fetch(
-      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-        latitude +
-        "," +
-        longitude +
-        "&key=" +
-        API_KEY
-    )
-      .then(response => response.json())
-      .then(responseJson => {
-        setAddress({
-          addressNumber: JSON.stringify(
-            responseJson.results[0].address_components[0].short_name
-          ),
-          addressName: JSON.stringify(
-            responseJson.results[0].address_components[1].short_name
-          )
-        });
-      });
-  };
-  getAddress();
-
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior="position" enabled>
@@ -86,12 +60,12 @@ const AddLocker = ({
           renderAddImage(saveImage, updateFilesToUpload)}
         {state.filesToUpload && state.filesToUpload.length === 1 && (
           <View style={styles.previewContainer}>
-            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)} />
-            <Image
-              style={styles.previewImage}
-              source={{ uri: state.filesToUpload[0] }}
-            />
-            <TouchableOpacity />
+            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
+              <Image
+                style={styles.previewImage}
+                source={{ uri: state.filesToUpload[0] }}
+              />
+            </TouchableOpacity>
             {renderAddImage(saveImage, updateFilesToUpload)}
           </View>
         )}
@@ -113,7 +87,10 @@ const AddLocker = ({
         )}
         <View style={styles.container}>
           <Text style={styles.address}>
-            {state.address.addressNumber} {state.address.addressName}
+            {state.address &&
+              state.address.addressNumber &&
+              state.address.addressName &&
+              state.address.addressNumber + " " + state.address.addressName}
           </Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
           <LockerRating handleReviewRating={handleReviewRating} />
@@ -130,7 +107,10 @@ const AddLocker = ({
                   onSubmit={async values => {
                     try {
                       values = {
-                        address: "123 Red ave",
+                        address:
+                          state.address.addressNumber +
+                          " " +
+                          state.address.addressName,
                         latitude: latitude,
                         longitude: longitude,
                         reviews: [
@@ -156,8 +136,8 @@ const AddLocker = ({
                             {...input}
                             style={styles.form}
                             editable={true}
-                            maxLength={40}
                             multiline={true}
+                            maxLength={1000}
                           />
                         )}
                       />
