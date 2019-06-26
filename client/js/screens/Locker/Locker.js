@@ -77,7 +77,8 @@ class Locker extends Component {
               style={styles.button1}
               onPress={() =>
                 navigation.navigate("AddReview", {
-                  lockerId: lockerinfo.id
+                  lockerId: lockerinfo.id,
+                  street: lockerinfo.address
                 })
               }
             >

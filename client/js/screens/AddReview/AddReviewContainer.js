@@ -31,6 +31,7 @@ export default class AddReviewContainer extends Component {
   };
   render() {
     const lockerId = this.props.navigation.state.params.lockerId;
+    const street = this.props.navigation.state.params.street;
     return (
       <AddReview
         state={{ ...this.state }}
@@ -39,6 +40,7 @@ export default class AddReviewContainer extends Component {
         handleReviewRating={this.handleReviewRating}
         navigation={this.props.navigation}
         lockerId={lockerId}
+        street={street}
       />
     );
   }

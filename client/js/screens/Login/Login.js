@@ -105,7 +105,7 @@ class Login extends Component {
                   />
                   {error && error.message && error.graphQLErrors[0] && (
                     <Text style={styles.errorMsg}>
-                      {error.graphQLErrors[0].message}
+                      {error.graphQLErrors[0].functionError}
                     </Text>
                   )}
                   <Text style={styles.text}>
