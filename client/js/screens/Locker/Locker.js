@@ -15,6 +15,7 @@ import { Gravatar } from "react-native-gravatar";
 import Rating from "../../components/LockerRatingReadOnly";
 import moment from "moment";
 import { lockerAvgRating } from "../../helpers/avgRating";
+import PropTypes from "prop-types";
 
 const ReviewPlaceholder = () => {
   return (
@@ -141,3 +142,8 @@ class Locker extends Component {
 }
 
 export default Locker;
+
+Locker.propTypes = {
+  lockerinfo: PropTypes.object,
+  navigation: PropTypes.object
+};
