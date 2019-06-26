@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles";
+import theme from "../../config/globalStyles";
 
 const { width, height } = Dimensions.get("window");
 
@@ -31,17 +31,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: globalStyles.mediumGreen,
+    backgroundColor: theme.mediumGreen,
     padding: 3,
     margin: 10
   },
   btnFont: {
     color: "white",
-    fontFamily: globalStyles.titleFont
+    fontFamily: theme.titleFont
   },
   labelText: {
+    fontFamily: theme.bodyFont,
     padding: 10,
-    color: globalStyles.mediumGreen,
+    color: theme.mediumGreen,
     alignSelf: "flex-start"
   },
   formField: {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   formInput: {
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: globalStyles.lightGrey,
+    borderColor: theme.lightGrey,
     width: "100%",
     height: height * 0.06,
     alignSelf: "center",
@@ -59,13 +60,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   text: {
+    fontFamily: theme.bodyFont,
     marginTop: 15
   },
   link: {
-    color: globalStyles.orange,
+    color: theme.orange,
     textDecorationLine: "underline"
   },
   errorMsg: {
+    fontFamily: theme.bodyFont,
     color: "red",
     marginTop: 10
   }

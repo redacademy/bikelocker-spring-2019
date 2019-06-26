@@ -1,6 +1,7 @@
+import { StyleSheet } from "react-native";
 import theme from "../../config/globalStyles";
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     ...theme.container,
     height: "100%",
@@ -75,6 +76,6 @@ const styles = {
   submitButtonLabel: {
     color: theme.white
   }
-};
+});
 
 export default styles;

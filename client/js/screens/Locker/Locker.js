@@ -76,11 +76,8 @@ class Locker extends Component {
             <TouchableOpacity
               style={styles.button1}
               onPress={() =>
-                navigation.navigate("AddLocker", {
-                  coordinates: {
-                    latitude: lockerinfo.latitude,
-                    longitude: lockerinfo.longitude
-                  }
+                navigation.navigate("AddReview", {
+                  lockerId: lockerinfo.id
                 })
               }
             >

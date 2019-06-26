@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   image: {
-    padding: 20,
+    marginVertical: 10,
     width: width * 0.9,
     resizeMode: "contain",
     alignSelf: "center"

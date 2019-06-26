@@ -50,7 +50,7 @@ export default EditProfile;
 
 EditProfile.propTypes = {
   toggleTab: PropTypes.func,
-  secondTabActive: PropTypes.func,
+  secondTabActive: PropTypes.bool,
   user: PropTypes.object,
   navigation: PropTypes.object
 };
