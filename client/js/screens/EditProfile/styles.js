@@ -1,6 +1,7 @@
+import { StyleSheet } from "react-native";
 import theme from "../../config/globalStyles";
 
-const styles = {
+const styles = StyleSheet.create({
   header: {
     width: "30%",
     height: 100,
@@ -38,6 +39,6 @@ const styles = {
     color: theme.lightGrey,
     paddingBottom: 5
   }
-};
+});
 
 export default styles;

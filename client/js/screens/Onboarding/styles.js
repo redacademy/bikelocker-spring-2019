@@ -1,8 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
+
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   p: {
+    fontFamily: theme.bodyFont,
     fontSize: theme.subheadingFontSize,
     textAlign: "center",
     paddingBottom: 10,
@@ -17,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   image: {
-    marginTop: 30
+    top: height / 18
   }
 });
 

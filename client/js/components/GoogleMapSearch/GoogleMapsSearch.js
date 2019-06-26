@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Keyboard } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import styles from "./styles";
-import globalStyles from "../../config/globalStyles";
+import theme from "../../config/globalStyles";
 import { API_KEY } from "react-native-dotenv";
 
 class GooglePlacesInput extends Component {
@@ -64,7 +64,7 @@ class GooglePlacesInput extends Component {
               backgroundColor: "rgba(0,0,0,0.5)"
             },
             description: {
-              color: globalStyles.white,
+              color: theme.white,
               fontSize: 16,
               fontWeight: "bold",
               margin: 0

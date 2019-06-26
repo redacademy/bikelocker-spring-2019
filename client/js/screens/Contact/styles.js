@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
 
-const { height, width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
