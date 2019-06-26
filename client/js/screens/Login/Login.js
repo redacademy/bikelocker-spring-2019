@@ -70,7 +70,7 @@ class Login extends Component {
                             {...input}
                             editable={true}
                             autoCapitalize="none"
-                            placeholder="email"
+                            placeholder="Email Address"
                           />
                         </View>
                         <View>
@@ -91,7 +91,7 @@ class Login extends Component {
                             {...input}
                             keyboardType="default"
                             editable={true}
-                            placeholder="password"
+                            placeholder="Password"
                             secureTextEntry={true}
                           />
                         </View>

@@ -11,8 +11,8 @@ import {
 } from "react-native";
 import { Field, Form } from "react-final-form";
 import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
 import styles from "./styles";
+import { Mutation } from "react-apollo";
 import PropTypes from "prop-types";
 import Loader from "../Loader";
 

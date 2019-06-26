@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles";
+import theme from "../../config/globalStyles";
 
 const { width, height } = Dimensions.get("window");
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   btnFont: {
     color: "white",
-    fontFamily: globalStyles.titleFont
+    fontFamily: theme.titleFont
   },
   hello: {
     color: "#009887"
