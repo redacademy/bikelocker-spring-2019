@@ -23,12 +23,8 @@ import AddReviewScreen from "../screens/AddReview";
 const FindLockerStack = createStackNavigator(
   {
     FindLocker: FindLockerScreen,
-<<<<<<< HEAD
-    AddLocker: AddLockerScreen
-=======
     AddLocker: AddLockerScreen,
     AddReview: AddReviewScreen
->>>>>>> develop
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
