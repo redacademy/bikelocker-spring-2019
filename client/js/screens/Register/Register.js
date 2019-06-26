@@ -116,7 +116,7 @@ class Register extends Component {
                             {...input}
                             value={input.value}
                             keyboardType="default"
-                            placeholder="password"
+                            placeholder="Password"
                             editable={true}
                             secureTextEntry={true}
                           />

@@ -1,5 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import theme from "../../config/globalStyles";
+
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   p: {
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   image: {
-    marginTop: 30
+    top: height / 18
   }
 });
 

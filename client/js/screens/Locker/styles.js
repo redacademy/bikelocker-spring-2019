@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles.js";
+import theme from "../../config/globalStyles";
 
 const { height, width } = Dimensions.get("window");
 
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: globalStyles.mediumGreen,
+    backgroundColor: theme.mediumGreen,
     padding: 3
   },
   button2: {
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     width: "50%",
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: globalStyles.mediumGreen,
+    borderColor: theme.mediumGreen,
     borderRadius: 20,
     alignSelf: "center",
     justifyContent: "space-around",
@@ -52,11 +52,11 @@ const styles = StyleSheet.create({
   },
   btnFont1: {
     color: "white",
-    fontFamily: globalStyles.titleFont
+    fontFamily: theme.titleFont
   },
   btnFont2: {
-    color: globalStyles.mediumGreen,
-    fontFamily: globalStyles.titleFont
+    color: theme.mediumGreen,
+    fontFamily: theme.titleFont
   },
   twoBtns: {
     flexDirection: "row",
@@ -79,21 +79,21 @@ const styles = StyleSheet.create({
     width: width * 0.7
   },
   address: {
-    fontFamily: globalStyles.titleFont,
+    fontFamily: theme.titleFont,
     fontSize: 20
   },
   acctName: {
-    fontFamily: globalStyles.titleFont,
+    fontFamily: theme.titleFont,
     fontSize: 15,
     marginBottom: 5
   },
   time: {
-    fontFamily: globalStyles.subheadingFont,
+    fontFamily: theme.subheadingFont,
     fontSize: 10,
     marginBottom: 10
   },
   review: {
-    fontFamily: globalStyles.subheadingFont,
+    fontFamily: theme.subheadingFont,
     fontSize: 15
   },
   rating: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start"
   },
   placeholder: {
-    backgroundColor: globalStyles.lightGrey,
+    backgroundColor: theme.lightGrey,
     borderRadius: 10,
     width: "100%",
     justifyContent: "center",

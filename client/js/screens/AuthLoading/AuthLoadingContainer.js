@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Text, View, StatusBar, ActivityIndicator } from "react-native";
 import AuthLoading from "./AuthLoading";
 import { getUserToken } from "../../config/models";
 
