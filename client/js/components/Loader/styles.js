@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles";
+import { StyleSheet } from "react-native";
+import theme from "../../config/globalStyles";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   spinner: {
-    color: globalStyles.mediumGreen
+    color: theme.mediumGreen
   }
 });
 
