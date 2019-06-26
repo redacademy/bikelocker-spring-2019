@@ -52,7 +52,8 @@ const AddReview = ({
   handleReviewRating,
   navigation,
   toggleModal,
-  lockerId
+  lockerId,
+  street
 }) => {
   return (
     <ScrollView>
@@ -87,7 +88,7 @@ const AddReview = ({
           </View>
         )}
         <View style={styles.container}>
-          <Text style={styles.address}>1100 Block Cambie St.</Text>
+          <Text style={styles.address}>{street}</Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
           <LockerRating handleReviewRating={handleReviewRating} />
           <View style={styles.lockerDesc}>
@@ -124,7 +125,7 @@ const AddReview = ({
                             {...input}
                             style={styles.form}
                             editable={true}
-                            maxLength={40}
+                            maxLength={1000}
                             multiline={true}
                           />
                         )}
