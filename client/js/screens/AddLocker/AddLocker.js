@@ -53,7 +53,8 @@ const AddLocker = ({
   navigation,
   toggleModal,
   latitude,
-  longitude
+  longitude,
+  fetchAddress
 }) => {
   fetch(
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
@@ -66,9 +67,14 @@ const AddLocker = ({
     .then(response => response.json())
     .then(responseJson => {
       console.log(
-        "ADDRESS GEOCODE is BACK!! => " + JSON.stringify(responseJson.results)
+        JSON.stringify(
+          responseJson.results[0].address_components[0].short_name
+        ),
+
+        JSON.stringify(responseJson.results[0].address_components[1].short_name)
       );
     });
+  fetchAddress();
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior="position" enabled>
@@ -102,7 +108,7 @@ const AddLocker = ({
           </View>
         )}
         <View style={styles.container}>
-          <Text style={styles.address}>1100 Block Cambie St.</Text>
+          <Text style={styles.address}>address here</Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
           <LockerRating handleReviewRating={handleReviewRating} />
           <View style={styles.lockerDesc}>
