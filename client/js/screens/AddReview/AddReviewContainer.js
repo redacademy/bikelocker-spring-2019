@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AddLocker from "./AddLocker";
+import AddReview from "./AddReview";
 
-export default class AddLockerContainer extends Component {
+export default class AddReviewContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,12 +32,12 @@ export default class AddLockerContainer extends Component {
   render() {
     const lockerId = this.props.navigation.state.params.lockerId;
     return (
-      <AddLocker
+      <AddReview
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
-        navigation={this.navigation}
+        navigation={this.props.navigation}
         lockerId={lockerId}
       />
     );

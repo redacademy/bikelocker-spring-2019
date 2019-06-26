@@ -1,5 +1,5 @@
-import AddLockerContainer from './AddLockerContainer';
-import AddLocker from './AddLocker';
+import AddReviewContainer from "./AddReviewContainer";
+import AddReview from "./AddReview";
 
-export { AddLocker };
-export default AddLockerContainer;
+export { AddReview };
+export default AddReviewContainer;

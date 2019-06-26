@@ -130,7 +130,7 @@ const AddLocker = ({
                             {...input}
                             style={styles.form}
                             editable={true}
-                            maxLength={40}
+                            maxLength={1000}
                             multiline={true}
                           />
                         )}
