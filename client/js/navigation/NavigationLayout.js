@@ -179,12 +179,8 @@ export default createDrawerNavigator(
       navigationOptions: ({ navigation }) => ({
         title: "Helpful Resources"
       })
-<<<<<<< HEAD
     },
     Logout: Logout
-=======
-    }
->>>>>>> develop
   },
   {
     contentComponent: props => (
