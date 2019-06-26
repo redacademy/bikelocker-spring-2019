@@ -18,6 +18,7 @@ import { Mutation } from "react-apollo";
 import ThankYouModal from "../../components/ThankYouModal";
 import Loader from "../../components/LockerRating/LockerRating";
 import { getUserId } from "../../config/models";
+import { API_KEY } from "react-native-dotenv";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -54,6 +55,20 @@ const AddLocker = ({
   latitude,
   longitude
 }) => {
+  fetch(
+    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+      latitude +
+      "," +
+      longitude +
+      "&key=" +
+      API_KEY
+  )
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log(
+        "ADDRESS GEOCODE is BACK!! => " + JSON.stringify(responseJson.results)
+      );
+    });
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior="position" enabled>
