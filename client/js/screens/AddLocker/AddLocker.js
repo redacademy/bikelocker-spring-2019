@@ -13,6 +13,8 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
+import ThankYouModal from "../../components/ThankYouModal";
+import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import ThankYouModal from "../../components/ThankYouModal";
@@ -163,6 +165,13 @@ const AddLocker = ({
 
 export default AddLocker;
 
+AddLocker.propTypes = {
+  state: PropTypes.object,
+  updateFilesToUpload: PropTypes.func,
+  handleReviewRating: PropTypes.func,
+  navigation: PropTypes.object,
+  toggleModal: PropTypes.func
+};
 const ADD_LOCKER = gql`
   mutation createLocker(
     $address: String!

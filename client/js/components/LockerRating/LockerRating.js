@@ -1,7 +1,9 @@
 import React from "react";
 import { Rating } from "react-native-ratings";
 const LOCK_IMAGE = require("../../assets/images/ratinglockoutlinedtransparent.png");
-const Loader = ({ handleReviewRating, state }) => {
+import PropTypes from "prop-types";
+
+const Loader = ({ handleReviewRating }) => {
   return (
     <Rating
       type="custom"
@@ -17,3 +19,7 @@ const Loader = ({ handleReviewRating, state }) => {
 };
 
 export default Loader;
+
+Loader.propTypes = {
+  handleReviewRating: PropTypes.func
+};

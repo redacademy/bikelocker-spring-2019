@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { Button, Text, View, TouchableOpacity } from "react-native";
+import React from "react";
+import { Text, View, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const ThankYouModal = ({ toggleModal, state }) => {
   return (
@@ -26,3 +27,8 @@ const ThankYouModal = ({ toggleModal, state }) => {
 };
 
 export default ThankYouModal;
+
+ThankYouModal.propTypes = {
+  toggleModal: PropTypes.func,
+  state: PropTypes.object
+};
