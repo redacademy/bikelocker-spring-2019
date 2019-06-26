@@ -29,15 +29,18 @@ export default class AddLockerContainer extends Component {
   handleReviewRating = rating => {
     this.setState({ reviewRating: rating });
   };
-
   render() {
+    const latitude = this.props.navigation.state.params.coordinates.latitude;
+    const longitude = this.props.navigation.state.params.coordinates.longitude;
     return (
       <AddLocker
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
-        navigation={this.props.navigation}
+        navigation={this.navigation}
+        longitude={longitude}
+        latitude={latitude}
       />
     );
   }

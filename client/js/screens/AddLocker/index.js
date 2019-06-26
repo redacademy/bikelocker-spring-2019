@@ -1,5 +1,5 @@
-import AddLocker from "./AddLocker";
-import AddLockerContainer from "./AddLockerContainer";
+import AddLockerContainer from './AddLockerContainer';
+import AddLocker from './AddLocker';
 
 export { AddLocker };
 export default AddLockerContainer;
