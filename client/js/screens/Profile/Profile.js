@@ -30,7 +30,9 @@ const Profile = ({ user, navigation }) => {
           {user.firstName} {user.lastName}
         </Text>
         <Text style={styles.userLocation}>
-          {user.city}, {user.province}, {user.country}
+          {user.city && user.city + ", "}
+          {user.province && user.province + ", "}
+          {user.country}
         </Text>
         <Text style={styles.subheading}>My bike is a...</Text>
         <Text style={styles.caption}>
