@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles";
+import theme from "../../config/globalStyles";
 
 const { height, width } = Dimensions.get("window");
 
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   thankYou: {
     fontSize: 40,
-    color: globalStyles.mediumGreen,
+    color: theme.mediumGreen,
     textAlign: "center",
     fontWeight: "bold",
     paddingTop: 10
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: "50%",
     borderStyle: "solid",
-    backgroundColor: globalStyles.mediumGreen,
+    backgroundColor: theme.mediumGreen,
     borderRadius: 20,
     alignContent: "center",
     color: "#000",

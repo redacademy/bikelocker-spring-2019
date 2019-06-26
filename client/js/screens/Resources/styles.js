@@ -1,7 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import globalStyles from "../../config/globalStyles";
-
-const { width, height } = Dimensions.get("window");
+import theme from "../../config/globalStyles";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,20 +7,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 20
   },
   h2: {
-    fontSize: globalStyles.titleFontSize,
-    color: globalStyles.black
+    fontSize: theme.titleFontSize,
+    color: theme.black
   },
   p: {
-    fontSize: globalStyles.commonFontSize,
+    fontSize: theme.commonFontSize,
     paddingTop: 10,
     lineHeight: 25,
     marginBottom: 5
   },
   link: {
-    color: globalStyles.darkGreen,
+    color: theme.darkGreen,
     marginTop: 5,
     marginBottom: 5,
-    fontFamily: globalStyles.captionFont
+    fontFamily: theme.captionFont
   }
 });
 
