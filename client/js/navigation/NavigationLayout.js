@@ -89,6 +89,19 @@ const ResourcesStack = createStackNavigator(
   }
 );
 
+const Logout = () => {
+  return null;
+};
+
+logout = async props => {
+  try {
+    await clearStorage();
+    props.navigation.navigate("AuthLoading");
+  } catch (e) {
+    throw e;
+  }
+};
+
 const DrawerContent = props => (
   <View>
     <View
@@ -115,7 +128,17 @@ const DrawerContent = props => (
       />
       <View style={{ width: 40, marginRight: 10 }} />
     </View>
-    <DrawerItems {...props} />
+    <DrawerItems
+      {...props}
+      onItemPress={navigation => {
+        if (navigation.route.routeName === "Logout") {
+          this.logout(props);
+        } else {
+          props.onItemPress(navigation);
+          return;
+        }
+      }}
+    />
   </View>
 );
 
@@ -156,26 +179,13 @@ export default createDrawerNavigator(
       navigationOptions: ({ navigation }) => ({
         title: "Helpful Resources"
       })
-    }
+    },
+    Logout: Logout
   },
   {
     contentComponent: props => (
       <View style={{ flex: 1 }}>
         <DrawerContent {...props} />
-        <TouchableOpacity
-          onPress={async () => {
-            try {
-              await clearStorage();
-              props.navigation.navigate("AuthLoading");
-            } catch (e) {
-              throw e;
-            }
-          }}
-        >
-          <Text style={{ fontSize: 16, marginLeft: 15 }} title="Logout">
-            Logout
-          </Text>
-        </TouchableOpacity>
       </View>
     ),
     overlayColor: "black"
