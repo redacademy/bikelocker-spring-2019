@@ -6,7 +6,7 @@ BikeLocker is an iOS app created for the modern city biker. It will help you fin
 
 ## App Demo
 
-![BikeLocker Deom](bikelocker_demo.gif)
+![BikeLocker Demo](demoGif/bikelocker_demo.gif)
 
 ## About the Authors
 
