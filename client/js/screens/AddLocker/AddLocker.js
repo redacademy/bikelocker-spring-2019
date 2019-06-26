@@ -53,8 +53,7 @@ const AddLocker = ({
   navigation,
   toggleModal,
   latitude,
-  longitude,
-  fetchAddress
+  longitude
 }) => {
   fetch(
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
@@ -74,7 +73,6 @@ const AddLocker = ({
         JSON.stringify(responseJson.results[0].address_components[1].short_name)
       );
     });
-  fetchAddress();
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior="position" enabled>
