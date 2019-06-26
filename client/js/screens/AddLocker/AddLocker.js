@@ -51,7 +51,9 @@ const AddLocker = ({
   updateFilesToUpload,
   handleReviewRating,
   navigation,
-  toggleModal
+  toggleModal,
+  latitudeData,
+  longitudeData
 }) => {
   return (
     <ScrollView>
@@ -111,8 +113,8 @@ const AddLocker = ({
                           state.address.addressNumber +
                           " " +
                           state.address.addressName,
-                        latitude: latitude,
-                        longitude: longitude,
+                        latitude: latitudeData,
+                        longitude: longitudeData,
                         reviews: [
                           {
                             review: values.review,
