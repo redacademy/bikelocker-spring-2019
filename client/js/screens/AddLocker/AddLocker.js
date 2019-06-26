@@ -101,7 +101,26 @@ const AddLocker = ({
             <Text style={styles.secureText}>More secure</Text>
           </View>
           <Text style={styles.commentText}>Leave a comment</Text>
-          <Mutation mutation={ADD_LOCKER}>
+          <Mutation
+            mutation={ADD_LOCKER}
+            refetchQueries={() => [
+              {
+                query: gql`
+                  query {
+                    allLockers {
+                      id
+                      address
+                      latitude
+                      longitude
+                      reviews {
+                        rating
+                      }
+                    }
+                  }
+                `
+              }
+            ]}
+          >
             {(createLocker, { loading, data, error }) => {
               if (loading) return <Loader />;
               return (
