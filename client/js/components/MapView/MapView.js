@@ -126,13 +126,6 @@ class MapViewComponent extends Component {
                   showsMyLocationButton={true}
                   showsUserLocation={true}
                 >
-                  {coordinates.latitude !== null &&
-                  coordinates.longitude !== null ? (
-                    <Marker
-                      image={blackPin}
-                      coordinate={this.state.coordinates}
-                    />
-                  ) : null}
                   {data.allLockers.map(d => {
                     let i;
                     if (d.reviews.length === 0) {
@@ -224,7 +217,7 @@ class MapViewComponent extends Component {
 
 export default withNavigation(MapViewComponent);
 
-const GET_LOCATION = gql`
+export const GET_LOCATION = gql`
   query {
     allLockers {
       id
