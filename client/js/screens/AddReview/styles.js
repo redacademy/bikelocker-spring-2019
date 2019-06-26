@@ -59,7 +59,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    padding: 10,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
     width: "100%"
   },
   ratingText: {
@@ -88,7 +90,8 @@ const styles = StyleSheet.create({
     borderColor: "#999999",
     width: "100%",
     height: 120,
-    borderRadius: 10
+    borderRadius: 10,
+    paddingLeft: 10
   },
   input: {
     height: 120
@@ -109,7 +112,10 @@ const styles = StyleSheet.create({
   },
   submit: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    textAlign: "center",
+    paddingLeft: 7,
+    color: "#fff"
   },
   backSpacing: {
     padding: 11,
@@ -135,8 +141,8 @@ const styles = StyleSheet.create({
     width: "50%",
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: "#999999",
-    backgroundColor: "#999999",
+    borderColor: theme.mediumGreen,
+    backgroundColor: theme.mediumGreen,
     borderRadius: 20,
     textAlign: "center",
     color: "#000",

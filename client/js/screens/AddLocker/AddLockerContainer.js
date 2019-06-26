@@ -60,6 +60,10 @@ export default class AddLockerContainer extends Component {
   }
 
   render() {
+    const latitudeData = this.props.navigation.state.params.coordinates
+      .latitude;
+    const longitudeData = this.props.navigation.state.params.coordinates
+      .longitude;
     return (
       <AddLocker
         state={{ ...this.state }}
@@ -67,6 +71,8 @@ export default class AddLockerContainer extends Component {
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
         navigation={this.props.navigation}
+        latitudeData={latitudeData}
+        longitudeData={longitudeData}
       />
     );
   }
