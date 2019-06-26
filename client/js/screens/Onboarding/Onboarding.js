@@ -30,7 +30,7 @@ const OnboardingScreens = ({ navigation }) => {
       image: (
         <View>
           <Image
-            style={styles.image}
+            style={styles.image1}
             source={require("../../assets/icons/bikelocker/combinedlogo/horizontal/black.png")}
           />
           <Image
@@ -42,7 +42,7 @@ const OnboardingScreens = ({ navigation }) => {
       title: "",
 
       subtitle: (
-        <View style={styles.page}>
+        <View>
           <Text style={styles.p}>
             <Text style={styles.bold}>Pins</Text> on the map are locations to
             lock your bike.
@@ -70,7 +70,7 @@ const OnboardingScreens = ({ navigation }) => {
       subtitle: (
         <View style={styles.page}>
           <Image
-            style={{ width: width, resizeMode: "contain" }}
+            style={{ marginVertical: 20, width: width, resizeMode: "contain" }}
             source={require("../../assets/images/Comorwbackground.png")}
           />
           <Text style={styles.p}>
@@ -83,7 +83,7 @@ const OnboardingScreens = ({ navigation }) => {
     }
   ];
 
-  const { height, width } = Dimensions.get("window");
+  const { width } = Dimensions.get("window");
   return (
     <Onboarding
       containerStyles={{ flex: 1, backgroundColor: "white" }}

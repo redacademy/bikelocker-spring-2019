@@ -12,15 +12,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     marginHorizontal: 40
   },
-  bold: {
-    fontSize: theme.subheadingFontSize,
-    fontWeight: "bold"
-  },
-  page: {
-    flex: 1
-  },
   image: {
+    marginVertical: 20,
     top: height / 18
+  },
+  image1: {
+    alignSelf: "center"
+  },
+  bold: {
+    fontWeight: "bold"
   }
 });
 
