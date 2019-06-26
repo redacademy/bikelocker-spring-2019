@@ -18,11 +18,17 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AddLockerScreen from "../screens/AddLocker";
+import AddReviewScreen from "../screens/AddReview";
 
 const FindLockerStack = createStackNavigator(
   {
     FindLocker: FindLockerScreen,
+<<<<<<< HEAD
     AddLocker: AddLockerScreen
+=======
+    AddLocker: AddLockerScreen,
+    AddReview: AddReviewScreen
+>>>>>>> develop
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -177,8 +183,12 @@ export default createDrawerNavigator(
       navigationOptions: ({ navigation }) => ({
         title: "Helpful Resources"
       })
+<<<<<<< HEAD
     },
     Logout: Logout
+=======
+    }
+>>>>>>> develop
   },
   {
     contentComponent: props => (

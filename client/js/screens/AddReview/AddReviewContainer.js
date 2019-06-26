@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AddLocker from "./AddLocker";
+import AddReview from "./AddReview";
 
-export default class AddLockerContainer extends Component {
+export default class AddReviewContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,17 +30,15 @@ export default class AddLockerContainer extends Component {
     this.setState({ reviewRating: rating });
   };
   render() {
-    const latitude = this.props.navigation.state.params.coordinates.latitude;
-    const longitude = this.props.navigation.state.params.coordinates.longitude;
+    const lockerId = this.props.navigation.state.params.lockerId;
     return (
-      <AddLocker
+      <AddReview
         state={{ ...this.state }}
         updateFilesToUpload={this.updateFilesToUpload}
         toggleModal={this.toggleModal}
         handleReviewRating={this.handleReviewRating}
         navigation={this.props.navigation}
-        longitude={longitude}
-        latitude={latitude}
+        lockerId={lockerId}
       />
     );
   }

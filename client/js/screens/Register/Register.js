@@ -116,7 +116,7 @@ class Register extends Component {
                             {...input}
                             value={input.value}
                             keyboardType="default"
-                            placeholder="password"
+                            placeholder="Password"
                             editable={true}
                             secureTextEntry={true}
                           />
@@ -157,10 +157,10 @@ class Register extends Component {
   }
 }
 
+export default Register;
+
 Register.proptypes = {
   navigation: PropTypes.array.isRequired,
   register: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired
 };
-
-export default Register;
