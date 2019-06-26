@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   ScrollView,
   Text,
@@ -6,20 +6,19 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
-  KeyboardAvoidingView
-} from "react-native";
-import LockerRating from "../../components/LockerRating";
-import styles from "./styles";
-import { Form, Field } from "react-final-form";
-import ImagePicker from "react-native-image-picker";
-import Icon from "react-native-vector-icons/Ionicons";
-import ThankYouModal from "../../components/ThankYouModal";
-import PropTypes from "prop-types";
-import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
-import ThankYouModal from "../../components/ThankYouModal";
-import Loader from "../../components/LockerRating/LockerRating";
-import { getUserId } from "../../config/models";
+  KeyboardAvoidingView,
+} from 'react-native';
+import LockerRating from '../../components/LockerRating';
+import styles from './styles';
+import { Form, Field } from 'react-final-form';
+import ImagePicker from 'react-native-image-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
+import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import ThankYouModal from '../../components/ThankYouModal';
+import Loader from '../../components/LockerRating/LockerRating';
+import { getUserId } from '../../config/models';
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
   <TouchableOpacity
@@ -33,7 +32,7 @@ const renderAddImage = (saveImage, updateFilesToUpload) => (
 
 const saveImage = updateFilesToUpload => {
   const options = {
-    title: "Pick Bike Locker Image"
+    title: 'Pick Bike Locker Image',
   };
 
   ImagePicker.showImagePicker(options, response => {
@@ -54,7 +53,7 @@ const AddLocker = ({
   navigation,
   toggleModal,
   latitude,
-  longitude
+  longitude,
 }) => {
   return (
     <ScrollView>
@@ -105,16 +104,16 @@ const AddLocker = ({
                   onSubmit={async values => {
                     try {
                       values = {
-                        address: "123 Red ave",
+                        address: '123 Red ave',
                         latitude: latitude,
                         longitude: longitude,
                         reviews: [
                           {
                             review: values.review,
                             rating: state.reviewRating,
-                            reviewerId: await getUserId()
-                          }
-                        ]
+                            reviewerId: await getUserId(),
+                          },
+                        ],
                       };
                       await createLocker({ variables: values });
                       toggleModal();
@@ -170,7 +169,7 @@ AddLocker.propTypes = {
   updateFilesToUpload: PropTypes.func,
   handleReviewRating: PropTypes.func,
   navigation: PropTypes.object,
-  toggleModal: PropTypes.func
+  toggleModal: PropTypes.func,
 };
 const ADD_LOCKER = gql`
   mutation createLocker(

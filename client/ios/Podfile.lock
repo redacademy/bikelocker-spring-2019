@@ -90,8 +90,6 @@ PODS:
     - React/RCTBlob
   - ReactNativeNavigation (2.21.0-experimental.1):
     - React
-  - rn-fetch-blob (0.10.6):
-    - React/Core
   - RNCAsyncStorage (1.5.0):
     - React
   - yoga (0.59.9.React)
@@ -118,7 +116,6 @@ DEPENDENCIES:
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
@@ -143,8 +140,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
-  rn-fetch-blob:
-    :path: "../node_modules/rn-fetch-blob"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   yoga:
@@ -161,10 +156,9 @@ SPEC CHECKSUMS:
   react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
   ReactNativeNavigation: 2d4b9a6c61ab8601003e9018ca80aad79dd376d7
-  rn-fetch-blob: 766f85cabd2992300dfa1be2bc9e4e258abc6f04
   RNCAsyncStorage: 9436928b444c5f5361960a7eea051a697c244b68
   yoga: 03ff42a6f223fb88deeaed60249020d80c3091ee
 
-PODFILE CHECKSUM: 8a77b690e3a805f6e0da2f10bfbc4e50b4316368
+PODFILE CHECKSUM: f6d3618023161672d989ef3d558f5cc55b24db0e
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.2
