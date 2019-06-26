@@ -11,11 +11,11 @@ import {
   KeyboardAvoidingView,
   Keyboard
 } from "react-native";
-import PropTypes from "prop-types";
 import { Form, Field } from "react-final-form";
 import validate from "../../helpers/validationLogin";
 import styles from "./styles";
 import { setUserIdToken } from "../../config/models";
+import PropTypes from "prop-types";
 
 class Login extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class Login extends Component {
                             {...input}
                             editable={true}
                             autoCapitalize="none"
-                            placeholder="email"
+                            placeholder="Email Address"
                           />
                         </View>
                         <View>
@@ -91,7 +91,7 @@ class Login extends Component {
                             {...input}
                             keyboardType="default"
                             editable={true}
-                            placeholder="password"
+                            placeholder="Password"
                             secureTextEntry={true}
                           />
                         </View>
@@ -105,7 +105,7 @@ class Login extends Component {
                   />
                   {error && error.message && error.graphQLErrors[0] && (
                     <Text style={styles.errorMsg}>
-                      {error.graphQLErrors[0].message}
+                      {error.graphQLErrors[0].functionError}
                     </Text>
                   )}
                   <Text style={styles.text}>
@@ -131,10 +131,10 @@ class Login extends Component {
   }
 }
 
+export default Login;
+
 Login.proptypes = {
   navigation: PropTypes.array.isRequired,
   authenticate: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired
 };
-
-export default Login;

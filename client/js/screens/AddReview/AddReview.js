@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {
   ScrollView,
   Text,
@@ -14,10 +13,11 @@ import styles from "./styles";
 import { Form, Field } from "react-final-form";
 import ImagePicker from "react-native-image-picker";
 import Icon from "react-native-vector-icons/Ionicons";
+import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import ThankYouModal from "../../components/ThankYouModal";
-import Loader from "../../components/LockerRating/LockerRating";
+import Loader from "../../components/Loader";
 import { getUserId } from "../../config/models";
 
 const renderAddImage = (saveImage, updateFilesToUpload) => (
@@ -46,12 +46,14 @@ const saveImage = updateFilesToUpload => {
   });
 };
 
-const AddLocker = ({
+const AddReview = ({
   state,
   updateFilesToUpload,
   handleReviewRating,
   navigation,
-  toggleModal
+  toggleModal,
+  lockerId,
+  street
 }) => {
   return (
     <ScrollView>
@@ -60,12 +62,12 @@ const AddLocker = ({
           renderAddImage(saveImage, updateFilesToUpload)}
         {state.filesToUpload && state.filesToUpload.length === 1 && (
           <View style={styles.previewContainer}>
-            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)}>
-              <Image
-                style={styles.previewImage}
-                source={{ uri: state.filesToUpload[0] }}
-              />
-            </TouchableOpacity>
+            <TouchableOpacity onPress={() => saveImage(updateFilesToUpload)} />
+            <Image
+              style={styles.previewImage}
+              source={{ uri: state.filesToUpload[0] }}
+            />
+            <TouchableOpacity />
             {renderAddImage(saveImage, updateFilesToUpload)}
           </View>
         )}
@@ -86,12 +88,7 @@ const AddLocker = ({
           </View>
         )}
         <View style={styles.container}>
-          <Text style={styles.address}>
-            {state.address &&
-              state.address.addressNumber &&
-              state.address.addressName &&
-              state.address.addressNumber + " " + state.address.addressName}
-          </Text>
+          <Text style={styles.address}>{street}</Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
           <LockerRating handleReviewRating={handleReviewRating} />
           <View style={styles.lockerDesc}>
@@ -99,7 +96,8 @@ const AddLocker = ({
             <Text style={styles.secureText}>More secure</Text>
           </View>
           <Text style={styles.commentText}>Leave a comment</Text>
-          <Mutation mutation={ADD_LOCKER}>
+
+          <Mutation mutation={ADD_REVIEW}>
             {(createLocker, { loading, data, error }) => {
               if (loading) return <Loader />;
               return (
@@ -107,19 +105,10 @@ const AddLocker = ({
                   onSubmit={async values => {
                     try {
                       values = {
-                        address:
-                          state.address.addressNumber +
-                          " " +
-                          state.address.addressName,
-                        latitude: latitude,
-                        longitude: longitude,
-                        reviews: [
-                          {
-                            review: values.review,
-                            rating: state.reviewRating,
-                            reviewerId: await getUserId()
-                          }
-                        ]
+                        lockerId: lockerId,
+                        review: values.review,
+                        rating: state.reviewRating,
+                        reviewerId: await getUserId()
                       };
                       await createLocker({ variables: values });
                       toggleModal();
@@ -136,8 +125,8 @@ const AddLocker = ({
                             {...input}
                             style={styles.form}
                             editable={true}
-                            multiline={true}
                             maxLength={1000}
+                            multiline={true}
                           />
                         )}
                       />
@@ -168,37 +157,33 @@ const AddLocker = ({
   );
 };
 
-export default AddLocker;
+export default AddReview;
 
-AddLocker.propTypes = {
+AddReview.propTypes = {
   state: PropTypes.object,
   updateFilesToUpload: PropTypes.func,
   handleReviewRating: PropTypes.func,
   navigation: PropTypes.object,
   toggleModal: PropTypes.func
 };
-const ADD_LOCKER = gql`
-  mutation createLocker(
-    $address: String!
-    $latitude: Float!
-    $longitude: Float!
-    $reviews: [LockerreviewsReview!]
+
+const ADD_REVIEW = gql`
+  mutation createReview(
+    $rating: Int
+    $review: String!
+    $lockerId: ID
+    $reviewerId: ID
   ) {
-    createLocker(
-      address: $address
-      latitude: $latitude
-      longitude: $longitude
-      reviews: $reviews
+    createReview(
+      rating: $rating
+      review: $review
+      lockerId: $lockerId
+      reviewerId: $reviewerId
     ) {
-      id
-      address
-      reviews {
+      rating
+      review
+      locker {
         id
-        rating
-        reviewer {
-          id
-        }
-        review
       }
     }
   }

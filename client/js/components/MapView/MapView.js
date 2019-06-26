@@ -83,20 +83,21 @@ class MapViewComponent extends Component {
                   style={styles.mapView}
                   onPress={e => {
                     if (this.slider === true) {
-                      this.setState({
-                        coordinates: {
-                          latitude: e.nativeEvent.coordinate.latitude,
-                          longitude: e.nativeEvent.coordinate.longitude
-                        }
-                      });
-                      this.slider = false;
+                      this.setState(
+                        {
+                          coordinates: {
+                            latitude: e.nativeEvent.coordinate.latitude,
+                            longitude: e.nativeEvent.coordinate.longitude
+                          }
+                        },
+                        () => {
+                          this.slider = false;
 
-                      this.props.navigation.navigate("AddLocker", {
-                        coordinates: {
-                          latitude: this.state.coordinates.latitude,
-                          longitude: this.state.coordinates.latitude
+                          this.props.navigation.navigate("AddLocker", {
+                            coordinates: this.state.coordinates
+                          });
                         }
-                      });
+                      );
                     }
                   }}
                   region={
@@ -127,7 +128,10 @@ class MapViewComponent extends Component {
                 >
                   {coordinates.latitude !== null &&
                   coordinates.longitude !== null ? (
-                    <Marker coordinate={this.state.coordinates} />
+                    <Marker
+                      image={blackPin}
+                      coordinate={this.state.coordinates}
+                    />
                   ) : null}
                   {data.allLockers.map(d => {
                     let i;
@@ -153,13 +157,13 @@ class MapViewComponent extends Component {
                           longitude: d.longitude
                         }}
                         image={i}
-                        onPress={() =>
-                          this.props.navigation.push("Locker", {
+                        onPress={() => {
+                          this.props.navigation.push("LockerView", {
                             locationID: d.id,
                             userLat: this.state.latitude,
                             userLng: this.state.longitude
-                          })
-                        }
+                          });
+                        }}
                         title={d.address}
                       />
                     );
