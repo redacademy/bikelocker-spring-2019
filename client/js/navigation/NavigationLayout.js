@@ -18,74 +18,75 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AddLockerScreen from "../screens/AddLocker";
-import LockerModal from "../screens/Locker";
+import AddReviewScreen from "../screens/AddReview";
 
 const FindLockerStack = createStackNavigator(
   {
     FindLocker: FindLockerScreen,
     AddLocker: AddLockerScreen,
+    AddReview: AddReviewScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
-    EditProfile: EditProfileScreen,
+    EditProfile: EditProfileScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const AboutStack = createStackNavigator(
   {
-    About: AboutScreen,
+    About: AboutScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const ContactStack = createStackNavigator(
   {
-    Contact: ContactScreen,
+    Contact: ContactScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const HowToUseAppStack = createStackNavigator(
   {
-    HowToUseApp: HowToUseAppScreen,
+    HowToUseApp: HowToUseAppScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const ResourcesStack = createStackNavigator(
   {
-    Resources: ResourcesScreen,
+    Resources: ResourcesScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
+      ...sharedNavigationOptions(navigation)
+    })
+  }
 );
 
 const DrawerContent = props => (
@@ -94,10 +95,10 @@ const DrawerContent = props => (
       style={{
         backgroundColor: theme.mediumGreen,
         height: 90,
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
       }}
     >
       <TouchableOpacity onPress={() => props.navigation.closeDrawer()}>
@@ -109,7 +110,7 @@ const DrawerContent = props => (
         />
       </TouchableOpacity>
       <Image
-        source={require('../assets/images/bikelockerlogo-white.png')}
+        source={require("../assets/images/bikelockerlogo-white.png")}
         style={{ width: 40, height: 40, marginTop: 10 }}
       />
       <View style={{ width: 40, marginRight: 10 }} />
@@ -147,15 +148,15 @@ export default createDrawerNavigator(
     HowToUseApp: {
       screen: HowToUseAppStack,
       navigationOptions: ({ navigation }) => ({
-        title: 'How to Use the App',
-      }),
+        title: "How to Use the App"
+      })
     },
     Resources: {
       screen: ResourcesStack,
       navigationOptions: ({ navigation }) => ({
-        title: 'Helpful Resources',
-      }),
-    },
+        title: "Helpful Resources"
+      })
+    }
   },
   {
     contentComponent: props => (
@@ -181,18 +182,18 @@ export default createDrawerNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({}),
-    drawerWidth: '80%',
+    drawerWidth: "80%",
     contentOptions: {
       activeTintColor: theme.mediumGreen,
       labelStyle: {
-        fontSize: 16,
+        fontSize: 16
       },
       itemsContainerStyle: {
-        margin: 0,
+        margin: 0
       },
       iconContainerStyle: {
-        margin: 0,
-      },
-    },
-  },
+        margin: 0
+      }
+    }
+  }
 );

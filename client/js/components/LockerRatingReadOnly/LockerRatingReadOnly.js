@@ -21,5 +21,5 @@ const LockerRating = ({ avgRating }) => {
 export default LockerRating;
 
 LockerRating.propTypes = {
-  avgRating: PropTypes.func
+  avgRating: PropTypes.number
 };
