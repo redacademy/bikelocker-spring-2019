@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import MapViewComponent from "../../components/MapView";
-import { View, Text, Button } from "react-native";
+import { View } from "react-native";
 import GoogleMapsSearch from "../../components/GoogleMapSearch";
 import GooglePlaceContext from "../../context/GooglePlaceContext";
 

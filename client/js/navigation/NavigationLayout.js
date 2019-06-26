@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, SafeAreaView, Button } from "react-native";
+import { Text, Image, View, SafeAreaView, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -18,6 +18,7 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import theme from "../config/globalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AddLockerScreen from "../screens/AddLocker";
+import LockerModal from "../screens/Locker";
 
 const FindLockerStack = createStackNavigator(
   {
@@ -116,6 +117,7 @@ const DrawerContent = props => (
     <DrawerItems {...props} />
   </View>
 );
+
 export default createDrawerNavigator(
   {
     FindLocker: {
@@ -156,24 +158,23 @@ export default createDrawerNavigator(
     },
   },
   {
-    initialRouteName: 'FindLocker',
-    contentComponent: props => <DrawerContent {...props} />,
     contentComponent: props => (
       <View style={{ flex: 1 }}>
-        <SafeAreaView forceInset={{ top: "always", horizontal: "never" }}>
-          <DrawerItems {...props} />
-          <Button
-            title="Logout"
-            onPress={async () => {
-              try {
-                await clearStorage();
-                props.navigation.navigate("AuthLoading");
-              } catch (e) {
-                throw e;
-              }
-            }}
-          />
-        </SafeAreaView>
+        <DrawerContent {...props} />
+        <TouchableOpacity
+          onPress={async () => {
+            try {
+              await clearStorage();
+              props.navigation.navigate("AuthLoading");
+            } catch (e) {
+              throw e;
+            }
+          }}
+        >
+          <Text style={{ fontSize: 16, marginLeft: 15 }} title="Logout">
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
     ),
     overlayColor: "black"

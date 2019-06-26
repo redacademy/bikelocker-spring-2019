@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ScrollView,
   Text,
@@ -190,6 +190,13 @@ const AddLocker = ({
 
 export default AddLocker;
 
+AddLocker.propTypes = {
+  state: PropTypes.object,
+  updateFilesToUpload: PropTypes.func,
+  handleReviewRating: PropTypes.func,
+  navigation: PropTypes.object,
+  toggleModal: PropTypes.func
+};
 const ADD_LOCKER = gql`
   mutation createLocker(
     $address: String!

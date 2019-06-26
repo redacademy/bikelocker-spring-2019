@@ -52,7 +52,7 @@ class Register extends Component {
                   if (response.data.signupUser) {
                     const { id, token } = response.data.signupUser;
                     await setUserIdToken(id, token);
-                    navigation.navigate("FindLocker");
+                    navigation.navigate("Onboarding");
                   }
                 } catch (e) {
                   return e;
@@ -157,10 +157,10 @@ class Register extends Component {
   }
 }
 
+export default Register;
+
 Register.proptypes = {
   navigation: PropTypes.array.isRequired,
   register: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired
 };
-
-export default Register;

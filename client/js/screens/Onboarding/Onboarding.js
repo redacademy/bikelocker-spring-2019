@@ -2,6 +2,7 @@ import React from "react";
 import { View, Image, Text, Dimensions } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const OnboardingScreens = ({ navigation }) => {
   const onboardingScreens = [
@@ -34,7 +35,7 @@ const OnboardingScreens = ({ navigation }) => {
           />
           <Image
             style={styles.image}
-            source={require("../../assets/images/pindiagram.png")}
+            source={require("../../assets/images/pinDiagramWithLabel.png")}
           />
         </View>
       ),
@@ -97,3 +98,7 @@ const OnboardingScreens = ({ navigation }) => {
 };
 
 export default OnboardingScreens;
+
+OnboardingScreens.propTypes = {
+  navigation: PropTypes.object
+};
