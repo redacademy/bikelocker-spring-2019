@@ -5,6 +5,7 @@ const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 1,
     width: "80%",
     alignSelf: "center"
   },
