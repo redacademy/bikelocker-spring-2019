@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import EditProfileAbout from "../../components/EditProfileAbout";
 import EditProfileContact from "../../components/EditProfileContact";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const EditProfile = ({ toggleTab, secondTabActive, user, navigation }) => (
   <ScrollView>
@@ -46,3 +47,10 @@ const EditProfile = ({ toggleTab, secondTabActive, user, navigation }) => (
 );
 
 export default EditProfile;
+
+EditProfile.propTypes = {
+  toggleTab: PropTypes.func,
+  secondTabActive: PropTypes.func,
+  user: PropTypes.object,
+  navigation: PropTypes.object
+};

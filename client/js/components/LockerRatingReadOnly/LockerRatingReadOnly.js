@@ -1,6 +1,8 @@
 import React from "react";
 import { Rating } from "react-native-ratings";
 const LOCK_IMAGE = require("../../assets/images/ratinglockoutlinedtransparent.png");
+import PropTypes from "prop-types";
+
 const LockerRating = ({ avgRating }) => {
   return (
     <Rating
@@ -17,3 +19,7 @@ const LockerRating = ({ avgRating }) => {
 };
 
 export default LockerRating;
+
+LockerRating.propTypes = {
+  avgRating: PropTypes.func
+};
