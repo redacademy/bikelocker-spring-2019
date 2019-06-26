@@ -7,10 +7,16 @@ export default class AddLockerContainer extends Component {
     this.state = {
       filesToUpload: [],
       reviewRating: null,
-      isModalVisible: false
+      isModalVisible: false,
+      address: {
+        addressNumber: null,
+        addressName: null
+      }
     };
   }
-
+  setAddress = newAddress => {
+    this.setState({ address: newAddress });
+  };
   toggleModal = () => {
     if (this.state.isModalVisible === false) {
       this.setState({ isModalVisible: true });
@@ -30,6 +36,7 @@ export default class AddLockerContainer extends Component {
     this.setState({ reviewRating: rating });
   };
   render() {
+    console.log(this.state.address);
     const latitude = this.props.navigation.state.params.coordinates.latitude;
     const longitude = this.props.navigation.state.params.coordinates.longitude;
     return (
@@ -41,6 +48,7 @@ export default class AddLockerContainer extends Component {
         navigation={this.navigation}
         longitude={longitude}
         latitude={latitude}
+        setAddress={this.setAddress}
       />
     );
   }

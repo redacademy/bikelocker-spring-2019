@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ScrollView,
   Text,
@@ -53,26 +53,32 @@ const AddLocker = ({
   navigation,
   toggleModal,
   latitude,
-  longitude
+  longitude,
+  setAddress
 }) => {
-  fetch(
-    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-      latitude +
-      "," +
-      longitude +
-      "&key=" +
-      API_KEY
-  )
-    .then(response => response.json())
-    .then(responseJson => {
-      console.log(
-        JSON.stringify(
-          responseJson.results[0].address_components[0].short_name
-        ),
+  getAddress = async (latitude, longitude) => {
+    await fetch(
+      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+        latitude +
+        "," +
+        longitude +
+        "&key=" +
+        API_KEY
+    )
+      .then(response => response.json())
+      .then(responseJson => {
+        setAddress({
+          addressNumber: JSON.stringify(
+            responseJson.results[0].address_components[0].short_name
+          ),
+          addressName: JSON.stringify(
+            responseJson.results[0].address_components[1].short_name
+          )
+        });
+      });
+  };
+  getAddress();
 
-        JSON.stringify(responseJson.results[0].address_components[1].short_name)
-      );
-    });
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior="position" enabled>
@@ -106,7 +112,9 @@ const AddLocker = ({
           </View>
         )}
         <View style={styles.container}>
-          <Text style={styles.address}>address here</Text>
+          <Text style={styles.address}>
+            {state.address.addressNumber} {state.address.addressName}
+          </Text>
           <Text style={styles.ratingText}>Rate the security of this rack</Text>
           <LockerRating handleReviewRating={handleReviewRating} />
           <View style={styles.lockerDesc}>
