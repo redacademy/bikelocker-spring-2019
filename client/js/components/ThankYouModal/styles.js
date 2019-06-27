@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
     color: theme.mediumGreen,
     textAlign: "center",
     fontWeight: "bold",
-    paddingTop: 10
+    paddingTop: 15
   },
   modalText: {
-    padding: 20,
+    padding: 30,
     textAlign: "center"
   },
   continueContainer: {

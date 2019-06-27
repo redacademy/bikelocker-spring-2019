@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   },
   cameraIcon: {
     color: "#fff",
-    fontSize: 40
+    fontSize: 40,
+    paddingTop: 15
   },
   addPhotos: {
     flexDirection: "row",
