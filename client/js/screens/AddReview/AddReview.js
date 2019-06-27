@@ -97,7 +97,26 @@ const AddReview = ({
           </View>
           <Text style={styles.commentText}>Leave a comment</Text>
 
-          <Mutation mutation={ADD_REVIEW}>
+          <Mutation
+            mutation={ADD_REVIEW}
+            refetchQueries={() => [
+              {
+                query: gql`
+                  query {
+                    allLockers {
+                      id
+                      address
+                      latitude
+                      longitude
+                      reviews {
+                        rating
+                      }
+                    }
+                  }
+                `
+              }
+            ]}
+          >
             {(createLocker, { loading, data, error }) => {
               if (loading) return <Loader />;
               return (
