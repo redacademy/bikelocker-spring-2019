@@ -11,6 +11,6 @@
     "graphcool-lib": "^0.1.0",
     "graphql-request": "^1.4.0",
     "node-geocoder": "^3.23.0",
-    "validator": "^9.0.0"
+    "validator": "^13.7.0"
   }
 }
